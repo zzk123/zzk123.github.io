@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>享元模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/31.55d17ac2.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>结构性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/009_StructuralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/010_AdapterPattern.html" class="sidebar-link">适配器模式</a></li><li><a href="/design/011_BridgePattern.html" class="sidebar-link">桥接模式</a></li><li><a href="/design/012_CompositePattern.html" class="sidebar-link">组合模式</a></li><li><a href="/design/013_DecoratorPattern.html" class="sidebar-link">装饰模式</a></li><li><a href="/design/014_FacadePattern.html" class="sidebar-link">外观模式</a></li><li><a href="/design/015_FlyweightPattern.html" class="active sidebar-link">享元模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#典型代码" class="sidebar-link">典型代码</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#例子：围棋棋子" class="sidebar-link">例子：围棋棋子</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#单纯享元模式和复合享元模式" class="sidebar-link">单纯享元模式和复合享元模式</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#补充" class="sidebar-link">补充</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#优点" class="sidebar-link">优点</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/design/015_FlyweightPattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li><li><a href="/design/016_ProxyPattern.html" class="sidebar-link">代理模式</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>行为性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <blockquote><p>当一个软件系统在运行时产生的对象数量太多，将导致运行代价过高，带来系统性能下降等问题。例如，在一个文本字符串中存在很多重复的字符，如果每一个字符都用一个单独的对象来表示，将会占用较多的内存空间。如何去避免系统中出现大量相同或相似的对象，同时又不影响客户端程序通过面向对象的方式对这些对象进行操作？享元模式正为这一类问题而诞生。享元模式通过共享技术实现相同或相似对象的重用，在逻辑上每一个出现的字符都一个对象与之对应，然而在物理上它们却共享同一个享元对象，这个对象可以出现在一个字符串的不同地方，相同的字符对象都指向同一个实例，在享元模式中，存储这些共享实例对象的地方称为享元池(Flyweight Pool)，可以针对每一个不同的字符创建一个享元对象，将其放入享元池中，需要时再从享元池取出。</p></blockquote> <p>享元模式以共享的方式高效的支持大量细粒度对象的重用。享元对象能做到共享的关键是<strong>区分了内部状态(Intrinsic State)和外部状态(Extrinsic State).</strong></p> <ol><li><p><strong>内部状态是存储在享元对象内部并且不会随环境改变而改变的状态，内部状态可以共享</strong>。例如字符串的内容不会随环境的变化而变化，无论在任何环境下，字符串‘a’始终是‘a’，都不会改变为‘b’</p></li> <li><p><strong>外部状态是随环境改变而改变的，不可共享的状态</strong>。享元对象的外部状态通常由客户端保存，并在享元对象创建之后，需要使用的时候，再传入到享元对象内部。一个外部状态与另一个外部状态之间是相互独立的。如字符的颜色，可以在不同的地方有不同的颜色，例如有的‘a’是红色的，有的‘a’是绿色的，字符的大小也是如此，有的‘a’是五号字，有的‘a’是四号字。而且字符的颜色和大小是两个独立的外部状态，它们独立变化，相互之间没有影响，客户端可以在使用时将外部状态注入享元对象中。</p></li></ol> <p>正因为区分了<strong>内部状态和外部状态</strong>，可以将具有相同内部状态的对象存储在享元池中，享元池中的对象是可以实现共享的，需要的时候就将对象从享元池中取出，实现对象的复用。通过向取出的对象注入不同的外部状态，可以得到一系列相似的对象，而这些对象在内存中实际上次只存储一份。</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>享元模式(Flyweight Pattern):运用共享技术有效地支持大量细粒度对象的复用。系统只使用少量的对象，而这些对象都很相似，状态变化很小，可以实现对象的多次复用。由于享元模式要求能够共享的对象必须是细粒度对象，因此它又称之为轻量级模式，是一种对象结构型模式。</p></blockquote> <h3 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/9Q2eDvr.png"><img src="/pic/design/9Q2eDvr.png" alt="结构图"></a></p> <p>从上图可以看出</p> <ol><li><p><strong>Flyweight(抽象享元类)</strong> :通常是一个接口或抽象类，在抽象享元类中声明了具体享元类公共的方法，这些方法可以向外界提供享元对象的内部数据(内部状态),同时也可以通过这些方法来设置外部数据(外部状态)</p></li> <li><p><strong>ConcreteFlyweight(具体享元类)</strong>:它实现了抽象享元类，其实例称为享元对象，在具体享元类中为内部类提供了存储空间。通常，可以结合单例模式来设计具体享元类，为每一个享元类提供唯一的享元对象</p></li> <li><p><strong>UnsharedConcreteFlyweight(非共享具体享元类)</strong>:并不是所有的抽象享元类的子类都需要被共享，不能被共享的子类可设计为非共享具体享元类；当需要一个非共享具体享元类的对象时可以直接通过实例化创建。</p></li> <li><p><strong>FlyweightFactory(享元工厂类)</strong>：享元工厂类用于创建并管理享元对象，它针对抽象享元类编程，将各种类型的具体享元对象存储在一个享元池中，享元池一般设计为一个存储‘键值对’的集合(也可以是其他类型的集合)，可以结合工厂模式进行设计；当用户请求一个具体享元对象时，享元工厂提供一个存储在享元池中已创建的实例或者创建一个新的实例(如果不存在的话)，返回新创建的实例并将其存储在享元池中</p></li></ol> <h2 id="典型代码"><a href="#典型代码" aria-hidden="true" class="header-anchor">#</a> 典型代码</h2> <p>在享元模式中引入享元工厂类，享元工厂类的作用在于提供一个用于存储享元对象的享元池，当用户需要对象时，首先从享元池中获取，如果享元池中不存在，则创建一个新的享元对象返回给用户，并在享元池中保存该新增对象。典型的享元工厂类的代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class FlyweightFactory<span class="token punctuation">{</span>
+		
+		//定义一个HashMap用于存储享元对象，实现享元池
+		private HashMap flyweights <span class="token operator">=</span> new HashMap<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		public Flyweight getFlyweight<span class="token punctuation">(</span>String key<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//如果对象存在，则直接从享元池获取
+			if<span class="token punctuation">(</span>flyweights.containsKey<span class="token punctuation">(</span>key<span class="token punctuation">))</span><span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token punctuation">(</span>Flyweight<span class="token punctuation">)</span>flyweights.get<span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>	
+		//如果对象不存在，先创建一个新的对象添加到享元池中，然后返回
+		else<span class="token punctuation">{</span>
+			Flyweight fw <span class="token operator">=</span> new ConcreteFlyweight<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			flyweights.put<span class="token punctuation">(</span>key, fw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> fw<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>享元类的设计是享元模式的要点之一，在享元类中要将内部状态和外部状态分开处理，通常将内部状态作为享元类的成员变量，而外部状态通过注入的方式添加到享元类中。典型的享元类代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Flyweight<span class="token punctuation">{</span>
+		//内部状态 intrinsicState作为成员变量，同一个享元对象其内部状态是一致的
+		private String intrinsicState<span class="token punctuation">;</span>
+	
+		public Flyweight<span class="token punctuation">(</span>String intrinsicState<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.intrinsicState <span class="token operator">=</span> intrinsicState<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//外部状态extrinsicState在使用时由外部设置，不保存在享元对象中，即使是同一个对象，在每一次调用时可以传入不同的外部状态
+		public void operation<span class="token punctuation">(</span>String extrinsicState<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="例子：围棋棋子"><a href="#例子：围棋棋子" aria-hidden="true" class="header-anchor">#</a> 例子：围棋棋子</h2> <p>使用享元模式设计围棋软件中的棋子</p> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/lFPC9VD.png"><img src="/pic/design/lFPC9VD.png" alt="结构图"></a></p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>围棋棋子类：抽象享元类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class IgoChessman <span class="token punctuation">{</span>
+		public abstract String getColor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		public void dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子颜色：&quot;</span> + this.getColor<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子颜色：&quot;</span> + this.getColor<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>黑色棋子类：具体享元类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class BlackIgoChessman extends IgoChessman <span class="token punctuation">{</span>
+	
+		@Override
+		public String getColor<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			// TODO Auto-generated method stub
+			<span class="token keyword">return</span> <span class="token string">&quot;黑色&quot;</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>白色棋子类：具体享元类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class WhiteIgoChessman extends IgoChessman <span class="token punctuation">{</span>
+	
+		public String getColor<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token string">&quot;白色&quot;</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>围棋棋子工厂类：享元工厂类，使用单例模式设计</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class IgoChessmanFactory <span class="token punctuation">{</span>
+		
+		private static IgoChessmanFactory instance <span class="token operator">=</span> new IgoChessmanFactory<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		private static Hashtable ht<span class="token punctuation">;</span>	//使用Hashtable来存储享元对象，充当享元池
+		
+		private IgoChessmanFactory<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			ht <span class="token operator">=</span> new Hashtable<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			IgoChessman black, white<span class="token punctuation">;</span>
+			black <span class="token operator">=</span> new BlackIgoChessman<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ht.put<span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span>, black<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			white <span class="token operator">=</span> new WhiteIgoChessman<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ht.put<span class="token punctuation">(</span><span class="token string">&quot;w&quot;</span>, white<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//返回享元工厂类的唯一实例
+		public static IgoChessmanFactory getInstance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//通过key来获取存储在Hashtabke中的对象
+		public static IgoChessman getIgoChessman<span class="token punctuation">(</span>String color<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token punctuation">(</span>IgoChessman<span class="token punctuation">)</span>ht.get<span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			IgoChessman black1, black2, black3, white1, white2<span class="token punctuation">;</span>
+			IgoChessmanFactory factory<span class="token punctuation">;</span>
+			
+			//获取享元工厂对象
+			factory <span class="token operator">=</span> IgoChessmanFactory.getInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			//通过享元工厂获取3颗黑子
+			black1 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			black2 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			black3 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;判断两个黑子是否相同:&quot;</span>+ <span class="token punctuation">(</span>black1 <span class="token operator">==</span> black3<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			
+			//通过享元工厂获取两颗棋子
+			white1 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;w&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			white2 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;w&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;判断两个白子是否相同:&quot;</span>+ <span class="token punctuation">(</span>white1 <span class="token operator">==</span> white2<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			
+			//显示棋子
+			black1.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			black2.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			black3.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			white1.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			white2.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h3 id="例子"><a href="#例子" aria-hidden="true" class="header-anchor">#</a> 例子</h3> <p>对上述例子围棋棋子实例进行修改，添加坐标属性，记录每一个棋子的坐标</p> <h3 id="结构图-3"><a href="#结构图-3" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/X9NKuVy.png"><img src="/pic/design/X9NKuVy.png" alt="结构图"></a></p> <p>在上图中，除了增加一个坐标类Coordinates以外，抽象享元类IgoChessman中的display()方法也将对应增加一个Coordinates类型的参数，用于在显示棋子时指定其坐标，Coordinates类和修改之后的IgoChessman类的代码如下：</p> <p><strong>坐标类：外部状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Coordinates <span class="token punctuation">{</span>
+		private int x<span class="token punctuation">;</span>
+		private int y<span class="token punctuation">;</span>
+		
+		public Coordinates<span class="token punctuation">(</span>int x, int y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+			this.y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public int getX<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> x<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setX<span class="token punctuation">(</span>int x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public int getY<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setY<span class="token punctuation">(</span>int y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>围棋棋子类：抽象享元类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class IgoChessman <span class="token punctuation">{</span>
+		public abstract String getColor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		public void dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子颜色：&quot;</span> + this.getColor<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void dispaly<span class="token punctuation">(</span>Coordinates coord<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子颜色：&quot;</span> + this.getColor<span class="token punctuation">(</span><span class="token punctuation">)</span>+<span class="token string">&quot;,棋子的位置：&quot;</span> + coord.getX<span class="token punctuation">(</span><span class="token punctuation">)</span>
+			 + <span class="token string">&quot;,&quot;</span> + coord.getY<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Cilent <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			IgoChessman black1, black2, black3, white1, white2<span class="token punctuation">;</span>
+			IgoChessmanFactory factory<span class="token punctuation">;</span>
+			
+			//获取享元工厂对象
+			factory <span class="token operator">=</span> IgoChessmanFactory.getInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			//通过享元工厂获取3颗黑子
+			black1 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			black2 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			black3 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;判断两个黑子是否相同:&quot;</span>+ <span class="token punctuation">(</span>black1 <span class="token operator">==</span> black3<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			
+			//通过享元工厂获取两颗棋子
+			white1 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;w&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			white2 <span class="token operator">=</span> factory.getIgoChessman<span class="token punctuation">(</span><span class="token string">&quot;w&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;判断两个白子是否相同:&quot;</span>+ <span class="token punctuation">(</span>white1 <span class="token operator">==</span> white2<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			
+			//显示棋子
+			black1.dispaly<span class="token punctuation">(</span>new Coordinates<span class="token punctuation">(</span>1, 4<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			black2.dispaly<span class="token punctuation">(</span>new Coordinates<span class="token punctuation">(</span>3, 3<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			black3.dispaly<span class="token punctuation">(</span>new Coordinates<span class="token punctuation">(</span>6, 4<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			white1.dispaly<span class="token punctuation">(</span>new Coordinates<span class="token punctuation">(</span>7, 6<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			white2.dispaly<span class="token punctuation">(</span>new Coordinates<span class="token punctuation">(</span>8, 7<span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="单纯享元模式和复合享元模式"><a href="#单纯享元模式和复合享元模式" aria-hidden="true" class="header-anchor">#</a> 单纯享元模式和复合享元模式</h2> <p>标准的享元模式结构图中既包含可以共享的具体享元类，也包含了不可以共享的非共享具体享元类。但实际使用中，有时候会用到两种特殊的享元模式：单纯享元模式和复合享元模式</p> <p><strong>1. 单纯享元模式</strong></p> <p>在单纯享元模式中，所有的具体享元类都是可以共享的，不存在非共享的具体享元类，结构图如下</p> <p><a data-fancybox="" title="结构图" href="/pic/design/2foEOCi.png"><img src="/pic/design/2foEOCi.png" alt="结构图"></a></p> <p><strong>2. 复合享元模式</strong></p> <p>将一些单纯享元对象使用组合模式加以组合，还可以形成复合享元对象，这样的复合享元对象本身不能共享，但是它们可以分解为单纯享元对象，而后者则可以共享，复合的享元模式的结构图如下：</p> <p><a data-fancybox="" title="结构图" href="/pic/design/aHZgJsj.png"><img src="/pic/design/aHZgJsj.png" alt="结构图"></a></p> <p>通过复合享元模式，可以确保复合享元类CompositeConcreteFlyweight中所包含的每个单纯享元类都具有相同的外部状态，而这些单纯享元的内部状态往往可以不同。如果希望为多个内部状态不同的享元对象设置相同的外部状态，可以考虑使用复合享元模式</p> <h2 id="补充"><a href="#补充" aria-hidden="true" class="header-anchor">#</a> 补充</h2> <h3 id="与其他模式联用"><a href="#与其他模式联用" aria-hidden="true" class="header-anchor">#</a> 与其他模式联用</h3> <p>享元模式通常需要和其他模式一起联用，几种常见的联用方式如下：</p> <ol><li><p>在享元模式的享元工厂类中通常提供一个静态的工厂方法用于返回享元对象，使用简单工厂模式生成享元对象</p></li> <li><p>在一个系统中，通常只有唯一一个享元工厂，因此可以使用单例模式进行享元工厂类的设计</p></li> <li><p>享元模式可以结合组合模式形成复合享元模式，统一对多个享元对象设置外部状态</p></li></ol> <h3 id="享元模式与string类"><a href="#享元模式与string类" aria-hidden="true" class="header-anchor">#</a> 享元模式与String类</h3> <p>JDK类库中的String类使用了享元模式，通过如下代码说明</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Demo<span class="token punctuation">{</span>
+		String str1 <span class="token operator">=</span> <span class="token string">&quot;abcd&quot;</span><span class="token punctuation">;</span>
+		String str2 <span class="token operator">=</span> <span class="token string">&quot;abcd&quot;</span><span class="token punctuation">;</span>
+		String str3 <span class="token operator">=</span> <span class="token string">&quot;ab&quot;</span> + <span class="token string">&quot;cd&quot;</span><span class="token punctuation">;</span>
+		String str4 <span class="token operator">=</span> <span class="token string">&quot;ab&quot;</span><span class="token punctuation">;</span>
+		str4 +<span class="token operator">=</span> <span class="token string">&quot;cd&quot;</span><span class="token punctuation">;</span>
+
+		System.out.println<span class="token punctuation">(</span>str1 <span class="token operator">==</span> str2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		System.out.println<span class="token punctuation">(</span>str1 <span class="token operator">==</span> str3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		System.out.println<span class="token punctuation">(</span>str1 <span class="token operator">==</span> str4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		str2 +<span class="token operator">=</span> <span class="token string">&quot;e&quot;</span><span class="token punctuation">;</span>
+		System.out.println<span class="token punctuation">(</span>str1 <span class="token operator">==</span> str2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在java语言中，如果每次执行类似String str1 = &quot;abcd&quot;的操作时都创建了一个新的字符串对象，将导致内存开销很大，因此如果第一次创建了内容为‘abcd’的字符串对象str1，下一次再创建内容相同的字符串对象str2时会将它的引用指向“abcd”，不会重新分配内存空间，从而实现了&quot;abcd&quot;在内存中的共享，上述代码输出如下：</p> <div class="language- extra-class"><pre><code>true
+true
+false
+false
+</code></pre></div><blockquote><p>注：Java String类对象这种在修改享元对象时，先将原有对象复制一份，然后在新的对象上再实施修改操作的机制称之为‘Copy On Write’</p></blockquote> <h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>当系统中存在大量相同或者相似的对象时，享元模式是一种较好的解决方法，它通过共享技术实现相同或相似的细粒度对象的复用，从而节约了内存空间，提高了系统性能。相比其他结构型设计模式，享元模式的使用频率并不算高，但是作为一种以‘节约内存，提高性能’为出发点的设计模式，它在软件开发中还是得到了一定程度的应用</p> <h2 id="优点"><a href="#优点" aria-hidden="true" class="header-anchor">#</a> 优点</h2> <ol><li><p>可以极大减少内存中对象的数量，使得相同或相似对象在内存中只保存一份，从而可以节约系统资源，提高系统性能</p></li> <li><p>享元模式的外部状态相对独立，而且不会影响其内部状态，从而使得享元对象可以在不同的环境中被共享</p></li></ol> <h2 id="缺点"><a href="#缺点" aria-hidden="true" class="header-anchor">#</a> 缺点</h2> <ol><li><p>享元模式使得系统变得复杂，需要分离出内部状态和外部状态，这使得程序的逻辑复杂化</p></li> <li><p>为了使对象可以共享，享元模式需要将享元对象的部分状态外部化，而读取外部状态使得运行时间变长</p></li></ol> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>一个系统有大量相同或者相似的对象，造成内存的大量耗费</p></li> <li><p>对象的大部分状态都可以外部化，可以将这些外部状态传入对象中</p></li> <li><p>在使用享元模式时需要维护一个存储享元对象的享元池，而这需要耗费一定的系统资源，因此，在需要多次重复使用享元对象时才值得使用享元模式</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/014_FacadePattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        外观模式
+      </a></span> <span class="next"><a href="/design/016_ProxyPattern.html">
+        代理模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/31.55d17ac2.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>观察者模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/40.87c4c789.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="sidebar-link">职责链模式</a></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="sidebar-link">解释器模式</a></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="sidebar-link">备忘录模式</a></li><li><a href="/design/023_IteratorPattern.html" class="sidebar-link">迭代器模式</a></li><li><a href="/design/024_ObserverPattern.html" class="active sidebar-link">观察者模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#结构图" class="sidebar-link">结构图</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#示意代码" class="sidebar-link">示意代码</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#实例" class="sidebar-link">实例</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#观察者与mvc" class="sidebar-link">观察者与MVC</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#优点" class="sidebar-link">优点</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/design/024_ObserverPattern.html#使用场景" class="sidebar-link">使用场景</a></li></ul></li><li><a href="/design/025_StatePattern.html" class="sidebar-link">状态模式</a></li><li><a href="/design/026_StrategyPattern.html" class="sidebar-link">策略模式</a></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="sidebar-link">访问者模式</a></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <blockquote><p>观察者模式是使用频率最高的设计模式之一，用于建立一种对象与对象之间的依赖关系，一个对象发生改变时将自动通知其他对象，其他对象将相应作出反应，在观察者模式中，发生改变的对象称之为观察目标，而被通知的对象称之为观察者，一个观察目标可以对应多个观察者，而且这些观察者之间没有任何相互联系，可以根据需要增加和删除观察者，使得系统更易于扩展</p></blockquote> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>观察者模式（Observer Pattern）：定义对象之间的一种一对多依赖关系，使得每当一个对象状态发生改变时，其相关依赖对象皆得到通知并被自动更新。观察者模式的别名包括发布-订阅（Publish/Subscribe）模式、模式-视图（Model/View）模式、源-监听器（Source/Listener）模式或从属者（Dependents）模式。观察者模式是一种<strong>对象行为型模式</strong></p></blockquote> <h2 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/t54GKUD.png"><img src="/pic/design/t54GKUD.png" alt="结构图"></a></p> <ol><li><p><strong>Subject（目标）</strong>：目标又称为主题，它是指被观察的对象。在目标中定义一个观察者集合，一个观察者目标可以接受任意数量的观察者来观察，它提供一系列方法来增加和删除观察者对象，同时定义了通知方法notify().目标类可以是接口，也可以是抽象类或者具体类。</p></li> <li><p><strong>ConcreteSubject（具体目标）</strong>：具体目标是目标类的子类，通常包含有经常发生改变的数据，当它的状态发生改变时，向其各个观察者发出通知；同时它还实现了在目标类中定义的抽象业务逻辑方法（如果有的话），如果无需扩展目标类，则具体目标类即可。</p></li> <li><p><strong>Observer(观察者)</strong>：观察者将对观察目标的改变作出反应，观察者一般定义为接口，该接口声明了更新数据的方法update(),因此又称为抽象观察者。</p></li> <li><p><strong>ConcreteObserver（具体观察者）</strong>：在具体观察者中维护一个指向具体目标对象的引用，它存储具体观察者的有关状态，这些状态需要和具体目标的状态保持一致；它实现了在抽象观察者Observer中声明的update（）方法。通常在实现时，可以调用具体目标类的attach()方法将自己添加到目标类的集合中或通过detach()方法将自己从目标类的集合中删除。</p></li></ol> <h2 id="示意代码"><a href="#示意代码" aria-hidden="true" class="header-anchor">#</a> 示意代码</h2> <p>观察者模式描述了如何建立对象与对象之间的依赖关系，以及如何构造满足这种需求的系统，观察者模式包含观察目标和观察者两类对象，一个目标可以有任意数目的与之相知的响应，每一个观察者都将监视观察目标的状态以使其状态与目标状态同步，这种交互也称为<strong>发布-订阅（Publish-Subscribe）</strong>。观察目标是通知的发布者，它发出通知时并不需要知道谁是它的观察者，可以有任意数目的观察者订阅它并接受通知。</p> <p><strong>首先定义一个抽象目标Subject，典型代码如下：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class Subject<span class="token punctuation">{</span>
+		//定义一个观察者集合用于存储所有观察则对象
+		protected ArrayList observers<span class="token operator">&lt;</span>Observer<span class="token operator">&gt;</span> <span class="token operator">=</span> new ArrayList<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		//注册方法，用于向观察者集合中添加一个观察者
+		public void attach<span class="token punctuation">(</span>Observer observer<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			observers.add<span class="token punctuation">(</span>observer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		//注销方法，用于在观察者集合中删除一个观察者
+		public void detach<span class="token punctuation">(</span>Observer observer<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			observers.remove<span class="token punctuation">(</span>observer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//声明抽象通知方法
+		public abstract void notify<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>具体目标类ConcreteSubject是实现抽象目标类Subject的一个具体子类，其典型代码如下：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ConcreteSubject extends Subject<span class="token punctuation">{</span>
+		//实现通知方法
+		public void notify<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//遍历观察者集合，调用每一个观察者的响应方法
+			<span class="token punctuation">((</span>Observer<span class="token punctuation">)</span>obs<span class="token punctuation">)</span>.update<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>抽象观察者角色一般定义为一个接口，通常只声明一个update()方法，为不同观察者的更新（响应）行为定义相同的接口，这个方法在其子类中实现，不同的观察者具有不同的相应方法，抽象观察者Observer典型代码如下</strong>：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	interface Observer<span class="token punctuation">{</span>
+		//声明响应方法
+		public void update<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>在具体观察者ConcreteObserver中实现了update()方法，其典型代码如下：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ConcreteObserver implements Observer<span class="token punctuation">{</span>
+		//实现响应方法
+		public void update<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//具体响应代码
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在有些更加复杂的情况下，具体观察者类ConcreteObserver的update（）方法在执行时需要使用到具体目标类ConcreteSubject中的状态（属性），因此在ConcreteObserver与ConcreteSubject的实例之间有时候还存在着关联或者依赖关系，在ConcreteObserver中定义一个ConcreteSubject实例，通过该实例获取存储在ConcreteSubject中的状态。如果ConcreteObserver的update()方法不需要使用到ConcreteSubject中的状态属性，则可以对观察者模式的标准结构进行简化，在具体观察者ConcreteObserver和具体目标ConcreteSubject之间无需维持对象引用。如果在具体层具有关联关系，系统的扩展性将受到一定的影响增加新的具体目标类有时需要修改原有观察者的代码，在一定程度上违背开闭原则，但如果原有观察者类无需关联新增的具体目标，系统的扩展性不受影响。</p> <h2 id="实例"><a href="#实例" aria-hidden="true" class="header-anchor">#</a> 实例</h2> <p>使用观察者模式来进行多人联机对战游戏的设计</p> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/2GOS1cM.png"><img src="/pic/design/2GOS1cM.png" alt="结构图"></a></p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>抽象观察类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public interface Observer <span class="token punctuation">{</span>
+		public String getName<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>				
+		public void setName<span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public void help<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>								//声明支援盟友方法
+		public void beAttacked<span class="token punctuation">(</span>AllyControlCenter acc<span class="token punctuation">)</span><span class="token punctuation">;</span>	//声明遭受攻击的方法
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>战队成员类：具体观察者类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Player implements Observer <span class="token punctuation">{</span>
+	
+		private String name<span class="token punctuation">;</span>
+		
+		public Player<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		@Override
+		public String getName<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> this.name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void setName<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//支援盟友方法的实现
+		public void help<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;坚持住，&quot;</span>+ this.name + <span class="token string">&quot;来救你了！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//遭受攻击方法的实现，当遭受攻击时将调用战队控制中心类的通知方法notifyObserver<span class="token punctuation">(</span><span class="token punctuation">)</span>来通知盟友
+		public void beAttacked<span class="token punctuation">(</span>AllyControlCenter acc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>this.name + <span class="token string">&quot;被攻击！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.notifyObserver<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>战队控制中心类：目标类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class AllyControlCenter <span class="token punctuation">{</span>
+		protected String allyName<span class="token punctuation">;</span>				//战队名称
+		protected ArrayList<span class="token operator">&lt;</span>Observer<span class="token operator">&gt;</span> plays <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>Observer<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>//定义一个集合， 存储战队成员
+		
+		public String getAllyName<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> allyName<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setAllyName<span class="token punctuation">(</span>String allyName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.allyName <span class="token operator">=</span> allyName<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//注册方法
+		public void join<span class="token punctuation">(</span>Observer obs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>obs.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;加入&quot;</span> + this.allyName + <span class="token string">&quot;战队&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			plays.add<span class="token punctuation">(</span>obs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//注销方法
+		public void quit<span class="token punctuation">(</span>Observer obs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>obs.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;退出&quot;</span> + this.allyName + <span class="token string">&quot;战队&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			plays.remove<span class="token punctuation">(</span>obs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//声明抽象通知方法
+		public abstract void notifyObserver<span class="token punctuation">(</span>String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>具体战队控制中心类：具体目标类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ConcreteAllyControlCenter extends AllyControlCenter <span class="token punctuation">{</span>
+	
+		public ConcreteAllyControlCenter<span class="token punctuation">(</span>String allyName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>allyName + <span class="token string">&quot;战队组件成功&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;-----------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			this.allyName <span class="token operator">=</span> allyName<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//实现通知方法
+		public void notifyObserver<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>this.allyName + <span class="token string">&quot;战队紧急通知，盟友&quot;</span> + name + <span class="token string">&quot;遭受敌人攻击&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			//遍历观察者集合，调用每个盟友的支援方法
+			for<span class="token punctuation">(</span>Object obs <span class="token keyword">:</span> plays<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				if<span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable"><span class="token punctuation">((</span>Observer<span class="token punctuation">)</span>obs<span class="token punctuation">)</span>.getName<span class="token punctuation">(</span><span class="token punctuation">)</span>.equalsIgnoreCase<span class="token punctuation">(</span>name<span class="token punctuation">))</span></span> <span class="token punctuation">{</span>
+					<span class="token punctuation">((</span>Observer<span class="token punctuation">)</span>obs<span class="token punctuation">)</span>.help<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			//定义观察目标对象
+			AllyControlCenter acc<span class="token punctuation">;</span>
+			acc <span class="token operator">=</span> new ConcreteAllyControlCenter<span class="token punctuation">(</span><span class="token string">&quot;金庸群侠&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			//定义4个观察者对象
+			Observer play1,play2,play3,play4<span class="token punctuation">;</span>
+			
+			play1 <span class="token operator">=</span> new Player<span class="token punctuation">(</span><span class="token string">&quot;杨过&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.join<span class="token punctuation">(</span>play1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			play2 <span class="token operator">=</span> new Player<span class="token punctuation">(</span><span class="token string">&quot;令狐冲&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.join<span class="token punctuation">(</span>play2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			play3 <span class="token operator">=</span> new Player<span class="token punctuation">(</span><span class="token string">&quot;张无忌&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.join<span class="token punctuation">(</span>play3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			play4 <span class="token operator">=</span> new Player<span class="token punctuation">(</span><span class="token string">&quot;段誉&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.join<span class="token punctuation">(</span>play4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			//某成员遭受到攻击
+			play1.beAttacked<span class="token punctuation">(</span>acc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在本实例张，实现了两次对象之间的联动，当一个游戏玩家Player对象的beAttracked()方法被调用时，将调用AllyControlCenter的notifyObserver()方法来进行处理，而在notifyObserver()方法中又调用了其他Player对象的help()方法。Player的beAttracked()方法，AllyControlCenter的notifyObserver()方法以及Player的help()方法构成了一个联动触发链，执行顺序如下：
+Player.beAttracked() -&gt; AllyControlCenter.notifyObserver() -&gt; Player.help()</p> <h2 id="观察者与mvc"><a href="#观察者与mvc" aria-hidden="true" class="header-anchor">#</a> 观察者与MVC</h2> <p>在当前很流行的MVC（Model-View-Controller）架构中也应用了观察者模式，MVC是一种架构模式，它包含了3种角色：<strong>模型（Model）</strong>，<strong>视图（View）<strong>和</strong>控制器（Controller）</strong>。其中，模型可对应于观察者模式中的观察目标，而视图对应与观察者，控制器可充当两者之间的中介者。当模型层的数据发生变化时，视图层将自动改变其显示内容。</p> <h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>观察者模式是一种使用频率非常高的设计模式，无论是移动应用，Web应用或者桌面应用，观察者模式几乎无处不在，它为实现对象之间的联系提供了一套完整的解决方案，凡是涉及一对一或者一对多的对象交互场景都可以使用观察者模式。观察者模式广泛应用于各种编程语言的GUI事件处理的实现，在基于事件的XML解析技术（例如SAX2）以及Web事件处理中也使用了观察者模式</p> <h2 id="优点"><a href="#优点" aria-hidden="true" class="header-anchor">#</a> 优点</h2> <ol><li><p>观察者模式可以实现表示层和数据逻辑层的分离，定义了稳定的消息更新传递机制，并抽象了更新接口，使得可以有各种各样不同的表示层充当具体观察者角色</p></li> <li><p>观察者模式在观察目标和观察者之间建立一个抽象的耦合。观察目标只需要维持一个抽象观察者的集合，无须了解其具体观察者。由于观察目标和观察者没有紧密地耦合在一起，因此它们可以属于不同地抽象化层次</p></li> <li><p>观察者模式支持广播通信，观察目标会向所有已注册地观察者对象发送通知，简化一对多系统设计的难度</p></li> <li><p>观察者模式满足开闭原则的要求，增加新的具体观察者无需修改原有系统代码，在具体观察者与观察目标之间不存在关联关系的情况下，增加新的观察目标也很方便</p></li></ol> <h2 id="缺点"><a href="#缺点" aria-hidden="true" class="header-anchor">#</a> 缺点</h2> <ol><li><p>如果一个观察目标对象有很多直接和间接观察者，将所有的观察者都通知到会花费很多时间</p></li> <li><p>如果在观察者和观察目标之间存在循环依赖，观察目标会触发它们之间进行循环调用，可能导致系统崩溃</p></li> <li><p>观察者模式没有相应的机制让观察者知道所观察的目标对象时怎么发生变化的，而仅仅只是知道观察目标发生了变化</p></li></ol> <h2 id="使用场景"><a href="#使用场景" aria-hidden="true" class="header-anchor">#</a> 使用场景</h2> <ol><li><p>一个抽象模型有两个方面，其中一个方法依赖于另一个方面，将这两个方面封装在独立的对象中是，使它们可以各自独立地改变和复用</p></li> <li><p>一个对象的改变将导致一个或多个其他对象也发生改变，而并不知道具体有多少对象将发生改变，也不知道这些对象是谁</p></li> <li><p>需要在系统给中创建一个触发链，A对象的行为将影响B对象，B对象的行为将影响C对象.....可以使用观察者模式创建一种链式触发机制</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/023_IteratorPattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        迭代器模式
+      </a></span> <span class="next"><a href="/design/025_StatePattern.html">
+        状态模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/40.87c4c789.js" defer></script>
+  </body>
+</html>

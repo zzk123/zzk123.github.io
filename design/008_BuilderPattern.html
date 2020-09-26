@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>建造者模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/24.1cd100b8.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>创建者模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/002_CreativePattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/003_SingletonPattern.html" class="sidebar-link">单例模式</a></li><li><a href="/design/004_SimpleFactoryPattern.html" class="sidebar-link">简单工厂模式</a></li><li><a href="/design/005_FactoryMethodPattern.html" class="sidebar-link">工厂方法模式</a></li><li><a href="/design/006_AbstractFactoryPattern.html" class="sidebar-link">抽象工厂模式</a></li><li><a href="/design/007_PrototypePattern.html" class="sidebar-link">原型模式</a></li><li><a href="/design/008_BuilderPattern.html" class="active sidebar-link">建造者模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#结构图" class="sidebar-link">结构图</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#典型代码" class="sidebar-link">典型代码</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#游戏角色的创建" class="sidebar-link">游戏角色的创建</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#优点" class="sidebar-link">优点</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/design/008_BuilderPattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>行为性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <p>建造者模式是较为复杂的创建型模式，它将客户端和包含多个组成部分（或部件）的复杂对象的创建过程分离，客户端无须知道复杂对象的内部组成部分与装配方式，只需知道所需的建造者类型即可。建造者模式关注如何一步一步地创建一个复杂对象，不同地具体建造者定义了不同的创建过程，且具体建造者相互独立，增加新的建造者非常方便，无须修改已有代码，系统具有较好的扩展性</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>建造者模式(Builder Pattern)：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。建造者模式是一种对象创建型模式</p></blockquote> <h2 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/7WNA85A.png"><img src="/pic/design/7WNA85A.png" alt="结构图"></a></p> <ol><li><p><strong>Builder（抽象建造者）</strong>：它为创建一个产品Product对象的各个部件指定抽象接口，在该接口中一般声明两类方法：一类方法是buildPartX()，用于创建复杂对象的各个部件；另一类方法是getResult()，用于返回复杂对象。Builder既可以是抽象类，也可以是接口</p></li> <li><p><strong>ConcreteBuilder（具体建造者）</strong>：它实现了Builder接口，实现了各个部件的具体构造和装配方法，定义并明确其所创建的复杂对象，也可以提供一个方法返回创建好的复杂产品对象。</p></li> <li><p><strong>Product（产品角色）</strong>：它是被构建的复杂对象，包含多个组成部件，具体建造者创建该产品的内部表示并定义其装配过程</p></li> <li><p><strong>Director（指挥者）</strong>：指挥者又称为导演类，它负责安排负责对象的建造次序，指挥者与抽象建造者之间存在关联关系，可以在其construct()建造方法中调用建造者对象的部件构造与装配方法，完成复杂对象的建造。客户端一般只需要与指挥者进行交互，在客户端确定具体建造者的类型，并实例化具体建造者对象（也可以通过配置文件和反射机制），然后通过指挥者类的构造函数或者Setter方法将该对象传入指挥者类中</p></li></ol> <h2 id="典型代码"><a href="#典型代码" aria-hidden="true" class="header-anchor">#</a> 典型代码</h2> <p><strong>复杂对象类的典型代码</strong>：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Product<span class="token punctuation">{</span>
+		
+		private String partA<span class="token punctuation">;</span>
+		private String partB<span class="token punctuation">;</span>
+		private String partC<span class="token punctuation">;</span>
+		//partA的Getter方法和Setter方法省略
+		//partB的Getter方法和Setter方法省略
+		//partC的Getter方法和Setter方法省略
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>在抽象建造者类中定义了产品的创建方法和返回方法，其典型代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class Builder<span class="token punctuation">{</span>
+		//创建产品对象
+		protected Product product <span class="token operator">=</span> new Product<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		public abstract void buildPartA<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void buildPartB<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void buildPartC<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		//返回产品对象
+		public Product getResult<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">return</span> product<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在抽象类Builder中声明了一系列抽象的buildPartX()方法，用于创建复杂产品的各个部件，具体建造过程在ConcreteBuilder中实现，此外还提供了工厂方法getResult()，用于返回一个建造好的完整产品</p> <p>在ConcreteBuilder中实现了buildPartX()方法，通过调用Product的setPartX()方法可以给产品对象的成员变量设值。不同的具体建造者在实现buildPartX()方法时所有区别，例如setPartX()方法的参数可能不一样，在有些具体建造者类中某些setPartX()方法无须实现(提供了一个空实现).而这些对于客户端来说都无须关心，客户端只需要知道具体建造者类型即可</p> <p><strong>在建造者模式的结构中还引入了一个指挥者类Directior</strong>，该类主要有两个作用：一方面它隔离了客户与创建过程；另一方法它控制产品的创建过程，包括某个buildPartX()方法是否被调用，以及多个buildPartX()方法调用的先后次序等。指挥者针对抽象建造者编程，客户端只需要知道具体建造者的类型，即可通过指挥者类掉哟个建造者的相关方法，返回一个完整的产品对象。</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Director<span class="token punctuation">{</span>
+		
+		private Builder builder<span class="token punctuation">;</span>
+	
+		public Director<span class="token punctuation">(</span>Builder builder<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.builder <span class="token operator">=</span> builder<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void setBuilder<span class="token punctuation">(</span>Builder builder<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.builder <span class="token operator">=</span> builder<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//产品构建与组装方法
+		public Product construct<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			builder.buildPartA<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			builder.buildPartB<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			builder.buildPartC<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> builder.getResult<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在指挥者类中可以注入一个抽象建造者类型的对象，其核心在于提供了一个建造方法construct()，在该方法中调用了builder对象的构造方法。最后返回一个产品对象</p> <p><strong>对于客户端来说</strong>，只需关心具体的建造者即可，一般客户端代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	Builder builder <span class="token operator">=</span> new ConcreteBuilder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>//可通过配置文件实现
+	Director director <span class="token operator">=</span> new Director<span class="token punctuation">(</span>builder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	Product product <span class="token operator">=</span> director.construct<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>建造者模式与抽象工厂模式有点相似，但是建造者模式返回一个完整的复杂产品，而抽象工厂模式返回一系列相关的产品；在抽象工厂模式中，客户端通过选择具体工厂来生成所需对象，而在建造者模式中，客户端通过指定具体建造者类型并指导Director类如何去生成对象，侧重于一步一步地构造一个复杂对象，然后将结果返回。如果将抽象工厂模式看成一个汽车配件生产厂，生产不同类型的汽车配件，那么建造者模式就是一个汽车组装厂，通过对配件进行组装返回一辆完整的汽车</p> <h2 id="游戏角色的创建"><a href="#游戏角色的创建" aria-hidden="true" class="header-anchor">#</a> 游戏角色的创建</h2> <p>使用建造者模式来实现游戏中的角色创建</p> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/kV5wfFm.png"><img src="/pic/design/kV5wfFm.png" alt="结构图"></a></p> <p>ActorController充当指挥者，ActorBuilder充当抽象建造者，HeroBuilder，AngelBuilder和DevilBuilder充当具体建造者，Actor充当复杂产品</p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>Actor角色类：复杂产品</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Actor <span class="token punctuation">{</span>
+		private String <span class="token function">type</span><span class="token punctuation">;</span>
+		private String sex<span class="token punctuation">;</span>
+		private String face<span class="token punctuation">;</span>
+		private String costume<span class="token punctuation">;</span>
+		private String hairstyle<span class="token punctuation">;</span>
+		public String getType<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token function">type</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setType<span class="token punctuation">(</span>String type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.type <span class="token operator">=</span> <span class="token function">type</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public String getSex<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> sex<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setSex<span class="token punctuation">(</span>String sex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public String getFace<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> face<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setFace<span class="token punctuation">(</span>String face<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.face <span class="token operator">=</span> face<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public String getCostume<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> costume<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setCostume<span class="token punctuation">(</span>String costume<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.costume <span class="token operator">=</span> costume<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public String getHairstyle<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> hairstyle<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setHairstyle<span class="token punctuation">(</span>String hairstyle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.hairstyle <span class="token operator">=</span> hairstyle<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>角色建造器：抽象建造者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class ActorBuilder <span class="token punctuation">{</span>
+		protected Actor actor <span class="token operator">=</span> new Actor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		public abstract void buildType<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void buildSex<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void buildFace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void buildCostume<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void buildHairstyle<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		//工厂方法，返回一个完整的游戏角色对象
+		public Actor createActor<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> actor<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>英雄角色建造器：具体建造者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class HeroBuilder extends ActorBuilder <span class="token punctuation">{</span>
+	
+		@Override
+		public void buildType<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setType<span class="token punctuation">(</span><span class="token string">&quot;英雄&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildSex<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setSex<span class="token punctuation">(</span><span class="token string">&quot;男&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildFace<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setFace<span class="token punctuation">(</span><span class="token string">&quot;英俊&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildCostume<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setCostume<span class="token punctuation">(</span><span class="token string">&quot;盔甲&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildHairstyle<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setHairstyle<span class="token punctuation">(</span><span class="token string">&quot;飘逸&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>天使角色建造器：具体建造者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class AngelBuilder extends ActorBuilder <span class="token punctuation">{</span>
+	
+		@Override
+		public void buildType<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setType<span class="token punctuation">(</span><span class="token string">&quot;天使&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildSex<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setSex<span class="token punctuation">(</span><span class="token string">&quot;女&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildFace<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setFace<span class="token punctuation">(</span><span class="token string">&quot;漂亮&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildCostume<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setCostume<span class="token punctuation">(</span><span class="token string">&quot;白裙&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildHairstyle<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setHairstyle<span class="token punctuation">(</span><span class="token string">&quot;披肩长发&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>恶魔角色建造器：具体建造者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class DevilBuilder extends ActorBuilder<span class="token punctuation">{</span>
+	
+		@Override
+		public void buildType<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setType<span class="token punctuation">(</span><span class="token string">&quot;恶魔&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildSex<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setSex<span class="token punctuation">(</span><span class="token string">&quot;妖&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildFace<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setFace<span class="token punctuation">(</span><span class="token string">&quot;丑陋&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildCostume<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setCostume<span class="token punctuation">(</span><span class="token string">&quot;黑衣&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void buildHairstyle<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			actor.setHairstyle<span class="token punctuation">(</span><span class="token string">&quot;光头&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>指挥者类ActorController</strong>定义了construct()方法，在方法内部实现了游戏角色的构建步骤</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ActorController <span class="token punctuation">{</span>
+		public Actor construct<span class="token punctuation">(</span>ActorBuilder ab<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			Actor actor<span class="token punctuation">;</span>
+			ab.buildType<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ab.buildSex<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ab.buildFace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ab.buildCostume<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			ab.buildHairstyle<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			actor <span class="token operator">=</span> ab.createActor<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> actor<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>该方法用于从XML配置文件中提取具体类类名，并返回一个实例对象</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class XMLUtil <span class="token punctuation">{</span>
+		
+		public static Object getBean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			try <span class="token punctuation">{</span>
+				//创建文档对象
+				DocumentBuilderFactory dFatory <span class="token operator">=</span> DocumentBuilderFactory.newInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				DocumentBuilder builder <span class="token operator">=</span> dFatory.newDocumentBuilder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Document doc<span class="token punctuation">;</span>
+				doc <span class="token operator">=</span> builder.parse<span class="token punctuation">(</span>new File<span class="token punctuation">(</span><span class="token string">&quot;config.xml&quot;</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+				
+				//获取包含类名的文本节点
+				NodeList <span class="token function">nl</span> <span class="token operator">=</span> doc.getElementsByTagName<span class="token punctuation">(</span><span class="token string">&quot;className&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Node classNode <span class="token operator">=</span> nl.item<span class="token punctuation">(</span>0<span class="token punctuation">)</span>.getFirstChild<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				String cName <span class="token operator">=</span> classNode.getNodeValue<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				
+				//通过类名生产实例对象并将其返回
+				Class c <span class="token operator">=</span> Class.forName<span class="token punctuation">(</span>cName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Object obj <span class="token operator">=</span> c.newInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span> catch <span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				e.printStackTrace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> null<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span> 
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>配置文件</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	<span class="token operator">&lt;</span>?xml version<span class="token operator">=</span><span class="token string">&quot;1.0&quot;</span> encoding<span class="token operator">=</span><span class="token string">&quot;UTF-8&quot;</span>?<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>config<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>chartType<span class="token operator">&gt;</span>AngelBuilder<span class="token operator">&lt;</span>/chartType<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>/config<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>建造者模式的核心在于如何一步一步地构建一个包含多个组成部件地完整对象，使用相同地构建过程构建不同的产品。在软件开发中，如果需要创建复杂对象，并希望系统具备很好的灵活性和可扩展性，可以考虑使用建造者模式</p> <h2 id="优点"><a href="#优点" aria-hidden="true" class="header-anchor">#</a> 优点</h2> <ol><li><p>在建造者模式中，客户端不必知道产品内部组成的细节，将产品本身与产品的创建过程解耦，使得相同的创建过程可以创建不同的产品对象</p></li> <li><p>每一个具体建造者都相对独立，而与其他具体建造者无关，因此可以方便地替换具体建造者或者增加新的具体建造者，用户使用不同地具体建造者即可得到不同的产品对象。由于指挥者类针对抽象建造者编程，增加新的具体建造者无须修改原有类库的代码，系统扩展方便，符合开闭原则</p></li></ol> <h2 id="缺点"><a href="#缺点" aria-hidden="true" class="header-anchor">#</a> 缺点</h2> <ol><li><p>建造者模式所创建的产品一般具有较多共同点，其组成部分相似，如果产品之间的差异性很大，例如很多组成部分都不一样，就不适合用建造者模式，因此其使用范围受到一定的限制</p></li> <li><p>如果产品的内部结构复杂且多变，可能会需要定义很多具体建造者类来实现这种变化，这就导致系统变得很庞大，增加系统的理解难度和运行成本</p></li></ol> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>需要生成的产品对象有复杂的内部结构，这些产品对象通常包含多个成员变量</p></li> <li><p>需要生成的产品对象的属性相互依赖，需要指定其生成顺序</p></li> <li><p>对象的创建过程独立于创建该对象的类。在建造者模式中通过引入指挥者类，将创建过程封装在指挥者类中，而不能建造者类和客户类中</p></li> <li><p>隔离复杂对象的创建和适用，并使得相同的创建过程可以创建不同的产品</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/007_PrototypePattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        原型模式
+      </a></span> <span class="next"><a href="/design/009_StructuralPattern.html">
+        介绍
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/24.1cd100b8.js" defer></script>
+  </body>
+</html>

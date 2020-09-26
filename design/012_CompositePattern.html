@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>组合模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/28.a0fd1666.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>结构性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/009_StructuralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/010_AdapterPattern.html" class="sidebar-link">适配器模式</a></li><li><a href="/design/011_BridgePattern.html" class="sidebar-link">桥接模式</a></li><li><a href="/design/012_CompositePattern.html" class="active sidebar-link">组合模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#结构图" class="sidebar-link">结构图</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#典型代码" class="sidebar-link">典型代码</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#实例：杀毒软件的框架设计" class="sidebar-link">实例：杀毒软件的框架设计</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#透明组合模式与安全组合模式" class="sidebar-link">透明组合模式与安全组合模式</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#优点" class="sidebar-link">优点</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/design/012_CompositePattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li><li><a href="/design/013_DecoratorPattern.html" class="sidebar-link">装饰模式</a></li><li><a href="/design/014_FacadePattern.html" class="sidebar-link">外观模式</a></li><li><a href="/design/015_FlyweightPattern.html" class="sidebar-link">享元模式</a></li><li><a href="/design/016_ProxyPattern.html" class="sidebar-link">代理模式</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>行为性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>组合模式(Composite Pattern):组合多个对象形成树形结构以表示具有‘整体-部分’关系的层次结构。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性，组合模式又可以称为‘部分-整体’（Part-Whole）模式，它是一种对象结构模式</p></blockquote> <h2 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/taiJPlB.png"><img src="/pic/design/taiJPlB.png" alt="结构图"></a></p> <ol><li><p><strong>Component（抽象构件）</strong>：它可以是接口或抽象类，为叶子构件和容器构件对象声明接口，在该角色中可以包含所有子类共有行为的声明和实现。在抽象构件中定义了访问及管理它的子构件的方法，例如增加子构件，删除子构件，获取子构件等</p></li> <li><p><strong>Leaf（叶子构件）</strong>：它在组合模式结构中表示叶子节点对象。叶子节点没有子节点，它实现了在抽象构件中定义的行为。对于那些访问及管理子构件的方法，可以通过捕获异常等方法进行处理</p></li> <li><p><strong>Composite(容器构件)</strong>：它在组合模式结构中表示容器节点对象。容器节点包含子节点，其子节点可以是叶子节点，也可以是容器节点，它提供了一个集合用于存储子节点，实现了在抽象构件中定义的行为，包括那些访问及管理子构件的方法，在其业务方法中可以递归调用其子节点的业务方法</p></li></ol> <p><strong>组合模式的关键是定义了一个抽象构件类</strong>，它既可以代表叶子，又可以代表容器，而客户端针对该抽象构件类进行编程，无须知道它到底表达的是叶子还是容器，可以对其进行统一处理。同时容器对象与抽象构件类之间还建立一个聚合关联关系，在容器对象中既可以包含叶子，也可以包含容器，以此实现递归组合，形成一个树形结构。</p> <p>如果不使用组合模式，客户端代码将过多地依赖于容器对象复杂的内部实现结构，容器对象内部实现结构的变化将引起客户端代码的频繁变化，从而带来了代码维护复杂，可扩展性差等弊端。组合模式的引入将在一定程度上解决这些问题</p> <h2 id="典型代码"><a href="#典型代码" aria-hidden="true" class="header-anchor">#</a> 典型代码</h2> <p><strong>组合模式中的抽象构件角色：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class Component<span class="token punctuation">{</span>
+		
+		public abstract void add<span class="token punctuation">(</span>Component c<span class="token punctuation">)</span><span class="token punctuation">;</span>			//增加成员
+		
+		public abstract void remove<span class="token punctuation">(</span>Component c<span class="token punctuation">)</span><span class="token punctuation">;</span>		//删除成员
+
+		public abstract Component getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span><span class="token punctuation">;</span>		//获取成员
+
+		public abstract void operation<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>				//业务方法
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p>一般将抽象构件类设计为接口或抽象类，将所有子类共有方法的声明和实现放在抽象构件类中。对于客户端而言，将针对抽象构件编程，而无需关心其具体子类是容器构件还是叶子构件</p> <p><strong>如果继承抽象构件的是叶子构件，则其典型代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class leaf extends Component<span class="token punctuation">{</span>
+
+		public void add<span class="token punctuation">(</span>Component c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//异常处理或错误提示
+		<span class="token punctuation">}</span>		
+		
+		public void remove<span class="token punctuation">(</span>Component c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//异常处理或错误提示
+		<span class="token punctuation">}</span>	
+
+		public Component getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//异常处理或错误提示
+			<span class="token keyword">return</span> null
+		<span class="token punctuation">}</span>		
+
+		public void operation<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//叶子构件具体业务方法的实现
+		<span class="token punctuation">}</span>				
+	<span class="token punctuation">}</span>
+</code></pre></div><p>作为抽象构件类的子类，在叶子构件中需要实现在抽象构件类中声明的所有方法，包括业务方法以及管理和访问子构件的方法，但是叶子构件不能再包含子构件，因此在叶子构件中实现子构件管理和访问方法时需要提供异常处理或错误提示。当然，这无疑会给叶子构件的实现带来麻烦。</p> <p><strong>如果继承抽象构件的是容器构件，则其典型代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Composite extends Component<span class="token punctuation">{</span>
+		
+		private ArrayList<span class="token operator">&lt;</span>Component<span class="token operator">&gt;</span> list <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>Component<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		public void add<span class="token punctuation">(</span>Component c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			list.add<span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>		
+		
+		public void remove<span class="token punctuation">(</span>Component c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			list.remove<span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>	
+
+		public Component getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token punctuation">(</span>Component<span class="token punctuation">)</span>list.get<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>		
+
+		public void operation<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//容器构件具体业务方法的实现
+			//递归调用成员构件的业务方法
+			for<span class="token punctuation">(</span>Object obj <span class="token keyword">:</span> list<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				<span class="token punctuation">((</span>Component<span class="token punctuation">)</span>obj<span class="token punctuation">)</span>.operation<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>	
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在容器构件中实现了在抽象构件中声明的所有方法，既包括业务方法，也包括用于访问和管理成员子构件的方法，例如add(),remove()和getChild()等方法。需要注意的是在实现具体业务方法时，由于容器构件充当的是容器角色，包含成员构件，因此它将调用其成员构件的业务方法。在组合模式结构中，由于容器构件中仍然可以包含容器构件，因此在对容器构件进行处理时需要使用递归算法，即在容器构件的operation()方法递归调用其成员构件的operation()方法。</p> <h2 id="实例：杀毒软件的框架设计"><a href="#实例：杀毒软件的框架设计" aria-hidden="true" class="header-anchor">#</a> 实例：杀毒软件的框架设计</h2> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/vYaHcTb.png"><img src="/pic/design/vYaHcTb.png" alt="结构图"></a></p> <p>在图中，AbstractFile充当抽象构件类，Folder充当容器构件类，ImageFile，TextFile和VideoFile充当叶子构件类</p> <h3 id="实现代码"><a href="#实现代码" aria-hidden="true" class="header-anchor">#</a> 实现代码</h3> <p><strong>抽象文件类：抽象构件</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class AbstractFile <span class="token punctuation">{</span>
+		public abstract void add<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void remove<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract AbstractFile getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void killVirus<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>图像文件类：叶子构件</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ImageFile extends AbstractFile<span class="token punctuation">{</span>
+	
+		private String name<span class="token punctuation">;</span>
+		
+		public ImageFile<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		@Override
+		public void add<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void remove<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public AbstractFile getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> null<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void killVirus<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			//模拟杀毒
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;--------对图像文件:&quot;</span> + name + <span class="token string">&quot;进行杀毒&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>文本文件类：叶子构件</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class TextFile extends AbstractFile<span class="token punctuation">{</span>
+	
+		private String name<span class="token punctuation">;</span>
+		
+		public TextFile<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		@Override
+		public void add<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void remove<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public AbstractFile getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> null<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void killVirus<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			//模拟杀毒
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;--------对图像文件:&quot;</span> + name + <span class="token string">&quot;进行杀毒&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>视频文件类：叶子构件</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class VideoFile extends AbstractFile<span class="token punctuation">{</span>
+	
+		private String name<span class="token punctuation">;</span>
+		
+		public VideoFile<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		@Override
+		public void add<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void remove<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public AbstractFile getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对不起，不支持这方法&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> null<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void killVirus<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			//模拟杀毒
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;--------对图像文件:&quot;</span> + name + <span class="token string">&quot;进行杀毒&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>文件夹类：容器构件</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Folder extends AbstractFile <span class="token punctuation">{</span>
+	
+		//定义集合fileList,用于存储AbstractFile类型的成员
+		private ArrayList<span class="token operator">&lt;</span>AbstractFile<span class="token operator">&gt;</span> fileList <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>AbstractFile<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		private String name<span class="token punctuation">;</span>
+		
+		public Folder<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		@Override
+		public void add<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			fileList.add<span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void remove<span class="token punctuation">(</span>AbstractFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			fileList.remove<span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public AbstractFile getChild<span class="token punctuation">(</span>int i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token punctuation">(</span>AbstractFile<span class="token punctuation">)</span>fileList.get<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void killVirus<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;对文件夹&quot;</span>+ name + <span class="token string">&quot;进行杀毒&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			for<span class="token punctuation">(</span>Object obj <span class="token keyword">:</span> fileList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token punctuation">((</span>AbstractFile<span class="token punctuation">)</span>obj<span class="token punctuation">)</span>.killVirus<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端测试：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			//针对抽象构件编程
+			AbstractFile file1, file2, file3, file4, file5, folder1, folder2, folder3, folder4<span class="token punctuation">;</span>
+			
+			folder1 <span class="token operator">=</span> new Folder<span class="token punctuation">(</span><span class="token string">&quot;Sunny的资料&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder2 <span class="token operator">=</span> new Folder<span class="token punctuation">(</span><span class="token string">&quot;图像文件&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder3 <span class="token operator">=</span> new Folder<span class="token punctuation">(</span><span class="token string">&quot;文本文件&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder4 <span class="token operator">=</span> new Folder<span class="token punctuation">(</span><span class="token string">&quot;视频文件&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			file1 <span class="token operator">=</span> new ImageFile<span class="token punctuation">(</span><span class="token string">&quot;小龙女.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			file2 <span class="token operator">=</span> new ImageFile<span class="token punctuation">(</span><span class="token string">&quot;金毛狮王.jpg&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			file3 <span class="token operator">=</span> new TextFile<span class="token punctuation">(</span><span class="token string">&quot;九阴真经.txt&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			file4 <span class="token operator">=</span> new TextFile<span class="token punctuation">(</span><span class="token string">&quot;葵花宝典.doc&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			file5 <span class="token operator">=</span> new VideoFile<span class="token punctuation">(</span><span class="token string">&quot;笑傲江湖.rmvb&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			folder2.add<span class="token punctuation">(</span>file1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder2.add<span class="token punctuation">(</span>file2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder3.add<span class="token punctuation">(</span>file3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder3.add<span class="token punctuation">(</span>file4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder4.add<span class="token punctuation">(</span>file5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder1.add<span class="token punctuation">(</span>folder2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder1.add<span class="token punctuation">(</span>folder3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			folder1.add<span class="token punctuation">(</span>folder4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			folder1.killVirus<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在实例中使用了组合模式，在抽象构件类中声明了所有方法，包括用于管理和访问子构件的方法，例如add()方法和remove()方法等，因此在ImageFile等叶子构件类中实现这些放啊时必须进行相应的异常处理或错误提示。在容器构件类Folder的killVirus()方法中将递归调用其成员对象的killVirus()方法，从而实现对整个树形结构的遍历</p> <h2 id="透明组合模式与安全组合模式"><a href="#透明组合模式与安全组合模式" aria-hidden="true" class="header-anchor">#</a> 透明组合模式与安全组合模式</h2> <p><strong>1. 透明组合模式</strong></p> <p>在透明组合模式中，抽象构件Component中声明了所有用于管理成员对象的方法，包括add()，remove()以及getChild()等方法，这样做的好处是确保所有的构件类都有相同的接口。在客户端看来，叶子对象与容器对象所提供的方法是一致的，客户端可以相同地对待所有的对象。透明组合模式的完整结构图如下：</p> <p><a data-fancybox="" title="结构图" href="/pic/design/MMi01hJ.png"><img src="/pic/design/MMi01hJ.png" alt="结构图"></a></p> <p>透明组合模式的缺点是不够安全，因为叶子对象和容器对象在本质上是有区别的。叶子子对象不可能有下一个层次的对象，即不可能包含成员对象，因此为其提供add(),remove()以及getChild()等方法是没有意义的。还在编译阶段不会出错，但是在运行阶段如果调用这些放啊可能会出错（如果没有提供相应的错误处理代码）</p> <p><strong>2. 安全组合模式</strong></p> <p>安全组合模式中，在抽象构件Component中没有声明任何用于管理成员对象的方法，而是在Composite类中声明并实现这些方法。这种做法是安全的，因为根本不向叶子对象提供这些管理成员对象的方法，对于叶子对象，客户端不可能调用到这些方法。安全组合模式的结构图如下</p> <p><a data-fancybox="" title="结构图" href="/pic/design/kDmi374.png"><img src="/pic/design/kDmi374.png" alt="结构图"></a></p> <p>安全组合模式的缺点就是不够透明，因为叶子构件和容器构件具有不同的方法，且容器构件中那些用于管理成员对象的方法没有在抽象构件类中定义，因此客户端不能完全针对抽象编程，必须有区别地对待叶子构件和容器构件。在实际应用中，安全组合模式的使用频率也非常高，在Java AWT中使用的组合模式就是安全组合模式</p> <h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>组合模式使用面向对象的思想来实现树形结构的构件与处理，描述了如何将容器对象和叶子对象进行递归组合，实现简单，灵活性好</p> <h2 id="优点"><a href="#优点" aria-hidden="true" class="header-anchor">#</a> 优点</h2> <ol><li><p>组合模式可以清楚地定义分层次的复杂对象，表示对象的全部或部分层次，它让客户端忽略了层次的差异，方便对整个层次结构进行控制</p></li> <li><p>客户端可以一致地使用一个组合结构或其中单个对象，不必关心处理的是单个对象还是整个组合结构，简化客户端代码</p></li> <li><p>在组合模式中增加新的容器构件和叶子构件都很方便，无须对现有类库进行任何修改，符合开闭原则</p></li> <li><p>组合模式为树形结构的面向对象实现提供了一种灵活的解决方案，通过叶子对象和容器对象的递归组合，可以形成复杂的树形结构，但对树形结构的控制却非常简单</p></li></ol> <h2 id="缺点"><a href="#缺点" aria-hidden="true" class="header-anchor">#</a> 缺点</h2> <p>组合模式的主要缺点是：在增加新构件时很难对容器中的构件类型进行限制。有时候希望一个容器中只能有某些特定类型的对象，例如在某个文件夹中只能包含文本文件，使用组合模式时，不能依赖类型来施加这些约束，因为它们都来自于相同的抽象层，在这种情况下，必须通过在运行时进行类型检查来实现，这个实现过程较为复杂</p> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>在具有整体和部分的层次结构中，希望通过一种方式忽略整体与部分的差异，客户端可以一致的对待他们</p></li> <li><p>在一个使用面向对象语言开发的系统中需要处理一个树形结构</p></li> <li><p>在一个系统中能够分离出叶子对象和容器对象，而且它们的类型不固定，需要增加一些新的类型。</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/011_BridgePattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        桥接模式
+      </a></span> <span class="next"><a href="/design/013_DecoratorPattern.html">
+        装饰模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/28.a0fd1666.js" defer></script>
+  </body>
+</html>

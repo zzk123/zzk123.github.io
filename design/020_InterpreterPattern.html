@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>解释器模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/36.db162c08.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="sidebar-link">职责链模式</a></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="active sidebar-link">解释器模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#结构图" class="sidebar-link">结构图</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#例子：机器人控制程序" class="sidebar-link">例子：机器人控制程序</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#context作用" class="sidebar-link">Context作用</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#优点" class="sidebar-link">优点</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/design/020_InterpreterPattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="sidebar-link">备忘录模式</a></li><li><a href="/design/023_IteratorPattern.html" class="sidebar-link">迭代器模式</a></li><li><a href="/design/024_ObserverPattern.html" class="sidebar-link">观察者模式</a></li><li><a href="/design/025_StatePattern.html" class="sidebar-link">状态模式</a></li><li><a href="/design/026_StrategyPattern.html" class="sidebar-link">策略模式</a></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="sidebar-link">访问者模式</a></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <p>解释器模式是一种使用频率相对比较低但学习难度较大地设计模式，它用于描述如何使用面向对象语言构成一个简单的语言解释器。在某些情况下，为了更好的描述某些特定类型的问题，可以创建一种新的语言，这种语言拥有自己地表达式和结构，即文法规则，这些问题的实例将对应为该语言中的句子。此时，可以使用解释器模式来设计这种新的语言，对解释器模式的学习能够加深对面向对象思想的理解，并且掌握了编程语言中文法规则的解释过程</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>解释器模式(Interpreter Pattern):定义一个语言的文法，并且建立一个解释器来解释该语言中的句子，这里的‘语言’是指使用规定格式和语语法的代码。解释器模式是一种类行为型模式。</p></blockquote> <h2 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/QpRlYzd.png"><img src="/pic/design/QpRlYzd.png" alt="结构图"></a></p> <p>由于表达式可分为终结符表达式和非终结符表达式，因此解释器模式的结构与组合模式的结构有些类似，但在解释器模式中包含更多的组成元素。</p> <p><strong>在解释器模式的结构图中包含以下4个角色</strong></p> <ol><li><p><strong>AbstractExpression（抽象表达式）</strong>：在抽象表达式中声明了抽象的解释操作，它是所有终结符表达式和非终结符表达式的公共父类。</p></li> <li><p><strong>TerminalExpression（终结符表达式）</strong>:是抽象表达式的子类，它实现了与文法中的终结符相关联的解释操作，在句子中的每一个终结符都是该类的一个实例。通常，在一个解释器模式中只有少数几个终结符表达式类，它们的实例可以通过非终结符表达式组成较为复杂的子句</p></li> <li><p><strong>NonterminalExpression（非终结符表达式）</strong>:也是抽象表达式的子类，它实现了文法中非终结符的解释操作，由于在非终结符表达中可以包含终结符表达式，也可以继承包含非终结符表达式，因此其解释操作一般通过递归的方式来完成</p></li> <li><p><strong>Context（环境类）</strong>:环境类又称为上下文类，它用于存储解释器之外的一些全局信息，通常它临时存储了需要解释的语句。</p></li></ol> <p>在解释器模式中，每一种终结符和非终结符都有一个具体类与之对应，正因为使用类来表示每一条文法规则，所以系统将具有较好的灵活性和可扩展性。对于所有的终结符和非终结符，首先需要抽象出一个公共父类，即抽象表达式类，其典型的代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class AbstractExpression<span class="token punctuation">{</span>
+		
+		public abstract void interpret<span class="token punctuation">(</span>Context ctx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p>终结符表达式和非终结符表达式类都是抽象表达式类的子类，对于终结符表达式，其代码很简单，主要是对终结符元素的处理，其典型的代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class TerminalExpression extends AbstractExpression<span class="token punctuation">{</span>
+
+		public void interpret<span class="token punctuation">(</span>Context ctx<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//终结符表达式的解释操作
+		<span class="token punctuation">}</span>
+			
+	<span class="token punctuation">}</span>
+</code></pre></div><p>对于非终结符表达式，其代码相对比较复杂，因为可以通过非终结符将表达式组合成更加复杂的结构，对于包含两个操作元素的非终结符表达式类，其典型代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class NonterminalExpression extends AbstractExpression<span class="token punctuation">{</span>
+			
+			private AbstractExpression left<span class="token punctuation">;</span>
+			private AbstractExpression right<span class="token punctuation">;</span>
+
+			public NonterminalExpression<span class="token punctuation">(</span>AbstractExpression left,AbstractExpression right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+					this.left <span class="token operator">=</span> left<span class="token punctuation">;</span>
+					this.right <span class="token operator">=</span> right<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+
+			public void interpret<span class="token punctuation">(</span>Context ctx<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				//递归调用每一个组成部分的interpre<span class="token punctuation">(</span><span class="token punctuation">)</span>方法
+				//在递归调用时指定组成部分的连接方式，即非终结符的功能
+			<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>除了上述用于表示表达式的类以外，通常在解释器模式中还提供了一个环境类Context，用于存储一些全局信息。在Context中可以包含一个HashMap或ArrayList等类型的集合对象(也可以直接由HashMap等集合类充当环境类)来存储一系列公共信息，例如变量名与值的映射关系(key/value)等，用于在进行具体的解释操作时从中获取相关信息。其典型代码片段如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class 	Context<span class="token punctuation">{</span>
+		
+		private HashMap map <span class="token operator">=</span> new HashMap<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		public void assign<span class="token punctuation">(</span>String key, String value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//从环境类中设值
+		<span class="token punctuation">}</span>
+		
+		public String lookup<span class="token punctuation">(</span>String key<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//获取储存在环境类中的值
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>当系统无须提供全局信息时可以省略环境类，也可以提供实际情况决定是否需要环境类。</p> <h2 id="例子：机器人控制程序"><a href="#例子：机器人控制程序" aria-hidden="true" class="header-anchor">#</a> 例子：机器人控制程序</h2> <p>使用解释器模式来设计和实现一套机器人控制程序，在该机器人控制程序中包含一些简单的英文控制指令，每一个指令对应一个表达式(expression)，该表达式可以是简单表达式，也可以是符合表达式，每一个简单表达式由移动方向(direction)，移动方式(action)和移动距离(distance)三部分组成，其中移动方向包括上(up),下(down),左(left),右(right)；移动方式包括移动(move)和快捷移动(run)；移动距离为一个正整数。两个表达式之间可以通过与(and)连接，形成复合(composite)表达式。</p> <p>根据上述需求，用形式化语言来表示该简单语言的文法规则如下：</p> <div class="language- extra-class"><pre><code>expression ::=  direction action distance | composite   //表达式
+composite  ::=  expression 'and' expression				//复合表达式
+direction  ::=  'up' | 'down' | 'left' | 'right'		//移动方向
+action     ::=  'move' | 'run'							//移动方式
+distance   ::=  an Integer								//移动距离 
+</code></pre></div><p>上述语言一共定义了5条文法规则，对应5个语言单位，这些语言单位可以分成两类：一类为终结符（也称为终结符表达式），例如direction,action和distance，它们是语言最小组成单位，不能再进行拆分；另一类为非终结符（也称为非终结符表达式），例如expression和composite,它们都是一个完整的句子，包含一系列终结符或非终结符</p> <p>针对5条文法规则，分别提供5个类来实现，其中终结符表达式direction,action和distance对应的是DirectionNode类，ActionNode类和DistanceNode类，非终结符表达式expression和composite对应SentenceNode类和AndNode类。</p> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/8LnbOr0.png"><img src="/pic/design/8LnbOr0.png" alt="结构图"></a></p> <p>图中，AbstractNode充当抽象表达式角色，DirectionNode，ActionNode和DistanceNode充当终结符表达式角色，AndNode和SentenceNode充当非终结符表达式角色</p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>抽象表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class AbstractNode <span class="token punctuation">{</span>
+		public abstract String interpret<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>And解释：非终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class AndNode extends AbstractNode<span class="token punctuation">{</span>
+	
+		private AbstractNode left<span class="token punctuation">;</span> 		//And的做左表达式
+		private AbstractNode right<span class="token punctuation">;</span>		//And的右表达式
+		
+		public AndNode<span class="token punctuation">(</span>AbstractNode left, AbstractNode right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.left <span class="token operator">=</span> left<span class="token punctuation">;</span>
+			this.right <span class="token operator">=</span> right<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//And表达式解释操作
+		public String interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> left.interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;再&quot;</span> + right.interpret<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>简单句子解释：非终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class SentenceNode extends AbstractNode <span class="token punctuation">{</span>
+	
+		private AbstractNode direction<span class="token punctuation">;</span>
+		private AbstractNode action<span class="token punctuation">;</span>
+		private AbstractNode distance<span class="token punctuation">;</span>
+		
+		public SentenceNode<span class="token punctuation">(</span>AbstractNode direction, AbstractNode action, AbstractNode distance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.direction <span class="token operator">=</span> direction<span class="token punctuation">;</span>
+			this.action <span class="token operator">=</span> action<span class="token punctuation">;</span>
+			this.distance <span class="token operator">=</span> distance<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//简答句子的解释操作
+		public String interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> direction.interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> + action.interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> + distance.interpret<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>方向解释：终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class DirectionNode extends AbstractNode<span class="token punctuation">{</span>
+		
+		private String direction<span class="token punctuation">;</span>
+		
+		public DirectionNode<span class="token punctuation">(</span>String direction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.direction <span class="token operator">=</span> direction<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//方向表达式的解释操作
+		public String interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>direction.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;up&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;向上&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>direction.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;down&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;向下&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>direction.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;left&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;向左&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>direction.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;right&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;向右&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;无效指令&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>动作解释：终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ActionNode extends AbstractNode<span class="token punctuation">{</span>
+	
+		private String action<span class="token punctuation">;</span>
+		
+		public ActionNode<span class="token punctuation">(</span>String action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.action <span class="token operator">=</span> action<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//动作（移动方式）表达式的解释操作
+		public String interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>action.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;move&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;移动&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>action.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;run&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;快速移动&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token string">&quot;无效指令&quot;</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>距离解释：终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class DistanceNode extends AbstractNode <span class="token punctuation">{</span>
+	
+		private String distance<span class="token punctuation">;</span>
+		
+		public DistanceNode<span class="token punctuation">(</span>String distance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.distance <span class="token operator">=</span> distance<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//距离表达式的解释操作
+		public String interpret<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> this.distance<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>指令处理类：工具类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class InstructionHandler <span class="token punctuation">{</span>
+		private AbstractNode node<span class="token punctuation">;</span>
+		
+		public void handle<span class="token punctuation">(</span>String instruction<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			AbstractNode left <span class="token operator">=</span> null, right <span class="token operator">=</span> null<span class="token punctuation">;</span>
+			AbstractNode direction <span class="token operator">=</span> null, action <span class="token operator">=</span> null, distance <span class="token operator">=</span> null<span class="token punctuation">;</span>
+			Stack stack <span class="token operator">=</span> new Stack<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>					//声明一个栈对象用于存储抽象语法树
+			String<span class="token punctuation">[</span><span class="token punctuation">]</span> words <span class="token operator">=</span> instruction.split<span class="token punctuation">(</span><span class="token string">&quot; &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//以空格分隔指令字符串
+			for<span class="token punctuation">(</span>int i <span class="token operator">=</span> 0<span class="token punctuation">;</span> i<span class="token operator">&lt;</span> words.length<span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				//采用栈的方式来处理指令
+				//如果遇见‘and’，则将其后的3个单词作为3个终结符表达式连成一个简单句子SentenceNode作为
+				//‘and’的右表达式，而将从栈顶弹出的表达式作为‘and’的左表达式，最后将新的‘and’表达式压入栈中
+				if<span class="token punctuation">(</span>words<span class="token punctuation">[</span>i<span class="token punctuation">]</span>.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;and&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+					left <span class="token operator">=</span> <span class="token punctuation">(</span>AbstractNode<span class="token punctuation">)</span> stack.pop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		//弹出栈顶表示式作为左表达式
+					String word1 <span class="token operator">=</span> words<span class="token punctuation">[</span>++i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					direction <span class="token operator">=</span> new DirectionNode<span class="token punctuation">(</span>word1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					String word2 <span class="token operator">=</span> words<span class="token punctuation">[</span>++i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					action <span class="token operator">=</span> new ActionNode<span class="token punctuation">(</span>word2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					String word3 <span class="token operator">=</span> words<span class="token punctuation">[</span>++i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					distance <span class="token operator">=</span> new DistanceNode<span class="token punctuation">(</span>word3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					right <span class="token operator">=</span> new SentenceNode<span class="token punctuation">(</span>direction, action, distance<span class="token punctuation">)</span><span class="token punctuation">;</span>	//右表达式
+					stack.push<span class="token punctuation">(</span>new AndNode<span class="token punctuation">(</span>left, right<span class="token punctuation">))</span><span class="token punctuation">;</span>	//将新表达式压入栈中
+				<span class="token punctuation">}</span>
+				//如果是从头开始进行解释，则将前3个单词组成一个简单句子SentenceNode并将该句子压入栈中
+				<span class="token keyword">else</span> <span class="token punctuation">{</span>
+					String word1 <span class="token operator">=</span> words<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					direction <span class="token operator">=</span> new DirectionNode<span class="token punctuation">(</span>word1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					String word2 <span class="token operator">=</span> words<span class="token punctuation">[</span>++i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					action <span class="token operator">=</span> new ActionNode<span class="token punctuation">(</span>word2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					String word3 <span class="token operator">=</span> words<span class="token punctuation">[</span>++i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+					distance <span class="token operator">=</span> new DistanceNode<span class="token punctuation">(</span>word3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					left <span class="token operator">=</span> new SentenceNode<span class="token punctuation">(</span>direction, action, distance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					stack.push<span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>	//将新表达式压入栈中
+				<span class="token punctuation">}</span>
+				this.node <span class="token operator">=</span> <span class="token punctuation">(</span>AbstractNode<span class="token punctuation">)</span> stack.pop<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//将全部表达式从栈中弹出
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		
+		public String output<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			String result <span class="token operator">=</span> node.interpret<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>			//解释表达式
+			<span class="token keyword">return</span> result<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>操作</strong></p> <p>工具类InstructionHandler用于对输入指令进行处理，将输入指令分割为字符串数组，将第一个，第二个和第三个单词组合为一个句子，并存入栈中；如果发现有单词‘and’，则将‘and’后第一个，第二个和第三个单词组合为一个新的句子作‘and’的右表达式，并从栈中取出原先所存句子作为左表达式，然后组合成一个And节点存入栈中。以此类推，直到整个指令解析结束。</p> <p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			String instruction <span class="token operator">=</span> <span class="token string">&quot;up move5 and down run 10 and left move 5&quot;</span><span class="token punctuation">;</span>
+			InstructionHandler handler <span class="token operator">=</span> new InstructionHandler<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			handler.handle<span class="token punctuation">(</span>instruction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			String outString<span class="token punctuation">;</span>
+			outString <span class="token operator">=</span> handler.output<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span>outString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>输出结果</strong></p> <div class="language- extra-class"><pre><code>向上移动5 再向下快速移动10再向左移动5
+</code></pre></div><h2 id="context作用"><a href="#context作用" aria-hidden="true" class="header-anchor">#</a> Context作用</h2> <p>在解释器模式中，环境类Context用于存储解释器之外的一些全局信息，它通常作为参数被传递到所有的表达式的解释方法interpret()中，可以在Context对象中存储和访问表达式解释器的状态，向表达式解释器提供一些全局的，公共的数据。此外，还可以在Context中增加一些所有表达式解释器都共有的功能，减轻解释器的职责。</p> <h3 id="例子：格式化指令"><a href="#例子：格式化指令" aria-hidden="true" class="header-anchor">#</a> 例子：格式化指令</h3> <p>开发一套简单的基于字符界面的格式化指令，可以根据输入的指令在字符界面输出一些格式化的内容，例如输入：‘LOOP 2 PRINY 杨过 SPACE SPACE PRINT 小龙女 BREAK END PRINT 郭靖 SPACE SPACE PRINT 黄蓉’，将输入如下结果：</p> <div class="language- extra-class"><pre><code>杨过	 小龙女
+杨过	 小龙女
+郭靖	 黄蓉
+</code></pre></div><p>其中，关键字LOOP表示循环，后面的数字表示循环次数；PRINT表示打印，后面的字符串表示打印的内容；SPACE表示空格；BREAK表示换行；END表示循环结束</p> <p>使用解释器模式来设计开发，根据上述格式化指令中句子的组成，可以定义如下文法规则：</p> <div class="language- extra-class"><pre><code>expression ::=  command*							//表达式，一个表达式包含多个命令
+command    ::=  loop | primitive					//语句命令
+loop	   ::=  'loop number' expression 'end' 		//循环命令，其中number为自然数
+primitive  ::=  'print string' | 'space' | 'break'	//基本命令，其中string为字符串
+</code></pre></div><h3 id="结构图-3"><a href="#结构图-3" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/hy0wsx8.png"><img src="/pic/design/hy0wsx8.png" alt="结构图"></a></p> <p>在图中，Context充当环境角色，Node充当抽象表达式角色，ExpressionNode,CommandNode和LoopCommandNode充当非终结符表达式角色，PrimitiveCommandNode充当终结符表达式角色，PrimitiveCommandNode充当终结符表达式角色</p> <h3 id="代码实现-2"><a href="#代码实现-2" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>环境类：用于存储和操作需要解释的语句</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Context <span class="token punctuation">{</span>
+		private StringTokenizer tokenizer<span class="token punctuation">;</span>	//StringTokenizer类，用于将字符串分解为更小的字符
+											//串标记（Token）默认情况下以空格作为分隔符
+		private String currentToken<span class="token punctuation">;</span> 		//当前字符串标记
+		
+		public Context<span class="token punctuation">(</span>String text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			tokenizer <span class="token operator">=</span> new StringTokenizer<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>	//通过传入的指令字符串创建StringTokenizer对象
+			nextToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//返回下一个标记
+		public String nextToken<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>tokenizer.hasMoreTokens<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				currentToken <span class="token operator">=</span> tokenizer.nextToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> <span class="token punctuation">{</span>
+				currentToken <span class="token operator">=</span> null<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">return</span> currentToken<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//返回当前的标记
+		public String currentToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">return</span> currentToken<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//跳过一个标记
+		public void skipToken<span class="token punctuation">(</span>String token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span><span class="token operator">!</span>token.equals<span class="token punctuation">(</span>currentToken<span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;错误提示：&quot;</span> + currentToken + <span class="token string">&quot;解释错误！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			nextToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//如果当前的标记是一个数字，则返回对应的数值
+		public int currentNumber<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			int number <span class="token operator">=</span> 0<span class="token punctuation">;</span>
+			try <span class="token punctuation">{</span>
+				number <span class="token operator">=</span> Integer.parseInt<span class="token punctuation">(</span>currentToken<span class="token punctuation">)</span><span class="token punctuation">;</span>//将字符串转换为整数
+			<span class="token punctuation">}</span>
+			catch <span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;错误提示：&quot;</span> + e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">return</span> number<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>抽象结点类：抽象表达式</strong></p> <div class="language- extra-class"><pre><code>public abstract class Node {
+	public abstract void interpret(Context text);	//声明一个方法解释语句
+	public abstract void execute();			//声明一个方法用于执行标记对应的命令
+}
+</code></pre></div><p><strong>抽象节点：抽象表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ExpressionNode extends Node <span class="token punctuation">{</span>
+	
+		private ArrayList<span class="token operator">&lt;</span>Node<span class="token operator">&gt;</span> list <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>Node<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>//定义一个集合用于存储多条命令
+		
+		@Override
+		public void interpret<span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			while<span class="token punctuation">(</span>true<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				//如果已经没有任何标记，则退出解释
+				if<span class="token punctuation">(</span>context.currentToken<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">break</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+				//如果标记为END，则不解释END并结束本次解释过程，可以继续之后的解释
+				<span class="token keyword">else</span> if<span class="token punctuation">(</span>context.currentToken<span class="token punctuation">(</span><span class="token punctuation">)</span>.equals<span class="token punctuation">(</span><span class="token string">&quot;END&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+					context.skipToken<span class="token punctuation">(</span><span class="token string">&quot;END&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">break</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+				//如果为其他标记，则解释标记并将其加入命令集合
+				<span class="token keyword">else</span> <span class="token punctuation">{</span>
+					Node commandNode <span class="token operator">=</span> new CommandNode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+					commandNode.interpret<span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					list.add<span class="token punctuation">(</span>commandNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+			
+		<span class="token punctuation">}</span>
+		//循环执行命令集合中的每一条命令
+		@Override
+		public void execute<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			Iterator iterator <span class="token operator">=</span> list.iterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			while<span class="token punctuation">(</span>iterator.hasNext<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token variable"><span class="token punctuation">((</span>Node<span class="token punctuation">)</span>iterator.next<span class="token punctuation">(</span><span class="token punctuation">))</span></span>.execute<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>语句命令节点类：非终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class CommandNode extends Node <span class="token punctuation">{</span>
+	
+		private Node node<span class="token punctuation">;</span>
+		
+		@Override
+		public void interpret<span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			//处理LOOP循环命令
+			if<span class="token punctuation">(</span>context.currentToken<span class="token punctuation">(</span><span class="token punctuation">)</span>.equals<span class="token punctuation">(</span><span class="token string">&quot;LOOP&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				node <span class="token operator">=</span> new LoopCommandNode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				node.interpret<span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			//处理其他基本命令
+			<span class="token keyword">else</span> <span class="token punctuation">{</span>
+				node <span class="token operator">=</span> new PrimitiveCommandNode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				node.interpret<span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void execute<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			node.execute<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>循环命令节点类：非终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class LoopCommandNode extends Node <span class="token punctuation">{</span>
+	
+		private int number<span class="token punctuation">;</span>				//循环次数
+		private Node commandNode<span class="token punctuation">;</span>		//循环语句中的表达式
+		
+	
+		//解释循环命令
+		public void interpret<span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			context.skipToken<span class="token punctuation">(</span><span class="token string">&quot;LOOP&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			number <span class="token operator">=</span> context.currentNumber<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			context.nextToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			commandNode <span class="token operator">=</span> new ExpressionNode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//循环语句中的表达式
+			commandNode.interpret<span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void execute<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			for<span class="token punctuation">(</span>int i <span class="token operator">=</span> 0<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> number<span class="token punctuation">;</span> i++<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				commandNode.execute<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>基本命令节点类：终结符表达式</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class PrimitiveCommandNode extends Node <span class="token punctuation">{</span>
+	
+		private String name<span class="token punctuation">;</span>
+		private String text<span class="token punctuation">;</span>
+		
+		//解释基本命令
+		public void interpret<span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			name <span class="token operator">=</span> context.currentToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			context.skipToken<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			if<span class="token punctuation">(</span><span class="token operator">!</span>name.equals<span class="token punctuation">(</span><span class="token string">&quot;PRINT&quot;</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>name.equals<span class="token punctuation">(</span><span class="token string">&quot;BREAK&quot;</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>name.equals<span class="token punctuation">(</span><span class="token string">&quot;SPACE&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;非法命令&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			if<span class="token punctuation">(</span>name.equals<span class="token punctuation">(</span><span class="token string">&quot;PRINT&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				text <span class="token operator">=</span> context.currentToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				context.nextToken<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void execute<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>name.equals<span class="token punctuation">(</span><span class="token string">&quot;PRINT&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>else if<span class="token punctuation">(</span>name.equals<span class="token punctuation">(</span><span class="token string">&quot;SPACE&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot; &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>else if<span class="token punctuation">(</span>name.equals<span class="token punctuation">(</span><span class="token string">&quot;BREAK&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在本实例代码中，环境类Context类似一个工具类，它提供了用于处理指令的方法，例如nextToken(),currentToken(),skipToken()等，同时它存储了需要解释的指令并记录了每一次解释的当前标记(Token)，而具体的解释过程交给表达式解释器来处理，还可以将各种解释器类包含的公共方法移至环境类中，更好地实现这些方法的重用和扩展。</p> <p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			String text <span class="token operator">=</span> <span class="token string">&quot;LOOP 2 PRINT 杨过 SPACE SPACE PRINT 小龙女 BREAK END PRINT 郭靖 SPACE SPACE PRINT 黄蓉&quot;</span><span class="token punctuation">;</span>
+			Context context <span class="token operator">=</span> new Context<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			Node node <span class="token operator">=</span> new ExpressionNode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			node.interpret<span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			node.execute<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>解释器模式为自定义语言的设计和实现提供了一种解决方案，它用于定义一组文法规则并通过这组文法规则来解释语言中的句子。虽然解释器模式的使用频率不是特别高，但它在正则表达式，XML文档解释等领域还是得到了广泛的使用。</p> <h2 id="优点"><a href="#优点" aria-hidden="true" class="header-anchor">#</a> 优点</h2> <ol><li><p>易于改变和扩展文法。由于在解释器模式中使用类来表示语言的文法规则，因此可以通过继承等机制来改变或扩展文法</p></li> <li><p>每一条文法规则都可以表示为一个类，因此可以方便地实现一个简单的语言。</p></li> <li><p>实现文法较为容易。在抽象语法树中每一个表达式节点类的实现方式都是相似的，这些类的代码编写都不会特别复杂，还可以通过一些工具自动生成节点类代码</p></li> <li><p>增加新的解释表达式较为方便。如果用户需要增加新的解释表达式只需要对应增加一个新的终结符表达式或非终结符表达式类，原有表达式类代码无须修改，符合开闭原则</p></li></ol> <h2 id="缺点"><a href="#缺点" aria-hidden="true" class="header-anchor">#</a> 缺点</h2> <ol><li><p>对于复杂文法难以维护。在解释器模式中，每一条规则至少需要定义一个类，因此如果一个语言包含太多文法规则，类的个数将会急剧增加，导致系统难以管理和维护，此时可以考虑使用语法分析程序等方式来取代解释器模式</p></li> <li><p>执行效率低。由于在解释器模式中使用了大量的循环和递归调用，因此在解释较为复杂的句子时，其速度很慢，而且代码的调试过程也比较麻烦</p></li></ol> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>可以将一个需要解释执行的语言中的句子表示为一个抽象语法树</p></li> <li><p>一些重复出现的问题可以用一种简单的语言来进行表达</p></li> <li><p>一个语言的文法较为简单</p></li> <li><p>执行效率不是关键问题(注：高效的解释器通常不是通过直接解释抽象语法树来实现的，而是需要将它们转换成其他形式，使用解释器模式的执行效率并不高)</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/019_CommandPattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        命令模式
+      </a></span> <span class="next"><a href="/design/021_MediatorPattern.html">
+        中介者模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/36.db162c08.js" defer></script>
+  </body>
+</html>

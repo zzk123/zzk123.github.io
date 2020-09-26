@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>迭代器模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/39.eb81783f.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="sidebar-link">职责链模式</a></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="sidebar-link">解释器模式</a></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="sidebar-link">备忘录模式</a></li><li><a href="/design/023_IteratorPattern.html" class="active sidebar-link">迭代器模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#结构图" class="sidebar-link">结构图</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#典型代码" class="sidebar-link">典型代码</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#实例：销售管理系统的设计" class="sidebar-link">实例：销售管理系统的设计</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#jdk内置迭代器" class="sidebar-link">JDK内置迭代器</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#优点" class="sidebar-link">优点</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/design/023_IteratorPattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li><li><a href="/design/024_ObserverPattern.html" class="sidebar-link">观察者模式</a></li><li><a href="/design/025_StatePattern.html" class="sidebar-link">状态模式</a></li><li><a href="/design/026_StrategyPattern.html" class="sidebar-link">策略模式</a></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="sidebar-link">访问者模式</a></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <p>在软件开发时，经常需要使用聚合对象来存储一系列数据。聚合对象拥有两个职责：一是存储数据，二是遍历数据。从依赖性来看，前者是聚合对象的基本职责；而后者既是可变化的，又是可分离的。因此，可以将遍历数据的行为从聚合对象中分离出来，封装在一个被称之为‘迭代器’的对象中，由迭代器来提供遍历聚合对象内部数据的行为，这将简化聚合对象的设计，更加符合单一职责原则的要求。</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>迭代器（Iterator Pattern）:提供一种方法来访问聚合对象，而不用暴露这个对象的内部表示，其别名为游标(Cursor).迭代器模式是一种对象行为型模式</p></blockquote> <h2 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h2> <p>在迭代器模式结构中包含聚合和迭代器两个层次结构，考虑到系统的灵活性和可扩展性，在迭代器模式中应用了工厂方法模式，其模式结构图如下</p> <p><a data-fancybox="" title="结构图" href="/pic/design/FYHlCCC.png"><img src="/pic/design/FYHlCCC.png" alt="结构图"></a></p> <ol><li><p><strong>Iterator（抽象迭代器）</strong>：它定义了访问和遍历元素的接口，声明了用于遍历数据元素的方法，例如，用于获取第一个元素的first()方法，用于访问下一个元素的next()方法，用于判断是否还有下一个元素的hasNext()方法，用于获取当前元素的currentItem()方法等，在具体迭代器中将实现这些方法。</p></li> <li><p><strong>ConcreteIterator(具体迭代器)</strong>:它实现了抽象迭代器接口，完成对聚合对象的遍历，同时在具体迭代器中通过游标来记录在聚合对象中所处的当前位置，在具体实现时，游标通常是一个表示位置的非负整数。</p></li> <li><p><strong>Aggregate(抽象聚合类)</strong>：它用于存储和管理元素对象，声明一个createIterator()方法用于创建一个迭代器对象，充当抽象迭代器工厂角色</p></li> <li><p><strong>ConcreteAggregate(具体聚合类)</strong>：它实现了在抽象聚合类中声明的createIterator()方法，该方法返回一个与该具体聚合类对应的具体迭代器ConcreteIterator实例</p></li></ol> <p>在迭代器模式中，提供了一个外部的迭代器来对聚合对象进行访问和遍历，迭代器定义了一个访问该聚合元素的接口，并且可以跟踪当前遍历的元素，了解哪些元素已经遍历过而哪些没有。迭代器的引入，将使得对一个复杂聚合对象的操作变得简单</p> <h2 id="典型代码"><a href="#典型代码" aria-hidden="true" class="header-anchor">#</a> 典型代码</h2> <p>在迭代器模式中应用工厂方法模式，抽象迭代器对应于抽象产品角色，具体迭代器对应于具体产品角色，抽象聚合类对应于抽象工厂角色，具体聚合类对应于具体工厂角色</p> <p><strong>在抽象迭代器中声明了用于遍历聚合对象中所存储元素的方法，典型代码如下</strong></p> <div class="language- extra-class"><pre><code>interface	Iterator{
+	public void first();		//将游标指向第一个元素
+	public void next();			//将游标指向下一个元素
+	public boolean hasNext();	//判断是否存在下一个元素
+	public Object currentItem();	//获取游标指向的当前元素
+}
+</code></pre></div><p><strong>在具体迭代器中将实现抽象迭代器声明的遍历数据的方法，代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ConcreteIterator implements Iterator<span class="token punctuation">{</span>
+		
+		private ConcreteAggregate objects<span class="token punctuation">;</span> 		//维持一个对具体聚合对象的引用，以便于访问存储在聚合对象中的数据
+		private int cursor<span class="token punctuation">;</span>	//定义一个游标，用于记录当前访问位置
+		private ConcreteIterator<span class="token punctuation">(</span>ConcreteAggregate objects<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.objects <span class="token operator">=</span> objects<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void first<span class="token punctuation">(</span><span class="token punctuation">)</span>	<span class="token punctuation">{</span>
+				<span class="token punctuation">..</span><span class="token punctuation">..</span>
+		<span class="token punctuation">}</span>
+		public void next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+				<span class="token punctuation">..</span><span class="token punctuation">..</span>
+		<span class="token punctuation">}</span>
+		public boolean hasNext<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+				<span class="token punctuation">..</span><span class="token punctuation">..</span>
+		<span class="token punctuation">}</span>
+		public Object currentItem<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+				<span class="token punctuation">..</span><span class="token punctuation">..</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>需要注意的是，抽象迭代器接口的设计特别重要，一方面需要充分满足各种遍历操作的要求，尽量为各种遍历方法都提供声明，另一方面又不能包含太多方法，接口中方法太多将给子类的实现带来麻烦。因此可以考虑使用抽象类来设计抽象迭代器，在抽象类中为每一个方法提供一个空的默认实现。如果需要在具体迭代器中为聚合对象增加全新的遍历操作，则必须修改抽象迭代器和具体迭代器的源代码，这将违背开闭原则，因此在设计时要考虑全面，避免之后修改接口</p> <p><strong>聚合类用于存储数据并负责创建迭代器对象，最简单的抽象聚合类代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	interface Aggregate<span class="token punctuation">{</span>
+		Iterator createIterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>具体聚合类作为抽象聚合类的子类，一方面负责存储数据，另一方面实现了在抽象聚合类中声明的工厂方法createIterator(),用于返回一个与该具体聚合类对应的具体迭代器对象，代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ConcreteAggregate implements Aggregate<span class="token punctuation">{</span>
+		
+		<span class="token punctuation">..</span><span class="token punctuation">..</span>
+		public Iterator createIterator<span class="token punctuation">{</span>
+			<span class="token keyword">return</span> new ConcreteIterator<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token punctuation">..</span><span class="token punctuation">..</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="实例：销售管理系统的设计"><a href="#实例：销售管理系统的设计" aria-hidden="true" class="header-anchor">#</a> 实例：销售管理系统的设计</h2> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/z8SUBd4.png"><img src="/pic/design/z8SUBd4.png" alt="结构图"></a></p> <p>在图中，AbstractObjectList充当抽象聚合类，ProductList充当具体聚合类，AbstractIterator充当抽象迭代器，ProductIterator充当具体迭代器。</p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>抽象聚合类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class AbstractObjectList <span class="token punctuation">{</span>
+		
+		protected List<span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span> objects <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+		public AbstractObjectList<span class="token punctuation">(</span>List objects<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.objects <span class="token operator">=</span> objects<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void addObject<span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.objects.add<span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void removeObject<span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.objects.remove<span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public List getObjects<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> this.objects<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//声明创建迭代器对象的抽象工厂方法
+		public abstract AbstractIterator createIterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span> 
+</code></pre></div><p><strong>商品数据类：具体聚合类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ProductList extends AbstractObjectList <span class="token punctuation">{</span>
+	
+		public ProductList<span class="token punctuation">(</span>List objects<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			super<span class="token punctuation">(</span>objects<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//实现创建迭代器对象的具体工厂方法
+		public AbstractIterator createIterator<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> new ProductIterator<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>抽象迭代器</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public interface AbstractIterator <span class="token punctuation">{</span>
+		public void next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>				//移至第一个元素
+		public boolean isLast<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		//判断是否是最后一个元素
+		public void previous<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>			//移至上一个元素
+		public boolean isFirst<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		//判断是否为第一个元素
+		public Object getNextItem<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//获取下一个元素
+		public Object getPreviousItem<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>//获取上一个元素
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>商品迭代器：具体迭代器</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ProductIterator implements AbstractIterator <span class="token punctuation">{</span>
+	
+		private ProductList productList<span class="token punctuation">;</span>
+		private List products<span class="token punctuation">;</span>
+		private int cursor1<span class="token punctuation">;</span>			//定义一个游标，用于记录正向遍历的位置
+		private int cursor2<span class="token punctuation">;</span>			//定义一个游标，用于记录反向遍历的位置
+		
+		public ProductIterator<span class="token punctuation">(</span>ProductList list<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.productList <span class="token operator">=</span> list<span class="token punctuation">;</span>
+			this.products <span class="token operator">=</span> list.getObjects<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//获取集合对象
+			cursor1 <span class="token operator">=</span> 0<span class="token punctuation">;</span>						//设置正向遍历游标的初始值
+			cursor2 <span class="token operator">=</span> products.size<span class="token punctuation">(</span><span class="token punctuation">)</span> - 1<span class="token punctuation">;</span>		//设置反向遍历游标的初始值
+		<span class="token punctuation">}</span>
+		
+		@Override
+		public void next<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>cursor1 <span class="token operator">&lt;</span> products.size<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				cursor1++<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public boolean isLast<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token punctuation">(</span>cursor1 <span class="token operator">==</span> products.size<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void previous<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>cursor2 <span class="token operator">&gt;</span> -1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				cursor2 -- <span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public boolean isFirst<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token punctuation">(</span>cursor2 <span class="token operator">==</span> -1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public Object getNextItem<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> products.get<span class="token punctuation">(</span>cursor1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public Object getPreviousItem<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> products.get<span class="token punctuation">(</span>cursor2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端测试</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			List products <span class="token operator">=</span> new ArrayList<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			products.add<span class="token punctuation">(</span><span class="token string">&quot;倚天剑&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			products.add<span class="token punctuation">(</span><span class="token string">&quot;屠龙刀&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			products.add<span class="token punctuation">(</span><span class="token string">&quot;断肠草&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			products.add<span class="token punctuation">(</span><span class="token string">&quot;葵花宝典&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			products.add<span class="token punctuation">(</span><span class="token string">&quot;四十二章经&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			AbstractObjectList list<span class="token punctuation">;</span>
+			AbstractIterator iterator<span class="token punctuation">;</span>
+			
+			list <span class="token operator">=</span> new ProductList<span class="token punctuation">(</span>products<span class="token punctuation">)</span><span class="token punctuation">;</span>	//创建聚合对象
+			iterator <span class="token operator">=</span> list.createIterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	//创建迭代器对象
+			
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;正向遍历&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			while<span class="token punctuation">(</span><span class="token operator">!</span>iterator.isLast<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span>iterator.getNextItem<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;，&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				iterator.next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			System.out.println<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;-------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;逆向遍历：&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			while<span class="token punctuation">(</span><span class="token operator">!</span>iterator.isLast<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span> iterator.getPreviousItem<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				iterator.previous<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>如果需要增加一个新的具体聚合类，例如客户数据聚合类，并且需要为客户数据聚合类提供不同于商品数据聚合类的正向遍历和逆向遍历操作，只需增加一个新的聚合子类和一个新的具体迭代器类即可，原有类库代码无需修改，符合开闭原则；如果需要为ProductList类更换一个迭代器，只需要增加一个新的具体迭代器类作为抽象迭代器类的子类，重新实现遍历方法，原有的迭代器代码无需修改，从迭代器的角度来看，也符合开闭原则；但是如果要在迭代器中新增新的方法，则需要修改抽象迭代器源代码，这将违背开闭原则</p> <h3 id="使用内部类实现迭代器"><a href="#使用内部类实现迭代器" aria-hidden="true" class="header-anchor">#</a> 使用内部类实现迭代器</h3> <p>从上图结构图中可以看出，具体迭代器类和具体聚合类之间存在双重关系，其中一个关系为关联关系，在具体迭代器中需要维持一个对具体聚合对象的引用，该关联关系的目的时访问存储在聚合对象中的数据，以便迭代器能够对这些数据进行遍历操作。</p> <p>除了使用关联关系外，为了能够让迭代器可以访问到聚合对象中的数据，还可以将迭代器类设计为聚合类的内部类，JDK中的迭代器类就是通过这种方法来实现的，其中AbstractList类代码片段如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class AbstractList<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span> extends AbstractCollection<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span> implements List<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+		<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+		private class Itr implements Iterator<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span><span class="token punctuation">{</span>
+			int cursor <span class="token operator">=</span> 0<span class="token punctuation">;</span>
+			<span class="token punctuation">..</span><span class="token punctuation">..</span>
+		<span class="token punctuation">}</span>
+		<span class="token punctuation">..</span><span class="token punctuation">..</span>.
+	<span class="token punctuation">}</span>
+</code></pre></div><p>可以通过类似的方法来设计ProductList类，将ProductIterator类作为ProductList类的内部类，代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ProductList extends AbstractObjectList <span class="token punctuation">{</span>
+	
+		public ProductList<span class="token punctuation">(</span>List objects<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			super<span class="token punctuation">(</span>objects<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//实现创建迭代器对象的具体工厂方法
+		public AbstractIterator createIterator<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> new ProductIterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//商品迭代器：具体迭代器，内部类实现
+		public class ProductIterator implements AbstractIterator <span class="token punctuation">{</span>
+			
+				private int cursor1<span class="token punctuation">;</span>			//定义一个游标，用于记录正向遍历的位置
+				private int cursor2<span class="token punctuation">;</span>			//定义一个游标，用于记录反向遍历的位置
+				
+				public ProductIterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+					cursor1 <span class="token operator">=</span> 0<span class="token punctuation">;</span>						//设置正向遍历游标的初始值
+					cursor2 <span class="token operator">=</span> objects.size<span class="token punctuation">(</span><span class="token punctuation">)</span> - 1<span class="token punctuation">;</span>		//设置反向遍历游标的初始值
+				<span class="token punctuation">}</span>
+				
+				@Override
+				public void next<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					if<span class="token punctuation">(</span>cursor1 <span class="token operator">&lt;</span> objects.size<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+						cursor1++<span class="token punctuation">;</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span>
+			
+				@Override
+				public boolean isLast<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">return</span> <span class="token punctuation">(</span>cursor1 <span class="token operator">==</span> objects.size<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			
+				@Override
+				public void previous<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					if<span class="token punctuation">(</span>cursor2 <span class="token operator">&gt;</span> -1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						cursor2 -- <span class="token punctuation">;</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span>
+			
+				@Override
+				public boolean isFirst<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">return</span> <span class="token punctuation">(</span>cursor2 <span class="token operator">==</span> -1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			
+				@Override
+				public Object getNextItem<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">return</span> objects.get<span class="token punctuation">(</span>cursor1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			
+				@Override
+				public Object getPreviousItem<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">return</span> objects.get<span class="token punctuation">(</span>cursor2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			
+			<span class="token punctuation">}</span>
+
+	<span class="token punctuation">}</span>
+</code></pre></div><p>无论使用哪种实现机制，客户端代码都是一样的，也就是说客户端无需关心具体迭代器对象的创建细节，只需要通过调用工厂方法createIterator（）即可得到一个可用的迭代器对象，也就是使用工厂方法模式的好处，通过工厂来封装对象的创建过程，简化了客户端的调用。</p> <h2 id="jdk内置迭代器"><a href="#jdk内置迭代器" aria-hidden="true" class="header-anchor">#</a> JDK内置迭代器</h2> <p>在java集合框架中，常用的List和Set等聚合类的子类都间接实现java.util.Collection接口，在Collection接口中声明了如下方法(部分):</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public interface Collection<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span> extends Iterate<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span><span class="token punctuation">{</span>
+		<span class="token punctuation">..</span><span class="token punctuation">..</span>
+		boolean add<span class="token punctuation">(</span>Object c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		boolean addAll<span class="token punctuation">(</span>Collection c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		boolean remove<span class="token punctuation">(</span>Object c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		boolean removeAll<span class="token punctuation">(</span>Collection c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		Iterator iterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">..</span><span class="token punctuation">..</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>除了包含一些增加元素和删除元素的方法外，还提供了一个iterator()方法，用于返回一个Iterator迭代器对象，以便遍历聚合中的元素；具体的java聚合类可以通过实现该iterator()方法返回一个具体的Iterator对象。</p> <p><strong>JDK中定义了抽象迭代器接口Iterator，代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public interface Iterator<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span><span class="token punctuation">{</span>
+		boolean hasNext<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		E next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		void remove<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>其中，hasNext()用于判断聚合对象中是否还存在下一个元素，为了不抛出异常，在每一次调用next()之前需要先调用hasNext()，如果有可供访问的元素，则返回true;next()方法用于将游标移至下一个元素，通过它可以逐个访问聚合中的元素，它返回游标所越过的那个元素引用；remove()方法用于删除上一次调用next()时所返回的元素。</p> <p><strong>用于删除聚合对象中的第一个元素的代码片段如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	Iterator iterator <span class="token operator">=</span> collection.iterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		//collection 是已实例化的聚合对象
+	iterator.next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>								//跳过第一个元素
+	iterator.remove<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>								//删除第一个元素
+</code></pre></div><p>需要注意的是，在这里next()方法与remove()方法的调用是相互关联的。如果调用remove()之前没有先对next()进行调用，那么将会抛出一个IllegalStateException异常，因为没有任何可供删除的元素.</p> <p><strong>用于删除两个相邻元素的代码片段如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	iterator.remove<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	iterator.next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		//如果删除此行代码，程序将抛出异常
+	iterator.remove<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>在上面的代码片段中，如果将代码'iterator.next()'去掉则程序运行抛出异常，因为第二次删除找不到可供删除元素。</p> <p>在JDK中，Collection接口和Iterator接口充当了迭代器模式的抽象层，分别对应于抽象聚合类和抽象迭代器，而Collection接口的子类充当了具体聚合类，下面以List为例加以说明，如下图列出JDK中部分与List有关的类与它们之间的关系</p> <p><a data-fancybox="" title="结构图" href="/pic/design/M8YhbIT.png"><img src="/pic/design/M8YhbIT.png" alt="结构图"></a></p> <p>在JDK中，实际情况比上图要复杂，在图中List接口除了继承Collection接口的iterator()接口外，还增加了新的工厂方法listIterator（），专门用于创建ListIterator类型的迭代器，在List的子类LinkedList中实现了该方法，可用于创建具体的ListIterator子类ListItr的对象,代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public ListIterator<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span> listIterator<span class="token punctuation">(</span>int index<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> new ListItr<span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>listIterator()方法用于返回具体迭代器ListItr类型的对象，在JDK源代码中，AbstractList中的iterator()方法调用了listIterator()方法,代码如下:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public Iterator<span class="token operator">&lt;</span>E<span class="token operator">&gt;</span> iterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> listIterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	<span class="token punctuation">}</span>
+</code></pre></div><p>客户端通过调用LinkedList类的iterator()方法，即可得到一个专门用于遍历LinkedList的迭代器对象。</p> <p>JDK中既然有了iterator()方法，为什么还要提供一个listIterator()方法呢?
+由于在Iterator接口中定义的方法太少了，只有3个，通过这三个方法，只能实现正向遍历，但有时候需要对一个聚合对象进行逆向遍历等操作，因此在JDK的ListIterator接口中声明了用于逆向遍历的hasPrevious()和previous()等方法，所以当客户端需要实现逆向遍历时，只能通过以下代码创建ListIterator类型的迭代器对象:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>     ListIterator i <span class="token operator">=</span> c.listIterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre></div><h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>迭代器模式是一种使用频率非常高的设计模式，通过引入迭代器数据可以将数据的遍历功能从聚合对象中分离出来，聚合对象只负责存储数据，而遍历数据由迭代器来完成，由于很多编程语言的类库都已经实现了迭代器模式，只需要直接使用java等语言定义好的迭代器即可。</p> <h2 id="优点"><a href="#优点" aria-hidden="true" class="header-anchor">#</a> 优点</h2> <ol><li><p>支持以不同的方式遍历一个聚合对象，在同一个聚合对象上可以定义多种遍历方式，在迭代器模式中只需要用一个不同的迭代器来替代原有迭代器即可改变遍历算法，也可以自己定义迭代器的子类支持新的遍历方式。</p></li> <li><p>迭代器简化了聚合类。由于引入迭代器，在原有的聚合对象中不需要再自行提供数据遍历等方法，这样可以简化聚合类的设计。</p></li> <li><p>在迭代器模式中，由于引入抽象层，增加新的聚合类和迭代器类都很方便，无需修改原有代码，满足开闭原则</p></li></ol> <h2 id="缺点"><a href="#缺点" aria-hidden="true" class="header-anchor">#</a> 缺点</h2> <ol><li><p>由于迭代器模式将存储数据和遍历数据的职责分离，增加新的聚合类需要对应增加新的迭代器类，类的个数成对增加，这在一定程度上增加了系统的复杂性</p></li> <li><p>抽象迭代器的设计难度较大，需要充分考虑到系统将来的扩展，例如JDK内置迭代器Iterator就无法实现逆向遍历，如果需要实现逆向遍历，只能通过其子类ListIterator等来实现，而ListIterator迭代器无法用于操作Set类型的聚合对象。在自定义迭代器时，创建一个考虑全面的抽象迭代器并不是一件很容易的事情。</p></li></ol> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>访问一个聚合对象的内容无须暴露它的内部表示。将聚合对象的访问与内部数据的存储分离，使得访问聚合对象时无须了解其内部实现细节</p></li> <li><p>需要为一个聚合对象提供多种遍历方式。</p></li> <li><p>为遍历不同的聚合结构提供一个统一的接口，在该接口的实现类中为不同的聚合结构提供不同的遍历方式，而客户端可以一致性地操作该接口</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/022_MementoPattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        备忘录模式
+      </a></span> <span class="next"><a href="/design/024_ObserverPattern.html">
+        观察者模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/39.eb81783f.js" defer></script>
+  </body>
+</html>

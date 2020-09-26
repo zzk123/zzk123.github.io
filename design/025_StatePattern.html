@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>状态模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/41.fc9b4279.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="sidebar-link">职责链模式</a></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="sidebar-link">解释器模式</a></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="sidebar-link">备忘录模式</a></li><li><a href="/design/023_IteratorPattern.html" class="sidebar-link">迭代器模式</a></li><li><a href="/design/024_ObserverPattern.html" class="sidebar-link">观察者模式</a></li><li><a href="/design/025_StatePattern.html" class="active sidebar-link">状态模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#结构图" class="sidebar-link">结构图</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#实例：银行系统中的账户类设计" class="sidebar-link">实例：银行系统中的账户类设计</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#共享状态" class="sidebar-link">共享状态</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#实例" class="sidebar-link">实例</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#使用环境类实现状态转换" class="sidebar-link">使用环境类实现状态转换</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#实例：放大镜的设计" class="sidebar-link">实例：放大镜的设计</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#主要优点" class="sidebar-link">主要优点</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#主要缺点" class="sidebar-link">主要缺点</a></li><li class="sidebar-sub-header"><a href="/design/025_StatePattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li><li><a href="/design/026_StrategyPattern.html" class="sidebar-link">策略模式</a></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="sidebar-link">访问者模式</a></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <p>状态模式用于解决系统中复杂对象的状态转换以及不同状态下行为的封装问题。当系统中某个对象存在多个状态，这些状态之间可以进行转换，而且对象在不同状态下行为不相同时可以使用状态模式。状态模式将一个对象的状态从该对象中分离出来，封装到专门的状态类中，使得对象状态可以灵活变化。对于客户端而言，无需关心对象状态的转换以及对象所处的当前状态，无论对于何种状态的对象，客户端都可以一致性地处理。</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>状态模式（State Pattern）：允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。其别名为状态对象（Objects for States）,状态模式是一种对象行为模式。</p></blockquote> <h2 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/WKevqLG.png"><img src="/pic/design/WKevqLG.png" alt="结构图"></a></p> <p>1.<strong>Context(环境类)</strong>：环境类又称为上下文类，它拥有多种状态的对象。由于环境类的状态存在多样性且在不同状态下对象的行为有所不同，因此将状态独立出去形成单独的状态类。在环境类中维护一个抽象状态类State的实例，这个实例定义当前状态，在具体实现时，它是一个State子类的对象</p> <p>2.<strong>State(抽象状态类)</strong>：它用于定义一个接口以及封装与环境类的一个特定状态相关的行为，在抽象状态类中声明各种不同状态对应的方法，而在其子类中实现这些方法。由于不同状态下对象的行为可能不同，因此在不同子类中方法的实现可能存在不同，相同的方法可以写在抽象状态类中</p> <p>3.<strong>ConcreteState（具体状态类）</strong>:它是抽象状态类的子类，每一个子类实现一个与环境类的一个状态相关的行为，每一个具体状态类对应环境的一个具体状态，不同的具体状态类其行为有所不同。</p> <p><strong>在状态模式中，将对象在不同状态下的行为封装到不同的状态类中，为了让系统具有更好的灵活性和可扩展性，同时对各状态下的共有行为进行封装，需要对状态进行抽象，引入了抽象状态类角色，其典型代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>		abstract class State<span class="token punctuation">{</span>
+			//声明抽象业务方法，不同的具体状态类可以不同的方法实现
+			public abstract void handle<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+</code></pre></div><p><strong>在抽象状态类的子类即具体状态类中实现了在抽象状态类中声明的业务方法，不同的具体状态类可以提供完全不同的方法实现。在实际使用时，一个状态类中可能包含多个业务方法，如果在具体状态类中某些业务方法的实现完全相同，可以将这些方法移至抽象状态类，实现代码的复用。典型的具体状态类代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>		class ConcreteState extends State<span class="token punctuation">{</span>
+			public void handle<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+				//方法具体实现代码
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+</code></pre></div><p><strong>环境类维持一个对抽象状态类的引用，通过setState（）方法可以向环境类注入不同的状态对象，再在环境类的业务方法中调用状态对象的方法，典型代码如下</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Context<span class="token punctuation">{</span>
+		private State state<span class="token punctuation">;</span>	//维持一个对抽象状态对象的引用
+		private int value<span class="token punctuation">;</span>		//其他属性值，该属性值的变化可能会导致对象状态发送变化
+
+		//设置状态对象
+		public void setState<span class="token punctuation">(</span>State state<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void request<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//其他代码
+			state.handle<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	   //调用状态对象业务方法
+			//其他代码
+		<span class="token punctuation">}</span>	
+	<span class="token punctuation">}</span>
+</code></pre></div><p>环境类实际上是真正拥有状态的对象，这里只是将环境类中与状态有关的代码提取出来封装到专门的状态类中，在状态模式结构图中，环境类Context与抽象状态类State之间存在单向关联关系，在Context中定义了一个State对象。在实际使用时，他们之间可能存在更加复杂的关系，State与Context之间可能也存在依赖或者关联关系。</p> <p><strong>在状态模式的使用过程中，一个对象的状态之间可以进行相互转换，通常有以下两种实现状态装换的方式</strong></p> <ol><li><strong>统一由环境类来负责状态之间的转换.</strong> 此时，环境类还充当了状态管理器（State Manager）角色。在环境类的业务方法中通过对某些属性值的判断实现状态转换，还可以提供一个专门的方法用于实现属性判断和状态转换，代码片段如下：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>		<span class="token punctuation">..</span>.
+		public void changeState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//判断属性值，根据属性值进行状态转换
+			if<span class="token punctuation">(</span>value <span class="token operator">==</span> 0<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				this.setState<span class="token punctuation">(</span>new ConcreteStateA<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>value <span class="token operator">==</span> 1<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				this.setState<span class="token punctuation">(</span>new ConcreteStateB<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		<span class="token punctuation">..</span>.
+</code></pre></div><ol start="2"><li>**由具体状态类来负责状态之间的转换.**可以在具体状态类的业务方法中判断环境类的某些属性值再根据情况为环境类设置新的状态对象，实现状态转换；同样，也可以提供一个专门的方法来负责属性值的判断和状态转换。此时，状态类与环境类之间将存在依赖或关联关系，因为状态类需要访问环境类中的属性值，代码片段如下：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>		<span class="token punctuation">..</span>.
+		public void changeState<span class="token punctuation">(</span>Context ctx<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//根据环境对象中的属性值进行状态转换
+			if<span class="token punctuation">(</span>ctx.getValue<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> 1<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				ctx.setState<span class="token punctuation">(</span>new ConcreteStateB<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>ctx.getValue<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> 2<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				ctx.setState<span class="token punctuation">(</span>new ConcreteStateC<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>	
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+</code></pre></div><h2 id="实例：银行系统中的账户类设计"><a href="#实例：银行系统中的账户类设计" aria-hidden="true" class="header-anchor">#</a> 实例：银行系统中的账户类设计</h2> <p>使用状态模式设计银行系统的账户类，客户只需要执行简单的存款和取款操作，系统会根据余额将账户自动转换到相应的状态。</p> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/GTP621X.png"><img src="/pic/design/GTP621X.png" alt="结构图"></a></p> <p>在图中，Account充当环境类角色，AccountState充当抽象状态角色，NormalState，OverdraftState和RestrictedState充当具体状态角色</p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>银行账号:环境类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Account <span class="token punctuation">{</span>
+		private AccountState state<span class="token punctuation">;</span>		//维持一个对抽象状态对象的引用
+		private String owner<span class="token punctuation">;</span>			//开户名
+		private double balance <span class="token operator">=</span> 0<span class="token punctuation">;</span>		//账户余额
+		
+		public Account<span class="token punctuation">(</span>String owner, double init<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.owner <span class="token operator">=</span> owner<span class="token punctuation">;</span>
+			this.balance <span class="token operator">=</span> balance<span class="token punctuation">;</span>
+			this.state <span class="token operator">=</span> new NormalState<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span> 	//设置初始值
+			System.out.println<span class="token punctuation">(</span>this.owner + <span class="token string">&quot;开户，初始化金额为&quot;</span> + init<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;-----------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public double getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> balance<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setBalance<span class="token punctuation">(</span>double balance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.balance <span class="token operator">=</span> balance<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setState<span class="token punctuation">(</span>AccountState state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//存款
+		public void deposit<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>this.owner + <span class="token string">&quot;存款&quot;</span> + amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			state.deposit<span class="token punctuation">(</span>amount<span class="token punctuation">)</span><span class="token punctuation">;</span>  //调用状态对象的deposit<span class="token punctuation">(</span><span class="token punctuation">)</span>方法
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;现在余额为&quot;</span> + this.balance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;现在账户状态为&quot;</span> + this.state.getClass<span class="token punctuation">(</span><span class="token punctuation">)</span>.getName<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;-----------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//取款
+		public void withdraw<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>this.owner + <span class="token string">&quot;取款&quot;</span> + amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			state.withdraw<span class="token punctuation">(</span>amount<span class="token punctuation">)</span><span class="token punctuation">;</span> //调用状态对象的withdraw<span class="token punctuation">(</span><span class="token punctuation">)</span>方法
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;现在余额为&quot;</span> + this.balance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;现在账号状态为&quot;</span> + this.state.getClass<span class="token punctuation">(</span><span class="token punctuation">)</span>.getName<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;-----------------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//查看状态
+		public void computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			state.computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> // 调用状态对象的computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span>方法
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>抽象状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class AccountState <span class="token punctuation">{</span>
+		protected Account acc<span class="token punctuation">;</span>
+		//存款
+		public abstract void deposit<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		//取款
+		public abstract void withdraw<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		//显示所属状态
+		public abstract void computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		//状态装换
+		public abstract void stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>正常状态：具体状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class NormalState extends AccountState <span class="token punctuation">{</span>
+		
+		public NormalState<span class="token punctuation">(</span>Account acc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.acc <span class="token operator">=</span> acc<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public NormalState<span class="token punctuation">(</span>AccountState state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.acc <span class="token operator">=</span> state.acc<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void deposit<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			acc.setBalance<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> + amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void withdraw<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			acc.setBalance<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> - amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;正常状态，无须支付利息！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//状态转换
+		public void stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> -2000 <span class="token operator">&amp;&amp;</span> acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> 0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				acc.setState<span class="token punctuation">(</span>new OverdraftState<span class="token punctuation">(</span>this<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> -2000<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				acc.setState<span class="token punctuation">(</span>new RestrictedState<span class="token punctuation">(</span>this<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>else if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> -2000<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;操作受限&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>透支状态：具体状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class OverdraftState extends AccountState <span class="token punctuation">{</span>
+	
+		public OverdraftState<span class="token punctuation">(</span>AccountState acc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.acc <span class="token operator">=</span> acc.acc<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void deposit<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			acc.setBalance<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> + amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void withdraw<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			acc.setBalance<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> - amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;计算利息&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//状态转换
+		public void stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> 0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				acc.setState<span class="token punctuation">(</span>new NormalState<span class="token punctuation">(</span>this<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> -2000<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				acc.setState<span class="token punctuation">(</span>new RestrictedState<span class="token punctuation">(</span>this<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> -2000<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;操作受限&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>受限状态：具体状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class RestrictedState extends AccountState <span class="token punctuation">{</span>
+		
+		public RestrictedState<span class="token punctuation">(</span>AccountState state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.acc <span class="token operator">=</span> state.acc<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void deposit<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			acc.setBalance<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> + amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void withdraw<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;账号受限，取款失败&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;计算利息！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//状态转换
+		public void stateCheck<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> 0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				acc.setState<span class="token punctuation">(</span>new NormalState<span class="token punctuation">(</span>this<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>acc.getBalance<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> -2000<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				acc.setState<span class="token punctuation">(</span>new OverdraftState<span class="token punctuation">(</span>this<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Client<span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			Account acc <span class="token operator">=</span> new Account<span class="token punctuation">(</span><span class="token string">&quot;段誉&quot;</span>， 0.0<span class="token punctuation">)</span>；
+			acc.deposit<span class="token punctuation">(</span>1000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.withdraw<span class="token punctuation">(</span>2000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.deposit<span class="token punctuation">(</span>3000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.withdraw<span class="token punctuation">(</span>4000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.withdraw<span class="token punctuation">(</span>1000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			acc.computeInterest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span> 	
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="共享状态"><a href="#共享状态" aria-hidden="true" class="header-anchor">#</a> 共享状态</h2> <p>在有些情况下，多个环境对象可能需要共享同一个状态，如果希望在系统中实现多个环境对象共享一个或多个状态对象，那么需要将这些状态对象定义为环境类的静态成员对象。</p> <h2 id="实例"><a href="#实例" aria-hidden="true" class="header-anchor">#</a> 实例</h2> <p>某系统要求两个开关要么都处于开的状态，要么都处于关的状态，在使用时他们的状态必须保持一致，开关可以由开转换到关，也可以由关转换到开</p> <h4 id="结构图-3"><a href="#结构图-3" aria-hidden="true" class="header-anchor">#</a> 结构图</h4> <p><a data-fancybox="" title="结构图" href="/pic/design/RyGA8mS.png"><img src="/pic/design/RyGA8mS.png" alt="结构图"></a></p> <h3 id="代码实现-2"><a href="#代码实现-2" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>开关类Switch</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Switch <span class="token punctuation">{</span>
+		private static State state, onState, offState<span class="token punctuation">;</span> //定义3个静态的状态对象
+		private String name<span class="token punctuation">;</span>
+		
+		public Switch<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+			onState <span class="token operator">=</span> new OnState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			offState <span class="token operator">=</span> new OffState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			this.state <span class="token operator">=</span> onState<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void setState<span class="token punctuation">(</span>State state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public static State getState<span class="token punctuation">(</span>String type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>type.equalsIgnoreCase<span class="token punctuation">(</span><span class="token string">&quot;on&quot;</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> onState<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>else <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> offState<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		
+		//打开开关
+		public void on<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			state.on<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//关闭开关
+		public void off<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			state.off<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>抽象状态类State</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class State <span class="token punctuation">{</span>
+		public abstract void on<span class="token punctuation">(</span>Switch s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void off<span class="token punctuation">(</span>Switch s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>两个具体状态类OnState和OffState</strong>：</p> <p>打开状态</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class OnState extends State <span class="token punctuation">{</span>
+	
+		@Override
+		public void on<span class="token punctuation">(</span>Switch s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;已经打开了！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void off<span class="token punctuation">(</span>Switch s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;已经关闭了！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			s.setState<span class="token punctuation">(</span>Switch.getState<span class="token punctuation">(</span><span class="token string">&quot;off&quot;</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p>关闭状态</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class OffState extends State <span class="token punctuation">{</span>
+	
+		@Override
+		public void on<span class="token punctuation">(</span>Switch s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;打开&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			s.setState<span class="token punctuation">(</span>Switch.getState<span class="token punctuation">(</span><span class="token string">&quot;on&quot;</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void off<span class="token punctuation">(</span>Switch s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;已经关闭！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="使用环境类实现状态转换"><a href="#使用环境类实现状态转换" aria-hidden="true" class="header-anchor">#</a> 使用环境类实现状态转换</h2> <p>在状态模式中实现状态转换时，具体状态类可通过环境类Context的setState（）方法进行状态的转换操作，也可以统一由环境类Contextn来实现状态的转换。此时增加新的具体状态类可能需要修改其他具体状态类或者环境类的源代码，否则系统无法转换到新增状态，但对于客户端来说，无需关心状态类，可以为环境类设置默认的状态类，而将状态的转换工作交给具体状态类或环境类来完成，具体的转换细节对于客户端来说是透明的</p> <p>在上面的银行账号状态设计实例中，通过具体状态类来实现状态的转换，在每个具体状态类中都包含一个stateCheck()方法，在该方法内部实现状态的转换。此时还可以通过环境类来实现状态转换，环境类作为一个状态管理器，统一实现各种状态之间的转换操作。</p> <h2 id="实例：放大镜的设计"><a href="#实例：放大镜的设计" aria-hidden="true" class="header-anchor">#</a> 实例：放大镜的设计</h2> <p>开发一个屏幕放大器，其具体功能描述为：用户单击‘放大镜’按钮之后屏幕将放大一倍，再点击一次‘放大镜’按钮屏幕再放大一倍，第3次单击该按钮后屏幕将还原到默认大小</p> <h3 id="结构图-4"><a href="#结构图-4" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/4hlSKvp.png"><img src="/pic/design/4hlSKvp.png" alt="结构图"></a></p> <p>使用状态模式来设计屏幕放大器，定义3个屏幕状态类NormalState，largerState和LargestState来对应屏幕的3中状态，分别是正常状态，2倍方法状态和4倍放大状态，屏幕类Screen充当环境类</p> <h3 id="代码实现-3"><a href="#代码实现-3" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>屏幕类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Screen <span class="token punctuation">{</span>
+		//枚举所有的状态，currentState表示当前状态
+		private State currentState, normalState, largerState, largestState<span class="token punctuation">;</span>
+		
+		public Screen<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.normalState <span class="token operator">=</span> new NormalState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//创建正常状态对象
+			this.largerState <span class="token operator">=</span> new LargerState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//创建2倍放大状态对象
+			this.largestState <span class="token operator">=</span> new LargestState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> //创建4倍放大状态对象
+			this.currentState <span class="token operator">=</span> normalState<span class="token punctuation">;</span>		//设置初始状态
+			this.currentState.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void setState<span class="token punctuation">(</span>State state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.currentState <span class="token operator">=</span> state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//单击事件处理方法，封装了对状态类中业务方法的调用和状态的转换
+		public void onClick<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>this.currentState <span class="token operator">==</span> normalState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				this.setState<span class="token punctuation">(</span>largerState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				this.currentState.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>this.currentState <span class="token operator">==</span> largerState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				this.setState<span class="token punctuation">(</span>largestState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				this.currentState.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>this.currentState <span class="token operator">==</span> largestState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				this.setState<span class="token punctuation">(</span>normalState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				this.currentState.dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>抽象状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class State <span class="token punctuation">{</span>
+		public abstract void dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>正常状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class NormalState extends State <span class="token punctuation">{</span>
+		@Override
+		public void dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;正常大小！&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>2倍状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class LargerState extends State<span class="token punctuation">{</span>
+	
+		@Override
+		public void dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;2倍大小&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>4倍状态类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class LargestState extends State <span class="token punctuation">{</span>
+	
+		@Override
+		public void dispaly<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;4倍大小&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在上述代码中，所有的状态转换都由环境类Screen来实现，此时环境类充当了状态管理器角色，如果需要增加新的状态，例如，8倍状态类，需要修改环境类，这在一定程度上违背了开闭原则，但对其他状态类没有任何影响。</p> <h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>状态模式将一个对象在不同状态下的不同行为封装到一个个状态类中，通过设置不同的状态对象可以让环境对象拥有不同的行为，而状态转换的细节对于客户端而言是透明的，方便了客户端的使用，在实际开发中，状态模式具有较高的使用频率，在工作流，游戏等软件模式都得到广泛应用，例如公文状态的装换，游戏角色的升级等。</p> <h2 id="主要优点"><a href="#主要优点" aria-hidden="true" class="header-anchor">#</a> 主要优点</h2> <ol><li><p>封装了状态的装换规则，在状态模式中可以将状态的装换代码封装在环境类或者具体状态类中，可以对装换代码进行集中管理，而不是分散在一个个业务方法中</p></li> <li><p>将所有与某个状态有关的行为放在一个类中，只需注入一个不同的状态对象即可使环境对象拥有不同的行为</p></li> <li><p>允许状态转换逻辑与状态对象合成一体，而不是提供一个巨大的条件语句块，状态模式可以避免使用庞大的条件语句来将业务方法和状态转换代码交织在一起</p></li> <li><p>可以让多个环境对象共享一个状态对象，从而减少系统中对象的个数</p></li></ol> <h2 id="主要缺点"><a href="#主要缺点" aria-hidden="true" class="header-anchor">#</a> 主要缺点</h2> <ol><li><p>状态模式的使用必然会增加系统中类和对象的个数，导致系统运行开销增大</p></li> <li><p>状态模式的程序结构与实现都较为复杂，如果使用不当将导致程序结构和代码的混乱，增加系统设计的难度</p></li> <li><p>状态模式对开闭原则的支持并不太好，增加新的状态类需要修改那些负责状态转换的源代码，否则无法转换到新增状态；而且修改某个状态类的行为也需要修改对应类的源代码。</p></li></ol> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>对象的行为依赖于它的状态（例如某些属性值），状态的改变将导致行为的变化</p></li> <li><p>在代码中包含大量与对象状态有关的条件语句，这些条件语句的出现，会导致代码的可维护和灵活性变差，不能方便地增加和删除状态，并且导致客户类与类库之间的耦合增强</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/024_ObserverPattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        观察者模式
+      </a></span> <span class="next"><a href="/design/026_StrategyPattern.html">
+        策略模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/41.fc9b4279.js" defer></script>
+  </body>
+</html>

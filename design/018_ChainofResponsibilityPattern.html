@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>职责链模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/34.549b5096.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="active sidebar-link">职责链模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#模式结构图" class="sidebar-link">模式结构图</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#典型代码" class="sidebar-link">典型代码</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#代码实例" class="sidebar-link">代码实例</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#主要优点" class="sidebar-link">主要优点</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#主要缺点" class="sidebar-link">主要缺点</a></li><li class="sidebar-sub-header"><a href="/design/018_ChainofResponsibilityPattern.html#适用情况" class="sidebar-link">适用情况</a></li></ul></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="sidebar-link">解释器模式</a></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="sidebar-link">备忘录模式</a></li><li><a href="/design/023_IteratorPattern.html" class="sidebar-link">迭代器模式</a></li><li><a href="/design/024_ObserverPattern.html" class="sidebar-link">观察者模式</a></li><li><a href="/design/025_StatePattern.html" class="sidebar-link">状态模式</a></li><li><a href="/design/026_StrategyPattern.html" class="sidebar-link">策略模式</a></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="sidebar-link">访问者模式</a></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <blockquote><p>很多情况下，在一个软件系统中可以处理某个请求的对象不止一个，例如SCM系统中的采购单审批，主任、副董事长、董事长和董事长会都可以处理采购单，他们可以构成一条处理采购单的链式结构，采购单沿着这条链进行传递，这条路称之为职责链。职责链可以是一条直线，一个环或者一个树形结构，最常见的职责链是直线型，即沿着一条单向的链来传递请求。链上的请求都是请求处理者，职责链模式可以将请求的处理者组织成一条链，并让请求沿着链传递，由链上的处理者对请求进行相应的处理，客户端无须关心请求的处理细节以及请求的传递，只需将请求发送到链上即可，实现请求发送者和请求处理者解耦。</p></blockquote> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>职责链（Chain of Responsibility Pattern）:避免将请求发送者与接收者耦合在一起，让多个对象都有机会接收请求，将这些请求连接成一条链，并且沿着这条链传递请求，直到有对象处理它为止。职责链模式是一种对象行为型模式。</p></blockquote> <h2 id="模式结构图"><a href="#模式结构图" aria-hidden="true" class="header-anchor">#</a> 模式结构图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/beMQ1hQ.png"><img src="/pic/design/beMQ1hQ.png" alt="结构图"></a></p> <p><strong>从上图可以看出，在职责链模式结构图中包含以下两个角色：</strong></p> <ol><li><p><strong>Handler(抽象处理者)</strong>:它定义了一个处理请求的接口，一般设计为抽象类，由于不同的具体处理者处理请求的方式不同，因此在其中定义了抽象请求处理方法，因为每一个处理者的下家还是一个处理者，因此在抽象处理者中定义了一个抽象处理者类型的对象（图中的successor），作为其下家的引用。通过该引用，处理者可以连成一条线。</p></li> <li><p><strong>ConcreteHandler(具体处理者)</strong>:它是抽象处理者的子类，可以处理用户请求，在具体处理者类中实现了抽象处理者中定义的抽象请求处理方法，在处理请求之前需要进行判断，看是否有相应的处理权限，如果可以处理请求就处理它，否则将请求转发给后继者；在具体处理者中可以访问链中下一个对象，以便请求的转发</p></li></ol> <p>在职责链模式里，很多对象由每一个对象对其下家的引用而连接起来形成一条链。请求在这个链上传递，直到链上的某一个对象决定处理此请求为止，发出这个请求的客户端并不知道链上的哪一个对象最终处理这个请求，这使得系统可以在不影响客户端的情况下动态重新组织链和分配责任。</p> <h2 id="典型代码"><a href="#典型代码" aria-hidden="true" class="header-anchor">#</a> 典型代码</h2> <p>职责链模式的核心在于抽象处理者类的设计。抽象处理者的典型代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class Handler<span class="token punctuation">{</span>
+		//维持对下家的引用
+		protected Handler successor<span class="token punctuation">;</span>
+
+		public void setSuccessor<span class="token punctuation">(</span>Handler successor<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.successor <span class="token operator">=</span> successor<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span> 
+
+		public abstract void handleRequest<span class="token punctuation">(</span>String request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在上述代码中，抽象处理者类定义了对下家的引用对象，以便将请求转发给下家，该对象的访问符可设为protected，在其子类中可以使用。在抽象处理者类中声明了抽象的请求处理方法，具体实现交由子类完成</p> <p><strong>具体处理者是抽象处理者的子类，它具有两大作用：</strong></p> <ol><li><p><strong>处理请求</strong>，不同的具体请求处理者以不同的形式实现抽象请求方法handleRequest();</p></li> <li><p><strong>转发请求</strong>，如果该请求超出了当前处理者类的处理范围，可以将该请求转发给下家。</p></li></ol> <p>具体处理类的典型代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ConcreteHandler extends Handler<span class="token punctuation">{</span>
+		
+		public void handleRequest<span class="token punctuation">(</span>String request<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>请求满足条件<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				//处理请求
+			<span class="token punctuation">}</span>else<span class="token punctuation">{</span>
+				this.successor.handleRequest<span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>//请求转发
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在具体处理类中通过对请求进行判断可以做出相应的处理。</p> <blockquote><p>需要注意的是，职责链模式并不创建职责链，职责链的创建工作必须由系统的其他部分来完成，一般是在使用该职责链的客户端中创建职责链。职责链降低了请求的发送端和接收端之间的耦合，使多个对象都有机会处理这个请求。</p></blockquote> <h2 id="代码实例"><a href="#代码实例" aria-hidden="true" class="header-anchor">#</a> 代码实例</h2> <p>开发采购单的分级审批，即根据采购金额的不同由不同层次的主管人员来审批，主任可以审批5w以下（不包括5w）的采购单实现采购单的链式传递和处理，副董事长可以审批5w-10w(不包括10w)的采购单，董事长可以审批10w-50w(不包括50w)的采购单，50w以上就需要开董事会进行决定，使用职责链模式进行开发</p> <h3 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/NxiUJjo.png"><img src="/pic/design/NxiUJjo.png" alt="结构图"></a></p> <p>在上图，抽象类Aprover充当抽象处理者，Director，VicePresident，President和Congress充当具体处理者，PurchaseRequest充当请求者</p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>采购单：请求类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class PurchaseRequest <span class="token punctuation">{</span>
+		private double amount<span class="token punctuation">;</span>		//采购金额
+		private int number<span class="token punctuation">;</span>			//采购单编号
+		private String purpose<span class="token punctuation">;</span>		//采购目的
+		
+		public PurchaseRequest<span class="token punctuation">(</span>double amount, int number, String purpose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.amount <span class="token operator">=</span> amount<span class="token punctuation">;</span>
+			this.number <span class="token operator">=</span> number<span class="token punctuation">;</span>
+			this.purpose <span class="token operator">=</span> purpose<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public double getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> amount<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setAmount<span class="token punctuation">(</span>double amount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.amount <span class="token operator">=</span> amount<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public int getNumber<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> number<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setNumber<span class="token punctuation">(</span>int number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.number <span class="token operator">=</span> number<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public String getPurpose<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> purpose<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		public void setPurpose<span class="token punctuation">(</span>String purpose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.purpose <span class="token operator">=</span> purpose<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>审批者类：抽象处理者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class Approver <span class="token punctuation">{</span>
+		protected Approver successor<span class="token punctuation">;</span>		//定义后继对象
+		protected String name<span class="token punctuation">;</span>				//审批者姓名
+		
+		public Approver<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//设置后继者
+		public void setSuccessor<span class="token punctuation">(</span>Approver successor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.successor <span class="token operator">=</span> successor<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//抽象请求处理方法
+		public abstract void processRequest<span class="token punctuation">(</span>PurchaseRequest request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>主任类：具体处理者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Director extends Approver <span class="token punctuation">{</span>
+	
+		public Director<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			super<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//具体请求处理方法
+		public void processRequest<span class="token punctuation">(</span>PurchaseRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>request.getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> 50000 <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				//处理请求
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;主任&quot;</span> + this.name + <span class="token string">&quot;审批采购单：&quot;</span> + request.getNumber<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+				+ <span class="token string">&quot;金额：&quot;</span> + request.getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;元，采购目的：&quot;</span> + request.getPurpose<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>else <span class="token punctuation">{</span>
+				this.successor.processRequest<span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>	//转发请求
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>副董事长类：具体处理者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class VicePresident extends Approver <span class="token punctuation">{</span>
+	
+		public VicePresident<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			super<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//具体请求处理方法
+		public void processRequest<span class="token punctuation">(</span>PurchaseRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>request.getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> 10000<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;副董事长&quot;</span> + this.name + <span class="token string">&quot;审批采购单：&quot;</span> + request.getNumber<span class="token punctuation">(</span><span class="token punctuation">)</span>
+				+ <span class="token string">&quot;金额:&quot;</span> + request.getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;元，采购目的:&quot;</span> + request.getPurpose<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>else <span class="token punctuation">{</span>
+				this.successor.processRequest<span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>董事长请求类：具体处理者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class President extends Approver <span class="token punctuation">{</span>
+	
+		public President<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			super<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void processRequest<span class="token punctuation">(</span>PurchaseRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			if<span class="token punctuation">(</span>request.getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> 50000<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;董事长&quot;</span> + this.name + <span class="token string">&quot;审批采购单：&quot;</span> + request.getNumber<span class="token punctuation">(</span><span class="token punctuation">)</span>
+				+ <span class="token string">&quot;金额:&quot;</span> + request.getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;元，采购目的:&quot;</span> + request.getPurpose<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>else <span class="token punctuation">{</span>
+				this.successor.processRequest<span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>董事长类：具体处理者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Congress extends Approver <span class="token punctuation">{</span>
+	
+		public Congress<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			super<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			// TODO Auto-generated constructor stub
+		<span class="token punctuation">}</span>
+	
+		@Override
+		public void processRequest<span class="token punctuation">(</span>PurchaseRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;召开董事会审批采购单：&quot;</span> + request.getNumber<span class="token punctuation">(</span><span class="token punctuation">)</span>
+				+ <span class="token string">&quot;金额:&quot;</span> + request.getAmount<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;元，采购目的:&quot;</span> + request.getPurpose<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			Approver wjzhang, gyang, jguo, meeting<span class="token punctuation">;</span>
+			wjzhang <span class="token operator">=</span> new Director<span class="token punctuation">(</span><span class="token string">&quot;张无忌&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			gyang <span class="token operator">=</span> new VicePresident<span class="token punctuation">(</span><span class="token string">&quot;杨过&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			jguo <span class="token operator">=</span> new President<span class="token punctuation">(</span><span class="token string">&quot;郭靖&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			meeting <span class="token operator">=</span> new Congress<span class="token punctuation">(</span><span class="token string">&quot;董事会&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			//创建职责链
+			wjzhang.setSuccessor<span class="token punctuation">(</span>gyang<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			gyang.setSuccessor<span class="token punctuation">(</span>jguo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			jguo.setSuccessor<span class="token punctuation">(</span>meeting<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			//创建采购单
+			PurchaseRequest pr1 <span class="token operator">=</span> new PurchaseRequest<span class="token punctuation">(</span>45000, 10001, <span class="token string">&quot;购买倚天剑&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			wjzhang.processRequest<span class="token punctuation">(</span>pr1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			PurchaseRequest pr2 <span class="token operator">=</span> new PurchaseRequest<span class="token punctuation">(</span>60000, 10002, <span class="token string">&quot;购买屠龙刀&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			wjzhang.processRequest<span class="token punctuation">(</span>pr2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			PurchaseRequest pr3 <span class="token operator">=</span> new PurchaseRequest<span class="token punctuation">(</span>160000, 10003, <span class="token string">&quot;购买九阳真经&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			wjzhang.processRequest<span class="token punctuation">(</span>pr3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			PurchaseRequest pr4 <span class="token operator">=</span> new PurchaseRequest<span class="token punctuation">(</span>8000000, 10001, <span class="token string">&quot;购买桃花岛&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			wjzhang.processRequest<span class="token punctuation">(</span>pr4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>职责链模式通过建立一条链来组织请求的处理者，请求将沿着链进行传递，请求发送者无须知道请求在何时，何处以及如何被处理，实现了请求发送者与处理者的解耦。在软件开发中，如果遇到有多个对象可以处理同一请求时可以应用职责链模式，例如在Web应用开发中创建一个过滤器(Filter)链来对请求数据进行过滤，在工作流系统中实现公文的分级审批等，使用职责链模式可以较好地解决此类问题</p> <h2 id="主要优点"><a href="#主要优点" aria-hidden="true" class="header-anchor">#</a> 主要优点</h2> <ol><li><p>职责链模式使得一个对象无须知道是在其他哪一个对象处理其请求，对象仅需知道该请求会被处理即可，接收者和发送者都没有对方地明确信息，且链中的对象不需要知道链的结构，由客户端负责链的创建，降低了系统的耦合度</p></li> <li><p>请求处理对象仅需维持一个指向其后继者的引用，而不需要维持它对所有的候选处理者的引用，可简化对象的相互连接</p></li> <li><p>在给对象分派职责时，职责链可以提供更多的灵活性，可以通过在运行时对链进行动态的增加或修改来增加或改变处理一个请求的职责</p></li> <li><p>在系统中增加一个新的具体请求处理者时无须修改原有系统的代码，只需要客户端重新建立链即可，从这一点来看是符合开闭原则的</p></li></ol> <h2 id="主要缺点"><a href="#主要缺点" aria-hidden="true" class="header-anchor">#</a> 主要缺点</h2> <ol><li><p>由于一个请求没有明确的接收者，那么就不能保证它一定会被处理，该请求可能一直到链的末端都得不到处理；一个请求也可能因职责链没有正确配置而得不到处理</p></li> <li><p>对于比较长的职责链，请求的处理可能涉及多个处理对象，系统性能将受到一定影响，而且在进行代码调试时不太方便</p></li> <li><p>如果建链不当，可能会造成循环调用，导致系统陷入死循环中</p></li></ol> <h2 id="适用情况"><a href="#适用情况" aria-hidden="true" class="header-anchor">#</a> 适用情况</h2> <ol><li><p>有多个对象可以处理同一个请求，具体哪个对象处理该请求待运行时刻再确定，客户端只需要将请求提交到链上，而无须关心请求的处理对象是谁以及它是如何处理的</p></li> <li><p>在不明确指定接收者的情况下，向多个对象中的一个提交一个请求</p></li> <li><p>可动态指定一组对象处理请求，客户端可以动态创建职责链来处理请求，还可以改变链中处理者之间的先后次序</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/017_BehavioralPattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        介绍
+      </a></span> <span class="next"><a href="/design/019_CommandPattern.html">
+        命令模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/34.549b5096.js" defer></script>
+  </body>
+</html>

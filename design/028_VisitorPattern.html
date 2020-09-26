@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>访问者模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/44.b1d85a5c.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="sidebar-link">职责链模式</a></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="sidebar-link">解释器模式</a></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="sidebar-link">备忘录模式</a></li><li><a href="/design/023_IteratorPattern.html" class="sidebar-link">迭代器模式</a></li><li><a href="/design/024_ObserverPattern.html" class="sidebar-link">观察者模式</a></li><li><a href="/design/025_StatePattern.html" class="sidebar-link">状态模式</a></li><li><a href="/design/026_StrategyPattern.html" class="sidebar-link">策略模式</a></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="active sidebar-link">访问者模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/028_VisitorPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/028_VisitorPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/028_VisitorPattern.html#示意图" class="sidebar-link">示意图</a></li><li class="sidebar-sub-header"><a href="/design/028_VisitorPattern.html#实例：设计oa系统中员工数据汇总模块" class="sidebar-link">实例：设计OA系统中员工数据汇总模块</a></li><li class="sidebar-sub-header"><a href="/design/028_VisitorPattern.html#访问者模式与组合模式联用" class="sidebar-link">访问者模式与组合模式联用</a></li><li class="sidebar-sub-header"><a href="/design/028_VisitorPattern.html#主要优点" class="sidebar-link">主要优点</a></li><li class="sidebar-sub-header"><a href="/design/028_VisitorPattern.html#主要缺点" class="sidebar-link">主要缺点</a></li></ul></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <p>访问者模式是一种较为复杂的行为型设计模式，它包含访问者和被访问元素两个主要组成部分，这些被访问的元素通常具有不同的类型，且不同的访问者可以对他们进行不同的访问操作。访问者模式使得用户可以在不修改现有系统的情况下扩展系统的功能，为这些类型的元素增加新的操作。</p> <p>在使用访问者模式时，被访问元素通常不是单独存在的，他们存在一个集合中，这个集合称之为‘对象结构’，访问者通过遍历对象结构实现对其中存储的元素的逐个操做。</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>访问者模式（Visitor  Pattern）：提供一个作用于某对象结构中的各元素的操作表示，它使得可以在不改变各元素的类的前提下定义作用于这些元素的新操作。访问者模式是一种对象行为型模式</p></blockquote> <h2 id="示意图"><a href="#示意图" aria-hidden="true" class="header-anchor">#</a> 示意图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/CQQeFjD.png"><img src="/pic/design/CQQeFjD.png" alt="结构图"></a></p> <ol><li><p><strong>Visitor(抽象访问者)</strong>：抽象访问者为对象结构中每一个具体元素类ConcreteElement声明一个访问操作，从这个操作的名称或参数类型可以清楚知道需要访问的具体元素的类型，具体访问者需要实现这些操作方法，定义对这些元素的访问操作</p></li> <li><p><strong>ConcreteVisitor(具体访问者)</strong>：具体访问者实现了每个由抽象访问者声明的操作，每一个操作用于访问对象结构中一种类型的元素。</p></li> <li><p><strong>Element(抽象元素)</strong>：抽象元素一般是抽象类或接口，它定义一个accept()方法，该方法通常以一个抽象访问者作为参数。</p></li> <li><p><strong>ConcreteElement(具体元素)</strong>：具体元素实现了accept()方法,在accept()方法中调用访问者的访问方法以便完成对一个元素的操作。</p></li> <li><p><strong>ObjectStructure(对象结构)</strong>：对象结构是一个元素的集合，它用于存放元素对象，并提供了遍历其内部元素的方法，它可以结合组合模式来实现，也是一个简单的集合对象，例如一个List对象或一个Set对象</p></li></ol> <p>访问者模式中对象结构存储了不同类型的元素对象，以供不同访问者访问。访问者模式包括两个层次结构：一个是访问者层次结构，提供了抽象访问者和具体访问者；另一个是元素层次结构，提供抽象元素和具体元素。相同的访问者可以以不同的方式访问不同的元素，相同的元素可以接受不同访问者以不同访问方式访问。在访问者模式中，增加新的访问者无需修改原有系统，系统具有较好的可扩展性。</p> <p>在访问者模式中，抽象访问者定义了访问元素对象的方法，通常为每一种类型的元素对象都提供一个访问方法，而具体访问者可以实现这些访问方法，这些方法访问方法的命名一般有两种方法：一种是直接在方法名中标明待访问元素对象的具体类型，例如visitElementA(ElementA elementA); 另有一种是统一取名为visit(),通过参数类型的不同来定义一系列重载的visit()方法。当然，如果所有的访问者对某一类型的元素的访问操作都相同，则可以将操作代码移到抽象访问者类中，其经典代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public abstract class Visitor <span class="token punctuation">{</span>
+		public abstract void visit<span class="token punctuation">(</span>ConcreteElementA	elementA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void visit<span class="token punctuation">(</span>ConcreteElementB elementB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		public void visit<span class="token punctuation">(</span>ConcreteElementC elementC<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		//元素ConcreteElementC操作代码
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在这里使用了重载visit()方法的方式来定义实现多个方法，用于操作不同类型的元素对象。在抽象访问者Visitor类的子类ConcreteVisitor中实现了抽象的访问方法，用于定义对不同类型元素对象的操作，具体访问者经典代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ConcreteVisitor extends  Visitor <span class="token punctuation">{</span>
+		public abstract void visit<span class="token punctuation">(</span>ConcreteElementA	elementA<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//元素ConcreteElementA操作代码
+		<span class="token punctuation">}</span>
+		public abstract void visit<span class="token punctuation">(</span>ConcreteElementB elementB<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//元素ConcreteElementB操作代码
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>对于元素类而言，在其中一般定义了一个accept()方法，用于接受访问者的访问，典型的抽象元素类代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	interface Element<span class="token punctuation">{</span>
+		public void accept<span class="token punctuation">(</span>Visitor visitor<span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在抽象元素Element的子类中实现了accept()方法，用于接受访问者的访问，在具体元素类中还可以定义不同类型的元素所特有的业务方法，其经典代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ConcreteElementA implements Element<span class="token punctuation">{</span>
+		public void accept<span class="token punctuation">(</span>Visitor visitor<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			visitor.visit<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>		
+		<span class="token punctuation">}</span>
+		public void operationA<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在具体元素类ConcreteElementA 的accept()方法中，通过调用Visitor类的visit()方法实现对元素的方法，并以当前对象作为visit()方法的参数，其具体执行过程如下：</p> <ol><li><p>调用具体元素类的accept(Visitor visitor) 方法，并将Visitor子类对象作为其参数</p></li> <li><p>在具体元素类accept(Visitor visitor)方法内部调用传入的Visitor对象的visit()方法，例如visit(ConcreteElementA elementA)，将当前具体元素对象(this)作为参数，例如visitor.visit(this);</p></li> <li><p>执行Visitor对象的visitor()方法，在其中还可以调用元素对象的业务方法。<br>
+这种调用机制也称为**'双重分派'**</p></li></ol> <p>在访问者模式中，对象结构是一个集合，用于存储元素对象并接受访问者的访问，其典型代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ObjectStructrue<span class="token punctuation">{</span>
+		//定义一个集合用于存储元素对象
+		private ArrayList<span class="token operator">&lt;</span>Element<span class="token operator">&gt;</span> list <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>Element<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		//接受访问者的访问操作
+		public void accept<span class="token punctuation">(</span>Visitor visitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			Iterator i <span class="token operator">=</span> list.iterator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			while<span class="token punctuation">(</span>i.hasNext<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token punctuation">{</span>
+				<span class="token variable"><span class="token punctuation">((</span>Element<span class="token punctuation">)</span>i.next<span class="token punctuation">(</span><span class="token punctuation">))</span></span>.accept<span class="token punctuation">(</span>visitor<span class="token punctuation">)</span><span class="token punctuation">;</span> //遍历访问集合中的每一个元素
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+		
+		public void addElement<span class="token punctuation">(</span>Element element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			list.add<span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void removeElement<span class="token punctuation">(</span>Element element<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			list.remove<span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span> 
+</code></pre></div><p>在对象结构中可以使用迭代器对存储在集合中的元素对象进行遍历，并逐个调用每一个对象的accept()方法，实现对元素对象的访问操作。</p> <h2 id="实例：设计oa系统中员工数据汇总模块"><a href="#实例：设计oa系统中员工数据汇总模块" aria-hidden="true" class="header-anchor">#</a> 实例：设计OA系统中员工数据汇总模块</h2> <p>该系统员工包括正式员工和正式员工，每周人力资源部门和财务部门对每个员工数据进行汇总，使用访问者模式进行系统设计，使得系统可以很方便增加新类型的访问者，更加符合单一职责原则和开闭原则。</p> <h3 id="设计结构图"><a href="#设计结构图" aria-hidden="true" class="header-anchor">#</a> 设计结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/it1joXb.png"><img src="/pic/design/it1joXb.png" alt="结构图"></a></p> <p>在图中FADepartment表示财务部门，HRDepartment表示人力资源部，它们充当具体访问者角色，其抽象父类Department充当抽象访问者角色;EmployeeList充当对象结构，用于存储员工列表;FulltimeEmployee表示正式员工，ParttimeEmployee表示临时工，它们充当具体元素角色，其父接口Employee充当抽象元素角色</p> <h3 id="实现代码"><a href="#实现代码" aria-hidden="true" class="header-anchor">#</a> 实现代码</h3> <p><strong>员工类：抽象元素</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	public interface Employee <span class="token punctuation">{</span>
+		public void accept<span class="token punctuation">(</span>Department handler<span class="token punctuation">)</span><span class="token punctuation">;</span> // 接受一个抽象访问者访问
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>正式员工类：具体元素类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	public class FulltimeEmployee implements Employee <span class="token punctuation">{</span>
+	
+		private String name<span class="token punctuation">;</span>//员工名称
+		private	double weeklyWage<span class="token punctuation">;</span>//员工周薪
+		private int workTime<span class="token punctuation">;</span>//工作时间
+		
+		public FulltimeEmployee<span class="token punctuation">(</span>String name, double weeklyWage, int workTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+			this.weeklyWage <span class="token operator">=</span> weeklyWage<span class="token punctuation">;</span>
+			this.workTime <span class="token operator">=</span> workTime<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public String getName<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		public void setName<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		public double getWeeklyWage<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> weeklyWage<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		public void setWeeklyWage<span class="token punctuation">(</span>double weeklyWage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.weeklyWage <span class="token operator">=</span> weeklyWage<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		public int getWorkTime<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> workTime<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		public void setWorkTime<span class="token punctuation">(</span>int workTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.workTime <span class="token operator">=</span> workTime<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		@Override
+		public void accept<span class="token punctuation">(</span>Department handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			handler.visit<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>	//调用访问者的访问方法
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>兼职员工类：具体元素类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	
+	public class ParttimeEmployee implements Employee <span class="token punctuation">{</span>
+	
+		private String name<span class="token punctuation">;</span>//员工名称
+		private	double hourWage<span class="token punctuation">;</span>//员工周薪
+		private int workTime<span class="token punctuation">;</span>//工作时间
+		
+		public ParttimeEmployee<span class="token punctuation">(</span>String name, double hourWage, int workTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+			this.hourWage <span class="token operator">=</span> hourWage<span class="token punctuation">;</span>
+			this.workTime <span class="token operator">=</span> workTime<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public String getName<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		public void setName<span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+	
+	
+		public double getHourWage<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> hourWage<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setHourWage<span class="token punctuation">(</span>double hourWage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.hourWage <span class="token operator">=</span> hourWage<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public int getWorkTime<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> workTime<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		public void setWorkTime<span class="token punctuation">(</span>int workTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.workTime <span class="token operator">=</span> workTime<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	
+	
+		@Override
+		public void accept<span class="token punctuation">(</span>Department handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			handler.visit<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>	//调用访问者的访问方法
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>部门类：抽象访问者</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	public abstract class Department <span class="token punctuation">{</span>
+		//声明一组重载的访问方法，用于访问不同类型的具体元素
+		public abstract void visit<span class="token punctuation">(</span>FulltimeEmployee employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		public abstract void visit<span class="token punctuation">(</span>ParttimeEmployee employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>财务部类：具体访问者类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	public class FADepartment extends Department <span class="token punctuation">{</span>
+	
+		//实现财务部对全职员工的访问
+		public void visit<span class="token punctuation">(</span>FulltimeEmployee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			int workTime <span class="token operator">=</span> employee.getWorkTime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			double weekWage <span class="token operator">=</span> employee.getWeeklyWage<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			if<span class="token punctuation">(</span>workTime <span class="token operator">&gt;</span> 40<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				weekWage <span class="token operator">=</span> weekWage + <span class="token punctuation">(</span>workTime - 40<span class="token punctuation">)</span> * 100<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>workTime <span class="token operator">&lt;</span> 40<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				weekWage <span class="token operator">=</span> weekWage - <span class="token punctuation">(</span>40 - workTime<span class="token punctuation">)</span> * 80<span class="token punctuation">;</span>
+				if<span class="token punctuation">(</span>weekWage <span class="token operator">&lt;</span> 0<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					weekWage <span class="token operator">=</span> 0<span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;正式员工：&quot;</span> + employee.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;实际实际工资为：&quot;</span> + weekWage + <span class="token string">&quot;元&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//实现财务部对兼职员工的访问
+		public void visit<span class="token punctuation">(</span>ParttimeEmployee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			int weeTime <span class="token operator">=</span> employee.getWorkTime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			double hourWage <span class="token operator">=</span> employee.getHourWage<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;临时工&quot;</span> + employee.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;实际工资为 &quot;</span> + weeTime * hourWage + <span class="token string">&quot;元&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>人力资源部类：具体访问者类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+
+	public class HRDepartment extends Department <span class="token punctuation">{</span>
+	
+		//实现人力资源部对全职员工的访问
+		public void visit<span class="token punctuation">(</span>FulltimeEmployee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			int workTime <span class="token operator">=</span> employee.getWorkTime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;正式员工&quot;</span> + employee.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;实际工作时间为&quot;</span> + workTime + <span class="token string">&quot;小时&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			if<span class="token punctuation">(</span>workTime <span class="token operator">&gt;</span> 40<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;正式员工&quot;</span> + employee.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;实际工作时间为&quot;</span> + workTime + <span class="token string">&quot;小时&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">else</span> if<span class="token punctuation">(</span>workTime <span class="token operator">&lt;</span> 40<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				System.out.println<span class="token punctuation">(</span><span class="token string">&quot;正式员工&quot;</span> + employee.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;请假时间为&quot;</span> + <span class="token punctuation">(</span>40 -workTime<span class="token punctuation">)</span> + <span class="token string">&quot;小时&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	
+		//实现人力资源部对兼职员工的访问
+		public void visit<span class="token punctuation">(</span>ParttimeEmployee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			int workTime <span class="token operator">=</span> employee.getWorkTime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;临时工&quot;</span> + employee.getName<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;实际工作时间为：&quot;</span> + workTime + <span class="token string">&quot;小时&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p>**员工列表类：对象结构	**</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	<span class="token function">import</span> java.util.ArrayList<span class="token punctuation">;</span>
+	
+	public class EmployeeList <span class="token punctuation">{</span>
+		//定义一个集合用于存储员工对象
+		private ArrayList<span class="token operator">&lt;</span>Employee<span class="token operator">&gt;</span> list <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>Employee<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		public void addEmployee<span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			list.add<span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//遍历访问员工集合中的每一个员工对象
+		public void accept<span class="token punctuation">(</span>Department handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			for<span class="token punctuation">(</span>Object obj <span class="token keyword">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token punctuation">((</span>Employee<span class="token punctuation">)</span> obj<span class="token punctuation">)</span>.accept<span class="token punctuation">(</span>handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>为了提高系统的灵活性和可扩展性，将具体访问者类的类名存储在配置文件config.xml中，并通过工具类XMLUtil类读取配置文件并反射生成对象。XMLUtil类的代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	
+	<span class="token function">import</span> java.io.File<span class="token punctuation">;</span>
+	
+	<span class="token function">import</span> javax.xml.parsers.DocumentBuilder<span class="token punctuation">;</span>
+	<span class="token function">import</span> javax.xml.parsers.DocumentBuilderFactory<span class="token punctuation">;</span>
+	
+	<span class="token function">import</span> org.w3c.dom.Document<span class="token punctuation">;</span>
+	<span class="token function">import</span> org.w3c.dom.Node<span class="token punctuation">;</span>
+	<span class="token function">import</span> org.w3c.dom.NodeList<span class="token punctuation">;</span>
+	
+	public class XMLUtil<span class="token punctuation">{</span>
+		//该方法用于从XML配置文件中提取具体类类名，并返回一个实例对象
+		public static Object getBean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			try <span class="token punctuation">{</span>
+				//创建对象
+				DocumentBuilderFactory dFactory <span class="token operator">=</span> DocumentBuilderFactory.newInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				DocumentBuilder builder <span class="token operator">=</span> dFactory.newDocumentBuilder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Document doc<span class="token punctuation">;</span>
+				doc <span class="token operator">=</span> builder.parse<span class="token punctuation">(</span>new File<span class="token punctuation">(</span><span class="token string">&quot;config.xml&quot;</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+				
+				//获取包含类名的文本节点
+				NodeList <span class="token function">nl</span> <span class="token operator">=</span> doc.getElementsByTagName<span class="token punctuation">(</span><span class="token string">&quot;className&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Node classNode <span class="token operator">=</span> nl.item<span class="token punctuation">(</span>0<span class="token punctuation">)</span>.getFirstChild<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				String cName <span class="token operator">=</span> classNode.getNodeValue<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				
+				//通过类名生成实例对象，并将其返回
+				Class c <span class="token operator">=</span> Class.forName<span class="token punctuation">(</span>cName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Object obj <span class="token operator">=</span> c.newInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>catch <span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				e.printStackTrace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> null<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>配置文件config.xml</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	<span class="token operator">&lt;</span>?xml version <span class="token operator">=</span> <span class="token string">&quot;1.0&quot;</span>?<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>config<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>className<span class="token operator">&gt;</span>FADepartment<span class="token operator">&lt;</span>/className<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>/config<span class="token operator">&gt;</span>
+</code></pre></div><p><strong>客户端测试代码</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.visitorpattern<span class="token punctuation">;</span>
+	
+	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			EmployeeList list <span class="token operator">=</span> new EmployeeList<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			Employee fte1, fte2, fte3, pte1, pte2<span class="token punctuation">;</span>
+			
+			fte1 <span class="token operator">=</span> new FulltimeEmployee<span class="token punctuation">(</span><span class="token string">&quot;张无忌&quot;</span>, 3200.00,  45<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			fte2 <span class="token operator">=</span> new FulltimeEmployee<span class="token punctuation">(</span><span class="token string">&quot;杨过&quot;</span>, 2000.00,  49<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			fte3 <span class="token operator">=</span> new FulltimeEmployee<span class="token punctuation">(</span><span class="token string">&quot;段誉&quot;</span>, 2400.00,  38<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			pte1 <span class="token operator">=</span> new ParttimeEmployee<span class="token punctuation">(</span><span class="token string">&quot;洪七公&quot;</span>, 80.00,  20<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			pte2 <span class="token operator">=</span> new ParttimeEmployee<span class="token punctuation">(</span><span class="token string">&quot;郭靖&quot;</span>, 60.00,  18<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			list.addEmployee<span class="token punctuation">(</span>fte1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			list.addEmployee<span class="token punctuation">(</span>fte2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			list.addEmployee<span class="token punctuation">(</span>fte3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			list.addEmployee<span class="token punctuation">(</span>pte1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			list.addEmployee<span class="token punctuation">(</span>pte2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			Department dep<span class="token punctuation">;</span>
+			dep <span class="token operator">=</span> <span class="token punctuation">(</span>Department<span class="token punctuation">)</span>XMLUtil.getBean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			list.accept<span class="token punctuation">(</span>dep<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>如果要是在系统中增加一种新的访问者，无需修改源代码，只要增加一个新的具体访问者类即可，在该具体访问者中封装了新的操作元素对象的方法，从增加新的访问者的角度来看，访问者模式符合开闭原则。</p> <p>如果要在系统中增加一种新的具体元素，例如增加一种新的员工类型如‘退休人员’，由于原有系统并未提供相应的访问接口（在抽象访问者中没有声明任何访问‘退休人员’的方法），因此必须对原有的系统进行修改，在原有的抽闲访问者类和具体访问者类中增加相应的访问方法。从增加新的元素的角度来看，访问者模式违背了开闭原则。</p> <p>综上所述，访问者模式与抽象工厂模式类似，对开闭原则的支持具有倾斜性，可以很方便地添加新的访问者，但是添加新的元素较为麻烦。</p> <h2 id="访问者模式与组合模式联用"><a href="#访问者模式与组合模式联用" aria-hidden="true" class="header-anchor">#</a> 访问者模式与组合模式联用</h2> <p>在访问者模式中，包含一个用于存储元素对象集合的对象结构，通常可以使用迭代器来遍历对象结构，同时具体元素之间可以存在整体与部分关系，有些元素作为容器对象，有些元素作为成员对象，可以使用组合模式来组织元素。引入组合模式后的访问者模式结构图如下</p> <p><a data-fancybox="" title="结构图" href="/pic/design/6WNjn9z.png"><img src="/pic/design/6WNjn9z.png" alt="结构图"></a></p> <h2 id="主要优点"><a href="#主要优点" aria-hidden="true" class="header-anchor">#</a> 主要优点</h2> <ol><li><p>增加新的访问操作很方便。使用访问者模式，增加新的访问模式操作意味着增加一个新的具体访问者类，实现简单，无需修改源代码，符合开闭原则。</p></li> <li><p>将有关元素对象的访问行为集中到一个访问者对象中，而不是分散在一个个的元素类中，类的职责更加清晰，有利于对象结构中元素对象的复用，相同的对象结构可以供多个访问者访问。</p></li> <li><p>让用户能够在不修改现有元素类层次结构的情况下，定义作用于该层次结构的操作。</p></li></ol> <h2 id="主要缺点"><a href="#主要缺点" aria-hidden="true" class="header-anchor">#</a> 主要缺点</h2> <ol><li><p>增加新的元素很困难。在访问者模式中，每增加一个新的元素类都意味着要在抽象访问角色中增加一个新的抽象操作，并在每一个具体访问者类中增加相应的具体操作，这违背了开闭原则的要求</p></li> <li><p>需要对一个对象结构中的对象进行很多不同的并且不相关的操作，并且需要避免让这些操作‘污染’这些对象的类，也不希望在增加新操作时修改这些类。访问者模式将相关的访问操作集中起来定义在访问者类中，对象结构可以被多个不同的访问者类所使用，将对象本身与对象的访问操作分离</p></li> <li><p>对象结构中对象对应的类很少改变，但经常需要在此对象结构上定义新的操作</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/027_Template_Method_Pattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        模板方法模式
+      </a></span> <!----></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/44.b1d85a5c.js" defer></script>
+  </body>
+</html>

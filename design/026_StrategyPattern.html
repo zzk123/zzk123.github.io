@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>策略模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/42.c9148681.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="sidebar-link">职责链模式</a></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="sidebar-link">解释器模式</a></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="sidebar-link">备忘录模式</a></li><li><a href="/design/023_IteratorPattern.html" class="sidebar-link">迭代器模式</a></li><li><a href="/design/024_ObserverPattern.html" class="sidebar-link">观察者模式</a></li><li><a href="/design/025_StatePattern.html" class="sidebar-link">状态模式</a></li><li><a href="/design/026_StrategyPattern.html" class="active sidebar-link">策略模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#示意图" class="sidebar-link">示意图</a></li><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#实例：电影票打折方案" class="sidebar-link">实例：电影票打折方案</a></li><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#主要优点" class="sidebar-link">主要优点</a></li><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#主要缺点" class="sidebar-link">主要缺点</a></li><li class="sidebar-sub-header"><a href="/design/026_StrategyPattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="sidebar-link">访问者模式</a></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <p>在策略模式中，可以定义一些独立的类来封装不同的算法，每一个类封装一种具体的算法。在这里，每一个封装算法的类都可以称之为一种策略（Strategy），为了保证这些策略在使用时具有一致性，一般会提供一个抽象的策略类来做规则的定义，而每种算法则对应于一个具体策略类。</p> <p>策略模式的主要目的是将算法的定义与使用分开，也就是将算法的行为和环境分开，将算法的定义放在专门的策略类中，每一个策略类封装了一种实现算法，使用算法的环境类针对抽象策略类进行编程，符合依赖倒转原则。在出现新的算法时，只需要增加一个新的实现了抽象策略类的具体策略类即可。</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>策略模式（Strategy Pattern）：定义了一系列算法类，将每一个算法封装起来，并让它们可以互相替换。策略模式让算法独立于使用它的客户而变化，也称之为政策模式（Policy）。策略模式是一种对象行为型模式。</p></blockquote> <h2 id="示意图"><a href="#示意图" aria-hidden="true" class="header-anchor">#</a> 示意图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/kYqrmWN.png"><img src="/pic/design/kYqrmWN.png" alt="结构图"></a></p> <ol><li><strong>Context（环境类）</strong>：环境类是使用算法的角色，它在解决某个问题（即实现某个方法）时采用了多种策略。在环境类中维持一个对抽象策略类的引用实例，用于定义所采用的策略</li> <li><strong>Strategy（抽象策略类）</strong>：它为所支持的算法声明了抽象方法，是所有策略类的父类，它可以是抽象类或具体类，也可以是接口。环境类通过抽象策略类中声明的方法在运行时调用具体策略类中实现的算法。</li> <li><strong>ConcreteStrategy（具体策略类）</strong>：它实现了在抽象策略类中声明的算法，在运行时，具体策略类将覆盖在环境类中定义的抽象策略类对象，使用一种具体的算法实现某个业务处理。</li></ol> <p><strong>策略模式是一个比较容易理解和使用的设计模式策略模式是对算法的封装</strong>，它把算法的责任和算法本身分割开，委派给不同的对象管理。策略模式通常把一个系列的算法封装到一系列具体策略类里面，作为抽象策略类的子类。在策略模式中，对环境类和抽象策略类的理解非常重要，环境类是需要使用算法的类。在一个系统中可以存在多个环境类，他们可能需要重用到一些相同的算法。</p> <p>在使用策略模式时，需要将算法从Context类中提取出来，首先应该创建一个抽象策略类，其典型的代码如下</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	abstract class AbstractStrategy<span class="token punctuation">{</span>
+		public abstract void algorithm<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>		//声明抽象算法 
+	<span class="token punctuation">}</span>
+</code></pre></div><p>然后再将封装每一种具体算法的类作为该抽象策略类的子类，代码如下</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ConcreteStrategyA extends AbstractStrategy<span class="token punctuation">{</span>
+		//算法的具体实现
+		public void algrithm<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			//算法A
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在其他具体策略类与之类似，对于Context类而言，在它与抽象策略类之间建立一个关联关系，其典型代码如下</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class Context<span class="token punctuation">{</span>
+		private AbstractStrategy strategy<span class="token punctuation">;</span>	//维持一个对抽象策略类的引用
+		
+		public void setStrategy<span class="token punctuation">(</span>AbstractStrategy strategy<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.strategy <span class="token operator">=</span> strategy<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		//调用策略类中的算法
+		public void algorithm<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			strategy.algorithm<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在Context类中定义一个AbstractStrategy类型的对象strategy，通过注入的方式在客户端传入一个具体策略对象，客户端代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	<span class="token punctuation">..</span><span class="token punctuation">..</span>
+	Context context <span class="token operator">=</span> new Context<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	AbtractStrategy strategy<span class="token punctuation">;</span>
+	strategy <span class="token operator">=</span> new ConcreteStrategy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//可在运行时指定类型
+	context.setStrategy<span class="token punctuation">(</span>strategy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	context,algorithm<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">..</span><span class="token punctuation">..</span>
+</code></pre></div><p>在客户端代码中只需注入一个具体策略对象，可以将具体策略类类名存储在配置文件中，通过反射来动态创建具体策略对象，从而使得用户可以灵活地更换具体策略类，增加新的具体策略类也挺方便。策略类提供了一种**可插入式（Pluggable）**算法的实现方案</p> <h2 id="实例：电影票打折方案"><a href="#实例：电影票打折方案" aria-hidden="true" class="header-anchor">#</a> 实例：电影票打折方案</h2> <p>使用策略模式设计电影票打折方案，实现了打折算法的复用，并且能够灵活的向系统中增加新的打折方式</p> <h3 id="设计结构图"><a href="#设计结构图" aria-hidden="true" class="header-anchor">#</a> 设计结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/2ZyZ71H.png"><img src="/pic/design/2ZyZ71H.png" alt="结构图"></a></p> <p>在图中MovieTicket充当环境类角色，Discount充当抽象策略角色，StudentDiscount、ChildrenDiscount和VIPDiscount充当具体策略角色。</p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>电影票类：环境类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class MovieTicket <span class="token punctuation">{</span>
+		
+		private double price<span class="token punctuation">;</span>
+		private Discount discount<span class="token punctuation">;</span>	//维持一个抽象折扣类的引用
+		
+		public void setPrice<span class="token punctuation">(</span>double price<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.price <span class="token operator">=</span> price<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//注入一个折扣类对象
+		public void setDiscount<span class="token punctuation">(</span>Discount discount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.discount <span class="token operator">=</span> discount<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public double getPrice<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			//调用折扣类的折扣计算方法
+			<span class="token keyword">return</span> discount.calculate<span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>折扣类：抽象策略类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public interface Discount <span class="token punctuation">{</span>
+		public double calculate<span class="token punctuation">(</span>double price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>学生票折扣类：具体策略类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class StudentDiscount implements Discount <span class="token punctuation">{</span>
+	
+		@Override
+		public double calculate<span class="token punctuation">(</span>double price<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;学生票：&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> price * 0.8<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>儿童票折扣类：具体策略类</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class ChildrenDiscount implements Discount <span class="token punctuation">{</span>
+	
+		@Override
+		public double calculate<span class="token punctuation">(</span>double price<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;儿童票：&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> price - 10<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>通过工具类XMLUtil来读取配置文件并反射生成对象</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class XMLUtil<span class="token punctuation">{</span>
+		//该方法用于从XML配置文件中提取具体类类名，并返回一个实例对象
+		public static Object getBean<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			try <span class="token punctuation">{</span>
+				//创建对象
+				DocumentBuilderFactory dFactory <span class="token operator">=</span> DocumentBuilderFactory.newInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				DocumentBuilder builder <span class="token operator">=</span> dFactory.newDocumentBuilder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Document doc<span class="token punctuation">;</span>
+				doc <span class="token operator">=</span> builder.parse<span class="token punctuation">(</span>new File<span class="token punctuation">(</span><span class="token string">&quot;config.xml&quot;</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+				
+				//获取包含类名的文本节点
+				NodeList <span class="token function">nl</span> <span class="token operator">=</span> doc.getElementsByTagName<span class="token punctuation">(</span><span class="token string">&quot;className&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Node classNode <span class="token operator">=</span> nl.item<span class="token punctuation">(</span>0<span class="token punctuation">)</span>.getFirstChild<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				String cName <span class="token operator">=</span> classNode.getNodeValue<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				
+				//通过类名生成实例对象，并将其返回
+				Class c <span class="token operator">=</span> Class.forName<span class="token punctuation">(</span>cName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				Object obj <span class="token operator">=</span> c.newInstance<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>catch <span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				e.printStackTrace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> null<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>配置文件：config.xml</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	<span class="token operator">&lt;</span>?xml version <span class="token operator">=</span> <span class="token string">&quot;1.0&quot;</span>?<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>config<span class="token operator">&gt;</span>
+		<span class="token operator">&lt;</span>className<span class="token operator">&gt;</span>StudentDiscount<span class="token operator">&lt;</span>/className<span class="token operator">&gt;</span>
+	<span class="token operator">&lt;</span>/config<span class="token operator">&gt;</span>
+</code></pre></div><p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			MovieTicket mt <span class="token operator">=</span> new MovieTicket<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			double originalPrice <span class="token operator">=</span> 60.0<span class="token punctuation">;</span>
+			double currentPrice<span class="token punctuation">;</span>
+			
+			mt.setPrice<span class="token punctuation">(</span>originalPrice<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;原始价为：&quot;</span> + originalPrice<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			Discount discount<span class="token punctuation">;</span>
+			discount <span class="token operator">=</span> <span class="token punctuation">(</span>Discount<span class="token punctuation">)</span>XMLUtil.getBean<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	//读取配置文件并反射生成具体折扣对象
+			mt.setDiscount<span class="token punctuation">(</span>discount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+			currentPrice <span class="token operator">=</span> mt.getPrice<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;折扣后：&quot;</span> + currentPrice<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>如果需要增加新的打折方式，原有代码均无需修改，只要增加一个新的折扣类作为抽象折扣类的子类，实现在抽象折扣中声明的打折方法，然后修改配置文件，将原有具体打折类类名改名为新增折扣类类名即可，完全符合开闭原则。</p> <h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>策略模式用于算法的自由切换和扩展，它是应用较为广泛的设计模式之一。策略模式对应于解决某一问题的一个算法族，允许用户从该算法族中任选一个算法来解决某一问题，同时可以方便地更换算法或者增加新的算法。只要涉及算法的封装，复用和切换都可以考虑使用策略模式</p> <h2 id="主要优点"><a href="#主要优点" aria-hidden="true" class="header-anchor">#</a> 主要优点</h2> <ol><li><p>策略模式提供了开闭原则的完美支持，用户可以在不修改原有系统的基础上选择算法或行为，也可以灵活地增加新的算法或行为。</p></li> <li><p>策略模式提供了管理相关的算法族的办法。策略类的等级结构定义了一个算法或行为族，恰当使用继承可以把公共的代码移到抽象策略类中，从而避免重复的代码。</p></li> <li><p>策略模式提供了一种可以替换继承关系的办法。如果不使用策略模式，那么使用算法的环境类就可能会有一些子类，每一个子类提供不同的算法。但是，这样一来算法的使用就和算法本身混在一起，不符合单一职责原则，决定使用哪一种算法的逻辑和该算法本身混合在一起，从而不可能再独立演化；而且使用继承无法实现算法或行为在程序运行时的动态切换。</p></li> <li><p>使用策略类可以避免多重条件选择语句，多重条件选择语句不易维护，它把采取哪一种算法或行为的逻辑与算法或行为本身的实现逻辑混合在一起，将它们全部硬编码（Hard Coding）在一个庞大的多重条件选择语句中，比直接继承环境类的办法还要原始和落后。</p></li> <li><p>策略模式提供了一种算法的复用机制，由于将算法单独提取出来封装在策略类中，因此不用的环境类可以方便地复用这些策略类。</p></li></ol> <h2 id="主要缺点"><a href="#主要缺点" aria-hidden="true" class="header-anchor">#</a> 主要缺点</h2> <ol><li><p>客户端必须知道所有的策略类，并自行决定使用哪一种策略类，这就意味着客户端必须理解这些算法的区别，以便适时选择恰当的算法，换言之，策略模式只适用于客户端知道所有的算法或行为的情况</p></li> <li><p>策略模式将造成系统产生很多具体策略类，任何细小的变化都导致系统要增加一个新的具体策略类。</p></li> <li><p>无法同时在客户端使用多个策略类，也就是，在使用策略模式时，客户端每次只能使用一个策略类，不支持使用一个策略类完成部分功能后再使用另一个策略类来完成剩余功能。</p></li></ol> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>一个系统需要动态地在几种算法中选择一种，那么可以将这些算法封装到一个个的具体算法中，而这些具体算法类都是一个抽象算法类的子类，换言之，这些具体算法类均有统一的接口，根据里氏代换原则和面向对象的多态性，客户端可以选择使用任何一个具体算法类，并只需维持一个数据类型是抽象算法的对象。</p></li> <li><p>一个对象很多的行为，如果不用恰当的模式，这些行为就只好使用多重条件选择语句来实现。此时，使用策略模式，把这些行为转移到相应的具体策略类里面，就可以避免使用难以维护的多重条件选择语句。</p></li> <li><p>不希望客户知道复杂的，与算法相关的数据结构，在具体策略类中封装算法与相关的数据结构，可以提高算法的保密性和安全性</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/025_StatePattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        状态模式
+      </a></span> <span class="next"><a href="/design/027_Template_Method_Pattern.html">
+        模板方法模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/42.c9148681.js" defer></script>
+  </body>
+</html>

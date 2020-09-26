@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>备忘录模式 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/38.d42b82e0.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/13.788181fe.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/design/" class="router-link-active">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/algorithm/">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/design/001_Preface.html" class="sidebar-link">前言</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>创建者模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>结构性模式</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>行为性模式</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/design/017_BehavioralPattern.html" class="sidebar-link">介绍</a></li><li><a href="/design/018_ChainofResponsibilityPattern.html" class="sidebar-link">职责链模式</a></li><li><a href="/design/019_CommandPattern.html" class="sidebar-link">命令模式</a></li><li><a href="/design/020_InterpreterPattern.html" class="sidebar-link">解释器模式</a></li><li><a href="/design/021_MediatorPattern.html" class="sidebar-link">中介者模式</a></li><li><a href="/design/022_MementoPattern.html" class="active sidebar-link">备忘录模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#结构图" class="sidebar-link">结构图</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#代码实例" class="sidebar-link">代码实例</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#实例-中国象棋撤销功能的实现" class="sidebar-link">实例 中国象棋撤销功能的实现</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#实例改进：-实现多次撤销" class="sidebar-link">实例改进： 实现多次撤销</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#备忘录的封装" class="sidebar-link">备忘录的封装</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#优点" class="sidebar-link">优点</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#缺点" class="sidebar-link">缺点</a></li><li class="sidebar-sub-header"><a href="/design/022_MementoPattern.html#适用场景" class="sidebar-link">适用场景</a></li></ul></li><li><a href="/design/023_IteratorPattern.html" class="sidebar-link">迭代器模式</a></li><li><a href="/design/024_ObserverPattern.html" class="sidebar-link">观察者模式</a></li><li><a href="/design/025_StatePattern.html" class="sidebar-link">状态模式</a></li><li><a href="/design/026_StrategyPattern.html" class="sidebar-link">策略模式</a></li><li><a href="/design/027_Template_Method_Pattern.html" class="sidebar-link">模板方法模式</a></li><li><a href="/design/028_VisitorPattern.html" class="sidebar-link">访问者模式</a></li></ul></section></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="概述"><a href="#概述" aria-hidden="true" class="header-anchor">#</a> 概述</h2> <p>备忘录模式提供了一种状态恢复的实现机制，使得用户可以方便地回到一个特定的历史步骤，当新的状态无效或者存在问题时，可以使用暂时存储起来的备忘录将状态复原。当前很多软件都提供撤销（Undo）操作，其中就使用了备忘录。</p> <h2 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h2> <blockquote><p>备忘录模式（Memento Pattern）：在不破坏封装的前提下，捕获一个对象的内部状态，并在该对象之外保存了这个状态，这样就可以在以后将对象恢复到原先保存的状态。它是一种<strong>对象行为型模式</strong>，其别名为Token</p></blockquote> <h2 id="结构图"><a href="#结构图" aria-hidden="true" class="header-anchor">#</a> 结构图</h2> <p><a data-fancybox="" title="结构图" href="/pic/design/t44dQ1q.png"><img src="/pic/design/t44dQ1q.png" alt="结构图"></a></p> <p>备忘录模式的核心是备忘录类以及用于管理备忘录的负责人类的设计，其结构如上图所示</p> <ol><li><p><strong>Originator（原发器）</strong>：它是一个普通类，可以创建一个备忘录，并存储其当前内部状态，也可以使用备忘录来恢复其内部状态，一般将需要保存内部状态的类设计为原发器。</p></li> <li><p><strong>Memento（备忘录）</strong>：存储原发器的内部状态，根据原发器来决定保存哪些内部状态。备忘录的设计一般可以参考原发器的设计，根据实际需要确定备忘录类中的属性。需要注意的是，除了原发器本身与负责人类之外，备忘录对象不能直接供其他类使用，原发器的设计在不同的编程语言中实现机制会有所不同</p></li> <li><p><strong>Caretaker（负责人）</strong>：负责人又称为管理者，它负责保存备忘录，但是不能对备忘录的内容进行操作或检查。在负责人类中可以存储一个或者多个备忘录对象，它只负责存储对象，而不能修改对象，也无须知道对象的实现细节。</p></li></ol> <h2 id="代码实例"><a href="#代码实例" aria-hidden="true" class="header-anchor">#</a> 代码实例</h2> <p>实现备忘录并不难，但关键在于如何设计备忘录类和负责人类。由于在备忘录中存储的是原发器的中间状态，因此需要防止原发器以外的其他对象访问备忘录，特别是不允许其他对象来修改备忘录。</p> <p>在使用备忘录模式时，首先应该存在一个原发器类Originator，在真实业务中，原发器类是一个具体的业务类，它包含了一些用于存储成员数据的属性，典型的代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Originator<span class="token punctuation">{</span>
+		private String state<span class="token punctuation">;</span>
+
+		public Originator<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+		//创建一个备忘录对象
+		public Memento createMemento<span class="token punctuation">{</span>
+			<span class="token keyword">return</span> new Memento<span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		//根据备忘录对象恢复原发器的状态
+		public void restoreMemeto<span class="token punctuation">(</span>Memeto m<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			state <span class="token operator">=</span> m.state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		public void setState<span class="token punctuation">(</span>String state<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.statte <span class="token operator">=</span> state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		public String getState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">return</span> this.state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>对于备忘录Memento而言，它通常提供了与原发器相对应的属性（可以是全部，也可以是部分）用于存储原发器的状态，典型的备忘录类设计代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	//备忘录类，默认可见性，包内可见
+	class Memento <span class="token punctuation">{</span>
+
+		private String state<span class="token punctuation">;</span>
+
+		public Memento<span class="token punctuation">(</span>Originator o<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			state <span class="token operator">=</span> o.getState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public void setState<span class="token punctuation">(</span>String state<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.state <span class="token operator">=</span> state<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public String getState<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">return</span> this.state<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>在设计备忘录类时需要考虑其封装性，除了Originator类，不允许其他类来调用备忘录类Memento的构造函数与相关方法。如果不考虑封装性，允许其他类调用setState()等方法，将导致在备忘录中保存的历史状态发生改变，通过撤销操作所恢复的状态将不再是真实的历史状态，备忘录模式也就失去了本身的意义。</p> <p>在使用java语言实现备忘录模式时，一般通过将Memento类与Originator类定义在同一个包中来实现封装，在java语言中可使用默认访问标识符类定义Memento类，即保证其包内可见。只有Originator类可以对Memento进行访问，而限制了其他类对Memento的访问，在Memento中保存了Originator的state的值，如果Originator中的state值改变之后撤销，可以通过调用它的restoreMemento（）方法进行恢复</p> <p>对于负责人类Caretaker，它用于保存备忘录对象，并提供getMeme()方法用于向客户端返回一个备忘录对象，原发器通过使用这个备忘录对象可以回到某个历史状态，典型的负责人类的实现代码如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Caretaker<span class="token punctuation">{</span>
+
+		private Memento memento<span class="token punctuation">;</span>
+
+		public Memento getMemeto<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">return</span> memento<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		public void setMemento<span class="token punctuation">(</span>Memento memento<span class="token punctuation">)</span><span class="token punctuation">{</span>
+			this.memento <span class="token operator">=</span> memento<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span> 
+</code></pre></div><p>在Caretaler类中不应该直接调用Memento中的状态改变方法，它的作用仅仅用于存储备忘录对象。将原发器备份生成的备忘录对象存储在其中，当用户需要对原发器进行恢复时再将存储在其中的备忘录对象取出来。</p> <h2 id="实例-中国象棋撤销功能的实现"><a href="#实例-中国象棋撤销功能的实现" aria-hidden="true" class="header-anchor">#</a> 实例 中国象棋撤销功能的实现</h2> <h3 id="结构图-2"><a href="#结构图-2" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/DmOR1l6.png"><img src="/pic/design/DmOR1l6.png" alt="结构图"></a></p> <h3 id="代码实现"><a href="#代码实现" aria-hidden="true" class="header-anchor">#</a> 代码实现</h3> <p><strong>象棋棋子类：原发器</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	package com.zzk.mementopattern<span class="token punctuation">;</span>
+	public class Chessman <span class="token punctuation">{</span>
+		private String label<span class="token punctuation">;</span>
+		private int x<span class="token punctuation">;</span>
+		private int y<span class="token punctuation">;</span>
+		
+		public Chessman<span class="token punctuation">(</span>String label, int x, int y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.label <span class="token operator">=</span> label<span class="token punctuation">;</span>
+			this.x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+			this.y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public String getLabel<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> label<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setLabel<span class="token punctuation">(</span>String label<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.label <span class="token operator">=</span> label<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public int getX<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> x<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setX<span class="token punctuation">(</span>int x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public int getY<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setY<span class="token punctuation">(</span>int y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//保存状态
+		public ChessmanMemento save<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> new ChessmanMemento<span class="token punctuation">(</span>this.label, this.x, this.y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		//恢复状态
+		public void restore<span class="token punctuation">(</span>ChessmanMemento memento<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.label <span class="token operator">=</span> memento.getLabel<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			this.x <span class="token operator">=</span> memento.getX<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			this.y <span class="token operator">=</span> memento.getY<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>象棋棋子备忘录类：备忘录</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	class ChessmanMemento <span class="token punctuation">{</span>
+		private String label<span class="token punctuation">;</span>
+		private int x<span class="token punctuation">;</span>
+		private int y<span class="token punctuation">;</span>
+		
+		public ChessmanMemento<span class="token punctuation">(</span>String label, int x, int y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.label <span class="token operator">=</span> label<span class="token punctuation">;</span>
+			this.x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+			this.y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public String getLabel<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> label<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setLabel<span class="token punctuation">(</span>String label<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.label <span class="token operator">=</span> label<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public int getX<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> x<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setX<span class="token punctuation">(</span>int x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public int getY<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setY<span class="token punctuation">(</span>int y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.y <span class="token operator">=</span> y<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>象棋棋子备忘录管理类：负责人</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class MementoCaretaker <span class="token punctuation">{</span>
+		private ChessmanMemento memento<span class="token punctuation">;</span>
+	
+		public ChessmanMemento getMemento<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> memento<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setMemento<span class="token punctuation">(</span>ChessmanMemento memento<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.memento <span class="token operator">=</span> memento<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			MementoCaretaker <span class="token function">mc</span> <span class="token operator">=</span> new MementoCaretaker<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			Chessman chess <span class="token operator">=</span> new Chessman<span class="token punctuation">(</span><span class="token string">&quot;车&quot;</span>, 1, 1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			display<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			mc.setMemento<span class="token punctuation">(</span>chess.save<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>//保存状态
+			chess.setY<span class="token punctuation">(</span>4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			display<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			mc.setMemento<span class="token punctuation">(</span>chess.save<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>//保存状态
+			display<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			chess.setX<span class="token punctuation">(</span>5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			display<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;********悔棋&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			chess.restore<span class="token punctuation">(</span>mc.getMemento<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span> //恢复状态
+			display<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		public static void display<span class="token punctuation">(</span>Chessman chess<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子&quot;</span>+ chess.getLabel<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;当前位置为：&quot;</span> 
+					+ <span class="token string">&quot;第&quot;</span> + chess.getX<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;行 ， 第&quot;</span> + chess.getY<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;列&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="实例改进：-实现多次撤销"><a href="#实例改进：-实现多次撤销" aria-hidden="true" class="header-anchor">#</a> 实例改进： 实现多次撤销</h2> <p>上述代码中只能实现一次撤销，因为在负责人类中只定义了一个备忘录对象来保存状态，后面保存的状态会将前一次保存的状态覆盖，但有时候用户需要撤销多步操作。如何实现多次撤销呢？那就是在负责人类中定义一个集合来存储多个备忘录，每个备忘录负责保存一个历史状态，在撤销时可以对备忘录集合进行逆向遍历，回到一个指定的历史状态，而且还可以对备忘录集合进行正向遍历，实现重做（Redo）或恢复操作，即取消撤销，让对象状态可以得到恢复。</p> <h3 id="结构图-3"><a href="#结构图-3" aria-hidden="true" class="header-anchor">#</a> 结构图</h3> <p><a data-fancybox="" title="结构图" href="/pic/design/qTmAXgF.png"><img src="/pic/design/qTmAXgF.png" alt="结构图"></a></p> <h3 id="代码修改"><a href="#代码修改" aria-hidden="true" class="header-anchor">#</a> 代码修改</h3> <p>在结构图中，对负责人类MementoCaretaker进行了修改，在其中定义了一个ArrayList类型的集合对象来存储多个备忘录，代码如下</p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class MementoCaretaker <span class="token punctuation">{</span>
+		//定义一个集合来存储多个备忘录
+		private ArrayList<span class="token operator">&lt;</span>ChessmanMemento<span class="token operator">&gt;</span> mementolist <span class="token operator">=</span> new ArrayList<span class="token operator">&lt;</span>ChessmanMemento<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+		public ChessmanMemento getMementolist<span class="token punctuation">(</span>int i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> mementolist.get<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	
+		public void setMementolist<span class="token punctuation">(</span>ChessmanMemento memento<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			this.mementolist.add<span class="token punctuation">(</span>memento<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		
+	<span class="token punctuation">}</span>
+</code></pre></div><p><strong>客户端测试</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code>	public class Client <span class="token punctuation">{</span>
+		private static int index <span class="token operator">=</span> -1<span class="token punctuation">;</span>  //定义一个索引来记录当前状态所在位置
+		private static MementoCaretaker <span class="token function">mc</span> <span class="token operator">=</span> new MementoCaretaker<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		
+		public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			Chessman chess <span class="token operator">=</span> new Chessman<span class="token punctuation">(</span><span class="token string">&quot;车&quot;</span>, 1, 1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			play<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			chess.setY<span class="token punctuation">(</span>4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			play<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			chess.setX<span class="token punctuation">(</span>5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			play<span class="token punctuation">(</span>chess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			undo<span class="token punctuation">(</span>chess, index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			undo<span class="token punctuation">(</span>chess, index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			redo<span class="token punctuation">(</span>chess, index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			redo<span class="token punctuation">(</span>chess, index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			
+		<span class="token punctuation">}</span>
+		//下棋
+		public static void play<span class="token punctuation">(</span>Chessman chess<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			mc.setMementolist<span class="token punctuation">(</span>chess.save<span class="token punctuation">(</span><span class="token punctuation">))</span><span class="token punctuation">;</span>	//保存备忘录
+			index ++<span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子&quot;</span> + chess.getLabel<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;当前位置为:第&quot;</span> + chess.getX<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;行，第&quot;</span> + chess.getY<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;列&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		//悔棋
+		public static void undo<span class="token punctuation">(</span>Chessman chess, int i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;*********悔棋************&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			index -- <span class="token punctuation">;</span>
+			chess.restore<span class="token punctuation">(</span>mc.getMementolist<span class="token punctuation">(</span>i-1<span class="token punctuation">))</span><span class="token punctuation">;</span> //撤销到上一个备忘录
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子&quot;</span> + chess.getLabel<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;当前位置为第&quot;</span> + chess.getX<span class="token punctuation">(</span><span class="token punctuation">)</span> +<span class="token string">&quot;行，第&quot;</span>+chess.getY<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;列&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		
+		//撤销悔棋
+		public static void redo<span class="token punctuation">(</span>Chessman chess, int i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;***********撤销悔棋**************&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			index ++<span class="token punctuation">;</span>
+			chess.restore<span class="token punctuation">(</span>mc.getMementolist<span class="token punctuation">(</span>i+1<span class="token punctuation">))</span><span class="token punctuation">;</span>
+			System.out.println<span class="token punctuation">(</span><span class="token string">&quot;棋子&quot;</span> + chess.getLabel<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;当前位置为：第&quot;</span> + chess.getX<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;行，第&quot;</span> + chess.getY<span class="token punctuation">(</span><span class="token punctuation">)</span> + <span class="token string">&quot;列&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><h2 id="备忘录的封装"><a href="#备忘录的封装" aria-hidden="true" class="header-anchor">#</a> 备忘录的封装</h2> <p>备忘录是一个很特殊的对象，只有原发器对它拥有控制的权力，负责人只负责管理备忘录，而其他类无法直接访问到备忘录，因此需要对备忘录进行封装。</p> <p>为了实现对备忘录对象的封装，需要对备忘录的调用进行控制。对于原发器而言，它可以调用备忘录的所有信息，可以访问返回到先前状态所需的所有数据；对于负责人而言，只负责备忘录的保存并将备忘录传递给其他对象；对于其他对象而言，只需要从负责人处取出备忘录对象并将将原发器对象的状态恢复，无需关心备忘录的保存细节。理想的情况是只允许生成该备忘录的那个原发器访问备忘录的内部状态。</p> <p>在实际开发中，原发器与备忘录之间的关系是非常特殊的，它们要分享信息而不让其他类知道，实现方法因编程语言的不同而有所差异。在C++中可以使用friend关键字，让原发器类和备忘录类成为友元类，相互之间可以访问对方的一些私有属性；在java语言中可以将原发器类和备忘录类放在一个包中，让它们之间满足<strong>默认的包内可见性</strong>，也可以将备忘录类作为<strong>原发器类的内部类</strong>，使得只有原发器才可以访问备忘录中的数据，其他对象都无法直接使用备忘录中的数据。</p> <h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>备忘录模式在很多软件的使用过程中普遍存在，但是在应用软件开发中，它的使用频率并不太高，因为现在很多基于窗体和浏览器的应用软件并没有提供撤销操作。如果需要为软件提供撤销功能，备忘录模式无疑是一种很好的解决方案。在一些字处理软件，图像编辑软件，数据库管理系统等软件中备忘录模式都得到很好的应用。</p> <h2 id="优点"><a href="#优点" aria-hidden="true" class="header-anchor">#</a> 优点</h2> <ol><li><p>它提供一种状态恢复的实现机制，使得用户可以方便地回到一个特定的历史步骤，当新的状态无效或者存在问题时，可以使用暂时存储起来的备忘录将状态恢复</p></li> <li><p>备忘录实现了对信息的封装，一个备忘录对象是一种原发器对象状态的表示，不会被其他代码所改动。备忘录保存了原发器的状态，采用列表，堆栈等集合来存储备忘录对象可以实现多次撤销。</p></li></ol> <h2 id="缺点"><a href="#缺点" aria-hidden="true" class="header-anchor">#</a> 缺点</h2> <p>备忘录模式的主要缺点是：资源消耗过大，如果需要保存的原发器类的成员变量太多，就不可避免地需要占用大量的存储空间，每保存一次对象的状态都需要消耗一定的系统资源。</p> <h2 id="适用场景"><a href="#适用场景" aria-hidden="true" class="header-anchor">#</a> 适用场景</h2> <ol><li><p>保存一个对象在某一个时刻的全部状态或部分状态，这样以后需要时就能恢复到先前的状态，实现撤销操作</p></li> <li><p>防止外界对象破坏一个对象历史状态的封装性，避免将对象历史状态的实现细节暴露给外界对象</p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/design/021_MediatorPattern.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        中介者模式
+      </a></span> <span class="next"><a href="/design/023_IteratorPattern.html">
+        迭代器模式
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/38.d42b82e0.js" defer></script>
+  </body>
+</html>

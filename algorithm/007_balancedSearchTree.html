@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>平衡查找树 | Koala &#39;s blog</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="欢迎来到我的博客">
+    <link rel="preload" href="/assets/css/0.styles.0dca6718.css" as="style"><link rel="preload" href="/assets/js/app.193c9b61.js" as="script"><link rel="preload" href="/assets/js/2.be286493.js" as="script"><link rel="preload" href="/assets/js/13.788181fe.js" as="script"><link rel="prefetch" href="/assets/js/10.d195f939.js"><link rel="prefetch" href="/assets/js/11.dd42e2a6.js"><link rel="prefetch" href="/assets/js/12.ee2c872c.js"><link rel="prefetch" href="/assets/js/14.923b40d7.js"><link rel="prefetch" href="/assets/js/15.be1e8f2a.js"><link rel="prefetch" href="/assets/js/16.a5861f2e.js"><link rel="prefetch" href="/assets/js/17.0ca1cca8.js"><link rel="prefetch" href="/assets/js/18.3552af88.js"><link rel="prefetch" href="/assets/js/19.d0b598dd.js"><link rel="prefetch" href="/assets/js/20.312fba46.js"><link rel="prefetch" href="/assets/js/21.de99e5de.js"><link rel="prefetch" href="/assets/js/22.4cb1ef09.js"><link rel="prefetch" href="/assets/js/23.2e9ea85a.js"><link rel="prefetch" href="/assets/js/24.1cd100b8.js"><link rel="prefetch" href="/assets/js/25.c17ed571.js"><link rel="prefetch" href="/assets/js/26.cee42a14.js"><link rel="prefetch" href="/assets/js/27.34b9e8bb.js"><link rel="prefetch" href="/assets/js/28.a0fd1666.js"><link rel="prefetch" href="/assets/js/29.cc16a8ba.js"><link rel="prefetch" href="/assets/js/3.e2b53d75.js"><link rel="prefetch" href="/assets/js/30.4b4a9808.js"><link rel="prefetch" href="/assets/js/31.55d17ac2.js"><link rel="prefetch" href="/assets/js/32.e6285297.js"><link rel="prefetch" href="/assets/js/33.2cf9fcd0.js"><link rel="prefetch" href="/assets/js/34.549b5096.js"><link rel="prefetch" href="/assets/js/35.fd8c8f14.js"><link rel="prefetch" href="/assets/js/36.db162c08.js"><link rel="prefetch" href="/assets/js/37.f105831d.js"><link rel="prefetch" href="/assets/js/38.d42b82e0.js"><link rel="prefetch" href="/assets/js/39.eb81783f.js"><link rel="prefetch" href="/assets/js/4.2837b6be.js"><link rel="prefetch" href="/assets/js/40.87c4c789.js"><link rel="prefetch" href="/assets/js/41.fc9b4279.js"><link rel="prefetch" href="/assets/js/42.c9148681.js"><link rel="prefetch" href="/assets/js/43.dbe26f4f.js"><link rel="prefetch" href="/assets/js/44.b1d85a5c.js"><link rel="prefetch" href="/assets/js/45.5a1e6a7a.js"><link rel="prefetch" href="/assets/js/46.bd963e4a.js"><link rel="prefetch" href="/assets/js/47.f6e86edc.js"><link rel="prefetch" href="/assets/js/48.bdbc5c65.js"><link rel="prefetch" href="/assets/js/49.65ae461d.js"><link rel="prefetch" href="/assets/js/5.3f71247d.js"><link rel="prefetch" href="/assets/js/50.66be60b2.js"><link rel="prefetch" href="/assets/js/51.42b1c641.js"><link rel="prefetch" href="/assets/js/52.bb9f5b94.js"><link rel="prefetch" href="/assets/js/53.3ed95f43.js"><link rel="prefetch" href="/assets/js/54.b989fa99.js"><link rel="prefetch" href="/assets/js/55.7799c2bd.js"><link rel="prefetch" href="/assets/js/56.95e3d2fa.js"><link rel="prefetch" href="/assets/js/57.47649eef.js"><link rel="prefetch" href="/assets/js/58.c3ce9734.js"><link rel="prefetch" href="/assets/js/59.1e092fb4.js"><link rel="prefetch" href="/assets/js/6.ba15ebf3.js"><link rel="prefetch" href="/assets/js/60.ae57b5f2.js"><link rel="prefetch" href="/assets/js/61.68ecf247.js"><link rel="prefetch" href="/assets/js/62.42a2fc04.js"><link rel="prefetch" href="/assets/js/63.819b8db9.js"><link rel="prefetch" href="/assets/js/64.8034f4d3.js"><link rel="prefetch" href="/assets/js/65.fa291912.js"><link rel="prefetch" href="/assets/js/66.3db4dcf7.js"><link rel="prefetch" href="/assets/js/67.a66d7e55.js"><link rel="prefetch" href="/assets/js/68.cbaf17d3.js"><link rel="prefetch" href="/assets/js/7.6f9d368d.js"><link rel="prefetch" href="/assets/js/8.516fa0e1.js"><link rel="prefetch" href="/assets/js/9.f1946ce5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0dca6718.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container custom-page-class"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">Koala 's blog</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/" class="router-link-active">
+          Home
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item"><a href="/design/">
+          设计模式
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-item ant-menu-item-selected"><a href="/algorithm/" class="router-link-active">
+          算法相关
+        </a></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          java相关
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><a href="/algorithm/" class="sidebar-link">介绍</a></li><li><a href="/algorithm/001_base-theory.html" class="sidebar-link">时间复杂度</a></li><li><a href="/algorithm/002_union-find.html" class="sidebar-link">union-find 算法</a></li><li><a href="/algorithm/003_sort.html" class="sidebar-link">排序算法</a></li><li><a href="/algorithm/004_symboltable.html" class="sidebar-link">符号表的应用</a></li><li><a href="/algorithm/005_hashTable.html" class="sidebar-link">散列表</a></li><li><a href="/algorithm/006_binarySearchTree.html" class="sidebar-link">二叉查找树</a></li><li><a href="/algorithm/007_balancedSearchTree.html" class="active sidebar-link">平衡查找树</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/algorithm/007_balancedSearchTree.html#_2-3查找树" class="sidebar-link">2-3查找树</a></li><li class="sidebar-sub-header"><a href="/algorithm/007_balancedSearchTree.html#红黑二叉查找树" class="sidebar-link">红黑二叉查找树</a></li></ul></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="_2-3查找树"><a href="#_2-3查找树" aria-hidden="true" class="header-anchor">#</a> 2-3查找树</h2> <h3 id="定义"><a href="#定义" aria-hidden="true" class="header-anchor">#</a> 定义</h3> <p>一棵2-3查找树或为一棵空树，由以下结点组成：</p> <blockquote><p>2-结点，含有一个键（及其对应的值）和两条链接，左链接指向的2-3树中的键都小于该结点，右结点指向的2-3树中的键都大于该结点。<br>
+3-结点，含有两个键（及其对应的值）和三条链，左链接指向的2-3树中的键都小于该结点，中链接指向的2-3树中的键都位于该结点的两个键之间，右结点指向的2-3树中的键都大于该结点。<br>
+注：一棵完美平衡的2-3查找树中所有的空链接到根结点的距离应该都是相同的。</p></blockquote> <p><a data-fancybox="" title="2-3查找树" href="/pic/algorithm/MXG5Eil.png"><img src="/pic/algorithm/MXG5Eil.png" alt="2-3查找树"></a></p> <h3 id="基本操作"><a href="#基本操作" aria-hidden="true" class="header-anchor">#</a> 基本操作</h3> <h4 id="查找"><a href="#查找" aria-hidden="true" class="header-anchor">#</a> 查找</h4> <blockquote><p>要判断一个键是否存在树中，先将它和根结点中的键比较，如果它和其中任意一个相等，查找命中；否则我们就根据比较结果找到指定的区间的链接，并在其指向的子树中递归的继续查找，如果是空链接，查找未命中。</p></blockquote> <p><a data-fancybox="" title="查找" href="/pic/algorithm/nim0vYH.png"><img src="/pic/algorithm/nim0vYH.png" alt="查找"></a></p> <blockquote><p>如上图对于H的查找命中，对于B的查找未命中</p></blockquote> <h4 id="向2-结点中插入新键"><a href="#向2-结点中插入新键" aria-hidden="true" class="header-anchor">#</a> 向2-结点中插入新键</h4> <blockquote><p>要在2-3树中插入一个新的结点，可以和查找二叉查找树一样先进行一次未命中查找，然后把新结点挂在树的底部，但是为了保证树的完美平衡性，要将2-结点替换成3-结点，将要插入的键保存于其中。<br> <a data-fancybox="" title="向2-结点中插入新键" href="/pic/algorithm/TjPjNmH.png"><img src="/pic/algorithm/TjPjNmH.png" alt="向2-结点中插入新键"></a></p></blockquote> <h4 id="向3-结点中插入新键"><a href="#向3-结点中插入新键" aria-hidden="true" class="header-anchor">#</a> 向3-结点中插入新键</h4> <blockquote><p>假设我们需要向一棵只含有一个3-结点的树中插入一个新键。这棵树有两个键，所以在它唯一的结点中已经没有可插入新建的空间，为了新键的插入，我们先将新键存入该结点中，使之成为一个4-结点，然后将它转换成一棵由3个2-结点组成的2-3树，其中一个结点（根）含有中键，一个结点含有3个键中的最小者（和根结点的左链接相连），一个结点含有3个键中的最大者（和根结点的右链接相连）。这棵树既是一棵含有3个结点的二叉查找树，同时也是一颗完美平衡的2-3树，因为其中所有的空链接到根结点的距离都相等。插入之前树的高度为0，插入后树的高度为1。</p> <p><a data-fancybox="" title="向3-结点中插入新键" href="/pic/algorithm/6eCLCN9.png"><img src="/pic/algorithm/6eCLCN9.png" alt="向3-结点中插入新键"></a></p></blockquote> <h4 id="向一个父结点为2-结点的3-结点中插入新键"><a href="#向一个父结点为2-结点的3-结点中插入新键" aria-hidden="true" class="header-anchor">#</a> 向一个父结点为2-结点的3-结点中插入新键</h4> <blockquote><p>假设未命中的查找结束于一个3-结点，而他的父结点是一个2-结点。在这种情况下我们需要在<strong>维持树的完美平衡的前提下为新键腾出空间</strong>。我们先像刚才那样构造一个4-结点并将其分解，此时的分解不会为中键创建一个新结点，而是将其移动到原来的父结点中。如下</p> <p><a data-fancybox="" title="向一个父结点为2-结点的3-结点中插入新键" href="/pic/algorithm/13fbX2B.png"><img src="/pic/algorithm/13fbX2B.png" alt="向一个父结点为2-结点的3-结点中插入新键"></a></p></blockquote> <h4 id="向一个父结点为3-结点的3-结点中插入新键"><a href="#向一个父结点为3-结点的3-结点中插入新键" aria-hidden="true" class="header-anchor">#</a> 向一个父结点为3-结点的3-结点中插入新键</h4> <blockquote><p>假设为命中的查找命中于一个父结点为3-结点的结点，我们可以再次像刚才一样构造一个临时的4-结点并分解它，然后将它的中键插入它的父结点中。但父结点也是一个3-结点，因此我们要用这个中键构造一个新的临时4-结点，然后<strong>在这个结点上进行相同的变换</strong>，即分解这个父结点并将它插入到他的父结点中，推广到一般情况，这样一直向上不断分解临时的4-结点并将中键插入到更高级的父结点，直到遇见一个2-结点并将它替换为一个不需要继续分解的3-结点，或者是到达3-结点的根</p> <p><a data-fancybox="" title="向一个父结点为3-结点的3-结点中插入新键" href="/pic/algorithm/lgva3EE.png"><img src="/pic/algorithm/lgva3EE.png" alt="向一个父结点为3-结点的3-结点中插入新键"></a></p></blockquote> <h4 id="分解根结点"><a href="#分解根结点" aria-hidden="true" class="header-anchor">#</a> 分解根结点</h4> <blockquote><p>如果从插入结点一直到根结点的路径上都是3-结点，我们的根结点最终变成一个临时的4-结点，我们可以按照向一棵只有3-结点的树中插入新键的方法处理这个问题，将临时的4-结点分解成3个2-结点，使得树高加1.<br> <a data-fancybox="" title="分解根结点" href="/pic/algorithm/KPWkp4F.png"><img src="/pic/algorithm/KPWkp4F.png" alt="分解根结点"></a></p></blockquote> <h2 id="红黑二叉查找树"><a href="#红黑二叉查找树" aria-hidden="true" class="header-anchor">#</a> 红黑二叉查找树</h2> <h3 id="基本思想："><a href="#基本思想：" aria-hidden="true" class="header-anchor">#</a> 基本思想：</h3> <blockquote><p>红黑二叉查找树背后的基本思想是用标准的二叉树（完全由2-结点构成）和一些额外的信息（替换3-结点）来表示2-3树。树中的链接分成两种类型：<strong>红链接将两个2-结点连接起来构成一个3-结点，黑链接则是2-3树中的普通链接</strong><br> <a data-fancybox="" title="红黑二叉查找树" href="/pic/algorithm/WQol4hd.png"><img src="/pic/algorithm/WQol4hd.png" alt="红黑二叉查找树"></a></p></blockquote> <h3 id="等价定义："><a href="#等价定义：" aria-hidden="true" class="header-anchor">#</a> 等价定义：</h3> <blockquote><p>红黑树的另一种定义是含有红黑链接并满足下列条件的二叉查找树：<br>
+1.红链接均为左链接<br>
+2.没有任何一个结点同时和两个红链接相连。<br>
+3.该输是完美黑色平衡的，即任意空链接到根结点的路径上的<strong>黑链接数量</strong>相同。<br>
+满足这样定义的红黑树和相应的2-3树是一一对应的</p> <p><a data-fancybox="" title="2-3树" href="/pic/algorithm/A6K0FLQ.png"><img src="/pic/algorithm/A6K0FLQ.png" alt="2-3树"></a></p> <p>如上图所画的，如果将一棵红黑树中的红链接画平，那么所有的空链接到根结点的距离都是相同的，如果将所有的红链接相连的结点合并，就可以得到一棵2-3树。</p></blockquote> <h3 id="实现"><a href="#实现" aria-hidden="true" class="header-anchor">#</a> 实现</h3> <h4 id="颜色表示"><a href="#颜色表示" aria-hidden="true" class="header-anchor">#</a> 颜色表示</h4> <blockquote><p>每一条结点都会只有一条指向自己的链接（从它父结点的父结点指向它），将链接的颜色保存在表示结点的Node数据类型的布尔变量color中。</p> <p><a data-fancybox="" title="颜色表示" href="/pic/algorithm/fQmsgdx.png"><img src="/pic/algorithm/fQmsgdx.png" alt="颜色表示"></a></p></blockquote> <div class="language- extra-class"><pre><code>private static final boolean RED = true;
+private static final boolean BLACK = false;
+
+//含有color变量的Node对象
+private class Node{
+	Key key;			//键
+	Value value;		//相关联的值
+	Node left,right;	//左右子树
+	int N;				//这课子树中的节点总数
+	boolean color;		//由其父节点指向他的链接的颜色
+	
+	Node(Key key, Value value, int N, boolean color){
+		this.key = key;
+		this.value = value;
+		this.N = N;
+		this.color = color;
+	}
+}
+
+private boolean isRed(Node x){
+	if(x==null)
+		return false;
+	return x.color = RED;
+}
+</code></pre></div><h4 id="旋转"><a href="#旋转" aria-hidden="true" class="header-anchor">#</a> 旋转</h4> <blockquote><p>在实现红黑树的操作中可能会出现右链接或者两条连续的红链接，在完成操作之前这些情况都会被小心地旋转并修复。旋转操作会改变红链接的指向，首先假设我们有一条红色的右链接需要被转换成左链接，这种操作叫做左旋转</p> <p><a data-fancybox="" title="左旋转" href="/pic/algorithm/AOC0xb3.png"><img src="/pic/algorithm/AOC0xb3.png" alt="左旋转"></a><br>
+同时也有一种操作叫做右旋转，即一条红链接需要被转换成右链接</p> <p><a data-fancybox="" title="右旋转" href="/pic/algorithm/TYtxeOw.png"><img src="/pic/algorithm/TYtxeOw.png" alt="右旋转"></a></p></blockquote> <h5 id="向单个2-结点插入新键"><a href="#向单个2-结点插入新键" aria-hidden="true" class="header-anchor">#</a> 向单个2-结点插入新键</h5> <blockquote><p>一棵只有一个键的红黑树只含有一个2-结点，插入另一个键后，我们需要将他们进行旋转，如果新键小于老键，只需要新增一个红色的结点即可，如果新键大于老键，则需要旋转来进行修改操作，如下图<br> <a data-fancybox="" title="向单个2-结点插入新键" href="/pic/algorithm/ECX6yx9.png"><img src="/pic/algorithm/ECX6yx9.png" alt="向单个2-结点插入新键"></a></p></blockquote> <h5 id="向树底部的2-结点插入新键"><a href="#向树底部的2-结点插入新键" aria-hidden="true" class="header-anchor">#</a> 向树底部的2-结点插入新键</h5> <blockquote><p>用和二叉查找树相同的方法向一棵红黑树中插入一个新建结点，会在树底部新增一个结点，为了保证有序性，总是用红链接将新结点和它的父结点相连，如果父结点是一个2-结点，那么会出现如图情况
+<a data-fancybox="" title="向树底部的2-结点插入新键" href="/pic/algorithm/UY1Fiyl.png"><img src="/pic/algorithm/UY1Fiyl.png" alt="向树底部的2-结点插入新键"></a></p></blockquote> <h5 id="向一棵双键树即一个3-结点插入新键"><a href="#向一棵双键树即一个3-结点插入新键" aria-hidden="true" class="header-anchor">#</a> 向一棵双键树即一个3-结点插入新键</h5> <blockquote><p>可以分成三种情况：新键小于树中的两个键，在两者之间，或者是大于树中的两个键，每种情况都会出现一个同时连接到两个红链接的结点。<br>
+1.新建大于原树中的两个键<br> <a data-fancybox="" title="新建大于原树中的两个键" href="/pic/algorithm/Mqa9W0w.png"><img src="/pic/algorithm/Mqa9W0w.png" alt="新建大于原树中的两个键"></a>
+2.新建小于原树中的两个键
+<a data-fancybox="" title="新建小于原树中的两个键" href="/pic/algorithm/GcFfeZ4.png"><img src="/pic/algorithm/GcFfeZ4.png" alt="新建小于原树中的两个键"></a>
+3.新建介于原树中的两个键之间<br> <a data-fancybox="" title="新建介于原树中的两个键之间" href="/pic/algorithm/tMjIR69.png"><img src="/pic/algorithm/tMjIR69.png" alt="新建介于原树中的两个键之间"></a></p></blockquote> <h5 id="颜色转换"><a href="#颜色转换" aria-hidden="true" class="header-anchor">#</a> 颜色转换</h5> <blockquote><p>除了将子结点的颜色由红变黑之外，还要将父结点的颜色由红变成黑色，这项操作最重要的性质在于<strong>它和旋转操作一样是局部变换，不会影响整棵树的黑色平衡性</strong>，我们每次插入后都会将根结点设为黑色（每次根结点由红变黑时树的黑链接高度就会加1），因此：
+1.如果右子结点是红色的而左子结点是黑色的，进行左旋转。<br>
+2.如果左子结点是红色的而且它的左子结点也是红色的，进行右旋转。
+3.如果左右子结点均是红色的，进行颜色转换。</p></blockquote> <h3 id="算法实现"><a href="#算法实现" aria-hidden="true" class="header-anchor">#</a> 算法实现</h3> <div class="language- extra-class"><pre><code>/**
+ * 红黑树的插入算法
+ * @author zzk
+ *
+ */
+public class RedBlackBST&lt;Key extends Comparable&lt;Key&gt;,Value&gt; {
+
+private static final boolean RED = true;
+private static final boolean BLACK = false;
+
+private Node root;
+//含有color变量的Node对象
+private class Node{
+	Key key;			//键
+	Value value;		//相关联的值
+	Node left,right;	//左右子树
+	int N;				//这课子树中的节点总数
+	boolean color;		//由其父节点指向他的链接的颜色
+	
+	Node(Key key, Value value, int N, boolean color){
+		this.key = key;
+		this.value = value;
+		this.N = N;
+		this.color = color;
+	}
+}
+
+private boolean isRed(Node x){
+	if(x==null)
+		return false;
+	return x.color = RED;
+}
+
+public int size(){
+	return size(root);
+}
+
+private int size(Node x) {
+	if(x==null)
+		return 0;
+	else
+		return x.N;
+}
+
+//向左旋转h的右链接
+private Node rotateLeft(Node h){
+	Node x = h.right;
+	h.right = x.left;
+	x.left = h;
+	x.color = h.color;
+	h.color = RED;
+	x.N = h.N;
+	h.N = 1 + size(h.left)+ size(h.right);
+	return x;
+}
+//向右旋转h的左链接
+private Node rotateRight(Node h){
+	Node x = h.left;
+	h.left = x.right;
+	x.right = h;
+	x.color = h.color;
+	h.color = RED;
+	x.N = h.N;
+	h.N = 1 + size(h.left)+size(h.right);
+	return x;
+}
+//颜色转换（转换一个结点的两个红色子结点的颜色）
+private void flipColors(Node h){
+	h.color = RED;
+	h.left.color = BLACK;
+	h.right.color = BLACK;
+}
+
+public void put(Key key, Value value){
+	//查找key，找到就更新其值，否则就为他新建一个结点
+	root = put(root, key, value);
+	root.color = BLACK;
+}
+
+/**
+ * 1.如果右子结点是红色的而左结点是黑色的，进行左旋转
+ * 2.如果左子结点是红色的且它的左结点也是红色的，进行右旋转
+ * 3.如果左右子结点均为红色，进行颜色转换
+ * @param h
+ * @param key
+ * @param value
+ * @return
+ */
+private Node put(Node h, Key key, Value value){
+	if(h==null)
+		return new Node(key,value,1,RED);
+	int cmp = key.compareTo(h.key);
+	if(cmp&lt;0)
+		h.left = put(h.left, key, value);
+	else if(cmp&gt;0)
+		h.right = put(h.right, key, value);
+	else
+		h.value = value;
+	//如果右子结点是红色的而左结点是黑色的，进行左旋转
+	if(isRed(h.right) &amp;&amp; !isRed(h.left))
+		h = rotateLeft(h);
+	//如果左子结点是红色的且它的左结点也是红色的，进行右旋转
+	if(isRed(h.left) &amp;&amp; isRed(h.left.left))
+		h = rotateRight(h);
+	//如果左右子结点均为红色，进行颜色转换
+	if(isRed(h.left) &amp;&amp; isRed(h.right))
+		flipColors(h);
+	
+	h.N = size(h.left) + size(h.right) + 1;
+	return h;
+}
+
+}
+</code></pre></div><h3 id="红黑树的性质"><a href="#红黑树的性质" aria-hidden="true" class="header-anchor">#</a> 红黑树的性质</h3> <blockquote><p>所有基于红黑树的符号实现都能保证操作的运行时间为对数级别（除了范围查找外，他所需的额外时间和返回的键的数量成正比）</p></blockquote> <blockquote><p>各种符号表实现的性能总结：</p></blockquote> <table><thead><tr><th>算法（数据结构）</th> <th>最坏的情况下的运行时间的增长数量级（N次插入之后）</th> <th>-</th> <th>平均情况下的运行时间的增长数量级（N次随机插入之后）</th> <th>-</th> <th style="text-align:right;">是否支持有序相关的操作</th></tr></thead> <tbody><tr><td>-</td> <td>查找</td> <td>插入</td> <td>查找命中</td> <td>插入</td> <td style="text-align:right;">-:</td></tr> <tr><td>顺序查询（无序链表）</td> <td>N</td> <td>N</td> <td>N/2</td> <td>N</td> <td style="text-align:right;">否</td></tr> <tr><td>二分查找（有序数组）</td> <td>lgN</td> <td>N</td> <td>lgN</td> <td>N/2</td> <td style="text-align:right;">是</td></tr> <tr><td>二叉树查找（二叉查找树）</td> <td>N</td> <td>N</td> <td>1.39lgN</td> <td>1.39lgN</td> <td style="text-align:right;">是</td></tr> <tr><td>2-3树查找</td> <td>2lgN</td> <td>2lgN</td> <td>1.00lgN</td> <td>1.00lgN</td> <td style="text-align:right;">是</td></tr></tbody></table></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">9/22/2020, 12:20:37 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/algorithm/006_binarySearchTree.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        二叉查找树
+      </a></span> <!----></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.193c9b61.js" defer></script><script src="/assets/js/2.be286493.js" defer></script><script src="/assets/js/13.788181fe.js" defer></script>
+  </body>
+</html>
